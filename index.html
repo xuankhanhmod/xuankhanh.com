@@ -1,16 +1,23 @@
 ```html
 <!DOCTYPE html>
 <html lang="vi">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>XUÂN KHÁNH</title>
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>XUÂN KHÁNH MOD</title>
+
 
 <style>
 
 /* =====================================================
-   CƠ BẢN
+   RESET
 ===================================================== */
 
 *{
@@ -23,20 +30,26 @@ html,
 body{
     width:100%;
     height:100%;
-    overflow:hidden;
 }
 
 body{
+
+    overflow:hidden;
+
+    color:#fff;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
     background:
         radial-gradient(
             circle at center,
-            #18313d 0%,
-            #071016 50%,
+            #152f3b 0%,
+            #071117 48%,
             #000 100%
         );
-
-    color:white;
-    font-family:Arial,Helvetica,sans-serif;
 }
 
 
@@ -45,32 +58,35 @@ body{
 ===================================================== */
 
 #rain{
+
     position:fixed;
+
     inset:0;
 
     overflow:hidden;
+
     pointer-events:none;
 
-    z-index:2;
+    z-index:1;
 }
 
-.rain-drop{
+.rainDrop{
+
     position:absolute;
 
-    top:-100px;
+    top:-80px;
 
-    width:2px;
+    width:1px;
 
     background:
         linear-gradient(
-            to bottom,
             transparent,
-            #008cff
+            #00aaff
         );
 
     box-shadow:
-        0 0 6px
-        rgba(0,150,255,.8);
+        0 0 5px
+        rgba(0,170,255,.8);
 
     animation:
         rainFall
@@ -80,22 +96,27 @@ body{
 
 @keyframes rainFall{
 
-    0%{
+    from{
+
         transform:
-            translateY(-100px)
+            translateY(-80px)
             translateX(0);
+
     }
 
-    100%{
+    to{
+
         transform:
             translateY(110vh)
-            translateX(-80px);
+            translateX(-70px);
+
     }
+
 }
 
 
 /* =====================================================
-   ĐỒNG HỒ
+   ĐỒNG HỒ MINI
    GÓC TRÊN BÊN TRÁI
 ===================================================== */
 
@@ -103,16 +124,21 @@ body{
 
     position:fixed;
 
-    top:18px;
-    left:20px;
+    top:10px;
 
-    width:170px;
-    height:105px;
+    left:10px;
 
     /*
-       QUAN TRỌNG:
-       Tất cả nước và mưa bên trong
-       đều không được phép chảy ra ngoài.
+       KÍCH THƯỚC MINI
+    */
+
+    width:85px;
+
+    height:52px;
+
+    /*
+       GIỮ TẤT CẢ
+       BÊN TRONG KHUNG
     */
 
     overflow:hidden;
@@ -122,20 +148,20 @@ body{
     */
 
     border:
-        3px solid #ffffff;
+        1.5px solid #fff;
 
-    border-radius:18px;
+    border-radius:8px;
 
-    background:#ffffff;
+    background:#fff;
 
     z-index:100;
 
     box-shadow:
-        0 0 18px
+        0 0 8px
         rgba(255,255,255,.35);
 
     transition:
-        transform .18s ease;
+        transform .15s ease;
 }
 
 
@@ -151,94 +177,99 @@ body{
     top:0;
 
     width:100%;
-    height:55%;
+
+    height:53%;
 
     background:
         linear-gradient(
             to bottom,
             #ffffff,
-            #f4faff
+            #f2faff
         );
 
-    z-index:1;
-
     overflow:hidden;
+
+    z-index:1;
 }
 
 
 /* =====================================================
-   MƯA BÊN TRONG ĐỒNG HỒ
+   MƯA TRONG ĐỒNG HỒ
 ===================================================== */
 
-.clockRain{
+#clockRain{
 
     position:absolute;
 
-    top:-20px;
+    inset:0;
 
-    width:2px;
-    height:15px;
+    overflow:hidden;
 
-    background:
-        linear-gradient(
-            to bottom,
-            transparent,
-            #00aaff
-        );
+    z-index:2;
+}
+
+.smallRain{
+
+    position:absolute;
+
+    top:-12px;
+
+    width:1px;
+
+    height:7px;
+
+    background:#00aaff;
 
     opacity:.75;
 
     animation:
-        clockRainFall
+        smallRainFall
         linear
         infinite;
 }
 
-@keyframes clockRainFall{
+@keyframes smallRainFall{
 
     from{
         transform:
-            translateY(-20px);
+            translateY(-12px);
     }
 
     to{
         transform:
-            translateY(80px);
+            translateY(40px);
     }
+
 }
 
 
 /* =====================================================
-   NƯỚC TRONG ĐỒNG HỒ
+   BIỂN
 ===================================================== */
 
 #water{
 
     position:absolute;
 
-    left:-15%;
+    left:-20%;
+
+    bottom:-4px;
+
+    width:140%;
+
+    height:53%;
 
     /*
-       Nước luôn nằm trong vùng đồng hồ
+       MÀU XANH BIỂN
     */
-
-    bottom:-3px;
-
-    width:130%;
-
-    height:51%;
 
     background:
         linear-gradient(
             to bottom,
-            #20c8ff 0%,
+            #18c8ff 0%,
             #008cff 45%,
             #0055cc 100%
         );
-
-    /*
-       Mặt nước cong
-    */
 
     border-radius:
         50%
@@ -248,20 +279,16 @@ body{
 
     z-index:3;
 
-    /*
-       Cho phép nước nghiêng
-    */
-
     transform-origin:
         center center;
 
     transition:
-        transform .15s ease;
+        transform .12s ease;
 }
 
 
 /* =====================================================
-   MẶT SÓNG
+   SÓNG
 ===================================================== */
 
 .wave{
@@ -272,62 +299,62 @@ body{
 
     width:110%;
 
-    height:12px;
+    height:7px;
 
     border-top:
-        2px solid
-        rgba(255,255,255,.75);
+        1px solid
+        rgba(255,255,255,.85);
 
     border-radius:50%;
 }
 
-.wave.one{
+.waveA{
 
     top:0;
 
     animation:
-        wave1
-        1.5s
+        waveMoveA
+        1.4s
         linear
         infinite;
 }
 
-.wave.two{
+.waveB{
 
-    top:7px;
+    top:4px;
 
     opacity:.4;
 
     animation:
-        wave2
-        2s
+        waveMoveB
+        1.8s
         linear
         infinite;
 }
 
-@keyframes wave1{
+@keyframes waveMoveA{
 
     from{
         transform:
-            translateX(-20px);
+            translateX(-13px);
     }
 
     to{
         transform:
-            translateX(20px);
+            translateX(13px);
     }
 }
 
-@keyframes wave2{
+@keyframes waveMoveB{
 
     from{
         transform:
-            translateX(20px);
+            translateX(13px);
     }
 
     to{
         transform:
-            translateX(-20px);
+            translateX(-13px);
     }
 }
 
@@ -342,13 +369,9 @@ body{
 
     left:50%;
 
-    /*
-       Đặt thuyền ngay trên mặt nước
-    */
+    top:-18px;
 
-    top:-30px;
-
-    font-size:30px;
+    font-size:17px;
 
     transform:
         translateX(-50%)
@@ -360,26 +383,27 @@ body{
     z-index:6;
 
     transition:
-        transform .15s ease;
+        transform .12s ease;
 
     filter:
         drop-shadow(
-            0 2px 2px
-            rgba(0,0,0,.4)
+            0 1px 1px
+            rgba(0,0,0,.5)
         );
 }
 
 
 /* =====================================================
-   ĐỒNG HỒ - GIỜ
+   GIỜ
 ===================================================== */
 
 #clock{
 
     position:absolute;
 
+    top:5px;
+
     left:0;
-    top:12px;
 
     width:100%;
 
@@ -389,62 +413,15 @@ body{
 
     font-family:monospace;
 
-    font-size:14px;
+    font-size:7px;
 
     font-weight:bold;
 
-    letter-spacing:2px;
+    letter-spacing:.5px;
 
     z-index:10;
 
-    text-shadow:
-        0 1px 2px
-        rgba(255,255,255,.8);
-}
-
-
-/* =====================================================
-   TÊN WEBSITE
-===================================================== */
-
-#title{
-
-    position:fixed;
-
-    top:50%;
-    left:50%;
-
-    transform:
-        translate(-50%,-50%);
-
-    text-align:center;
-
-    z-index:10;
-
-    width:90%;
-}
-
-#title h1{
-
-    font-size:
-        clamp(
-            35px,
-            8vw,
-            80px
-        );
-
-    letter-spacing:6px;
-
-    margin-bottom:15px;
-}
-
-#title p{
-
-    color:#aaa;
-
-    font-size:11px;
-
-    letter-spacing:5px;
+    pointer-events:none;
 }
 
 
@@ -456,28 +433,28 @@ body{
 
     position:fixed;
 
-    top:22px;
+    top:18px;
 
-    right:30px;
-
-    z-index:101;
+    right:22px;
 
     display:flex;
 
-    gap:25px;
+    gap:22px;
+
+    z-index:50;
 }
 
 .menu button{
 
-    border:0;
+    border:none;
 
     background:transparent;
 
-    color:#aaa;
+    color:#777;
 
     cursor:pointer;
 
-    font-size:10px;
+    font-size:9px;
 
     letter-spacing:2px;
 
@@ -492,7 +469,7 @@ body{
 
 
 /* =====================================================
-   NỘI DUNG TRANG
+   TRANG CHÍNH
 ===================================================== */
 
 .page{
@@ -512,7 +489,7 @@ body{
     z-index:20;
 
     background:
-        rgba(0,0,0,.35);
+        rgba(0,0,0,.18);
 }
 
 .page.active{
@@ -520,14 +497,231 @@ body{
     display:flex;
 }
 
+
+/* =====================================================
+   NỘI DUNG
+===================================================== */
+
 .content{
 
-    width:90%;
+    width:92%;
 
-    max-width:900px;
+    max-width:1000px;
+
+    margin:auto;
 }
 
-.content h1{
+
+/* =====================================================
+   XUÂN KHÁNH
+===================================================== */
+
+.name{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:8px;
+
+    font-size:
+        clamp(
+            25px,
+            5vw,
+            43px
+        );
+
+    font-weight:bold;
+
+    letter-spacing:4px;
+}
+
+.trophy{
+
+    font-size:27px;
+
+    animation:
+        trophyFloat
+        2s
+        ease-in-out
+        infinite;
+}
+
+@keyframes trophyFloat{
+
+    0%,100%{
+        transform:
+            translateY(0);
+    }
+
+    50%{
+        transform:
+            translateY(-5px);
+    }
+
+}
+
+
+/* =====================================================
+   ĐƯỜNG KẺ
+===================================================== */
+
+.divider{
+
+    width:180px;
+
+    height:1px;
+
+    margin:
+        20px
+        auto;
+
+    background:#444;
+}
+
+
+/* =====================================================
+   XUÂN KHÁNH MOD
+===================================================== */
+
+.modTitle{
+
+    font-size:
+        clamp(
+            30px,
+            7vw,
+            65px
+        );
+
+    font-weight:bold;
+
+    letter-spacing:5px;
+}
+
+.subtitle{
+
+    margin-top:9px;
+
+    color:#777;
+
+    font-size:10px;
+
+    letter-spacing:4px;
+}
+
+
+/* =====================================================
+   CÁC MOD
+===================================================== */
+
+.mods{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:18px;
+
+    margin-top:38px;
+}
+
+.mod{
+
+    padding:
+        25px 18px;
+
+    border:
+        1px solid #282828;
+
+    border-radius:13px;
+
+    background:
+        rgba(255,255,255,.035);
+
+    transition:.35s;
+}
+
+.mod:hover{
+
+    transform:
+        translateY(-7px);
+
+    border-color:#00aaff;
+
+    background:
+        rgba(255,255,255,.07);
+}
+
+.modNumber{
+
+    color:#00aaff;
+
+    font-size:9px;
+
+    letter-spacing:3px;
+}
+
+.mod h2{
+
+    margin-top:8px;
+
+    font-size:18px;
+
+    letter-spacing:2px;
+}
+
+.mod p{
+
+    margin-top:9px;
+
+    color:#888;
+
+    font-size:11px;
+
+    line-height:1.7;
+}
+
+.modButton{
+
+    display:inline-block;
+
+    margin-top:15px;
+
+    padding:
+        9px 18px;
+
+    border:
+        1px solid #555;
+
+    border-radius:30px;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+
+    transition:.3s;
+}
+
+.modButton:hover{
+
+    background:#fff;
+
+    color:#000;
+}
+
+
+/* =====================================================
+   GIỚI THIỆU / LIÊN HỆ
+===================================================== */
+
+.otherTitle{
 
     font-size:
         clamp(
@@ -539,43 +733,37 @@ body{
     letter-spacing:5px;
 }
 
-.content p{
+.otherText{
 
-    margin-top:20px;
+    max-width:600px;
+
+    margin:
+        20px auto;
 
     color:#999;
 
-    line-height:2;
-
     font-size:13px;
+
+    line-height:2;
 }
-
-
-/* =====================================================
-   NÚT QUAY LẠI
-===================================================== */
 
 .back{
 
-    display:inline-block;
-
-    margin-top:30px;
-
     padding:
-        12px 25px;
+        10px 22px;
 
     border:
         1px solid #fff;
 
     border-radius:30px;
 
-    color:#fff;
-
     background:transparent;
+
+    color:#fff;
 
     cursor:pointer;
 
-    font-size:10px;
+    font-size:9px;
 
     letter-spacing:2px;
 }
@@ -589,34 +777,54 @@ body{
 
     #clockBox{
 
-        top:15px;
-        left:15px;
+        top:8px;
 
-        width:150px;
-        height:94px;
+        left:8px;
+
+        width:82px;
+
+        height:50px;
     }
 
     #clock{
 
-        font-size:12px;
+        font-size:6px;
+    }
+
+    #boat{
+
+        font-size:16px;
     }
 
     .menu{
 
-        top:20px;
-        right:15px;
+        top:15px;
 
-        gap:10px;
+        right:10px;
+
+        gap:9px;
     }
 
     .menu button{
 
-        font-size:8px;
+        font-size:7px;
+    }
+
+    .mods{
+
+        grid-template-columns:1fr;
+
+        max-height:55vh;
+
+        overflow-y:auto;
+
+        padding:5px;
     }
 
 }
 
 </style>
+
 </head>
 
 
@@ -631,7 +839,7 @@ body{
 
 
 <!-- =====================================================
-     ĐỒNG HỒ
+     ĐỒNG HỒ MINI
 ===================================================== -->
 
 <div id="clockBox">
@@ -642,18 +850,22 @@ body{
     <div id="sky"></div>
 
 
-    <!-- MƯA TRONG ĐỒNG HỒ -->
+    <!-- MƯA -->
 
     <div id="clockRain"></div>
 
 
-    <!-- NƯỚC -->
+    <!-- BIỂN -->
 
     <div id="water">
 
-        <div class="wave one"></div>
+        <div
+            class="wave waveA">
+        </div>
 
-        <div class="wave two"></div>
+        <div
+            class="wave waveB">
+        </div>
 
 
         <!-- THUYỀN -->
@@ -665,12 +877,11 @@ body{
     </div>
 
 
-    <!-- GIỜ -->
+    <!-- ĐỒNG HỒ -->
 
     <div id="clock">
         00:00:00
     </div>
-
 
 </div>
 
@@ -681,16 +892,27 @@ body{
 
 <nav class="menu">
 
-    <button onclick="showPage('home')">
+    <button
+        onclick="showPage('home')">
+
         MAIN
+
     </button>
 
-    <button onclick="showPage('about')">
+
+    <button
+        onclick="showPage('about')">
+
         GIỚI THIỆU
+
     </button>
 
-    <button onclick="showPage('contact')">
+
+    <button
+        onclick="showPage('contact')">
+
         LIÊN HỆ
+
     </button>
 
 </nav>
@@ -704,17 +926,114 @@ body{
     id="home"
     class="page active">
 
-    <div
-        id="title"
-        class="content">
+    <div class="content">
 
-        <h1>
+
+        <div class="name">
+
             XUÂN KHÁNH
-        </h1>
 
-        <p>
+            <span class="trophy">
+                🏆
+            </span>
+
+        </div>
+
+
+        <div class="divider"></div>
+
+
+        <div class="modTitle">
+            XUÂN KHÁNH MOD
+        </div>
+
+
+        <div class="subtitle">
             WELCOME TO MY WEBSITE
-        </p>
+        </div>
+
+
+        <!-- CÁC MOD -->
+
+        <div class="mods">
+
+
+            <div class="mod">
+
+                <div class="modNumber">
+                    MOD 01
+                </div>
+
+                <h2>
+                    MOD 01
+                </h2>
+
+                <p>
+                    XUÂN KHÁNH MOD
+                </p>
+
+                <a
+                    href="#"
+                    class="modButton">
+
+                    XEM MOD
+
+                </a>
+
+            </div>
+
+
+            <div class="mod">
+
+                <div class="modNumber">
+                    MOD 02
+                </div>
+
+                <h2>
+                    MOD 02
+                </h2>
+
+                <p>
+                    XUÂN KHÁNH MOD
+                </p>
+
+                <a
+                    href="#"
+                    class="modButton">
+
+                    XEM MOD
+
+                </a>
+
+            </div>
+
+
+            <div class="mod">
+
+                <div class="modNumber">
+                    MOD 03
+                </div>
+
+                <h2>
+                    MOD 03
+                </h2>
+
+                <p>
+                    XUÂN KHÁNH MOD
+                </p>
+
+                <a
+                    href="#"
+                    class="modButton">
+
+                    XEM MOD
+
+                </a>
+
+            </div>
+
+
+        </div>
 
     </div>
 
@@ -731,19 +1050,25 @@ body{
 
     <div class="content">
 
-        <h1>
+        <div class="otherTitle">
             GIỚI THIỆU
-        </h1>
+        </div>
 
-        <p>
+        <div class="divider"></div>
+
+        <div class="otherText">
+
             Chào mừng bạn đến với
-            website XUÂN KHÁNH.
+            website XUÂN KHÁNH MOD.
+
             <br><br>
-            Đây là trang web được
-            thiết kế với hiệu ứng
-            mưa, nước và đồng hồ
+
+            Website được thiết kế
+            với hiệu ứng mưa,
+            biển và đồng hồ
             tương tác.
-        </p>
+
+        </div>
 
         <button
             class="back"
@@ -768,13 +1093,17 @@ body{
 
     <div class="content">
 
-        <h1>
+        <div class="otherTitle">
             LIÊN HỆ
-        </h1>
+        </div>
 
-        <p>
-            XUÂN KHÁNH
-        </p>
+        <div class="divider"></div>
+
+        <div class="otherText">
+
+            XUÂN KHÁNH MOD
+
+        </div>
 
         <button
             class="back"
@@ -791,22 +1120,31 @@ body{
 
 <script>
 
+
 /* =====================================================
-   MƯA TOÀN TRANG
+   TẠO MƯA TOÀN TRANG
 ===================================================== */
 
 const rain =
-    document.getElementById("rain");
+    document.getElementById(
+        "rain"
+    );
 
 
-for(let i = 0; i < 180; i++){
+for(
+    let i = 0;
+    i < 160;
+    i++
+){
 
     const drop =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
 
     drop.className =
-        "rain-drop";
+        "rainDrop";
 
 
     drop.style.left =
@@ -815,14 +1153,14 @@ for(let i = 0; i < 180; i++){
 
     drop.style.height =
         (
-            25 +
-            Math.random() * 50
+            20 +
+            Math.random() * 40
         ) + "px";
 
 
     drop.style.animationDuration =
         (
-            .45 +
+            .5 +
             Math.random() * .8
         ) + "s";
 
@@ -851,25 +1189,24 @@ const clockRain =
     );
 
 
-for(let i = 0; i < 28; i++){
+for(
+    let i = 0;
+    i < 18;
+    i++
+){
 
     const drop =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
 
     drop.className =
-        "clockRain";
+        "smallRain";
 
 
     drop.style.left =
         Math.random() * 100 + "%";
-
-
-    drop.style.height =
-        (
-            8 +
-            Math.random() * 12
-        ) + "px";
 
 
     drop.style.animationDuration =
@@ -889,7 +1226,7 @@ for(let i = 0; i < 28; i++){
 
 
 /* =====================================================
-   ĐỒNG HỒ THỜI GIAN
+   ĐỒNG HỒ
 ===================================================== */
 
 function updateClock(){
@@ -926,7 +1263,9 @@ function updateClock(){
 
 
     document
-        .getElementById("clock")
+        .getElementById(
+            "clock"
+        )
         .textContent =
         `${hours}:${minutes}:${seconds}`;
 
@@ -969,7 +1308,7 @@ function showPage(page){
 
 
 /* =====================================================
-   XOAY THIẾT BỊ
+   NƯỚC + THUYỀN
 ===================================================== */
 
 const water =
@@ -993,15 +1332,14 @@ const clockBox =
 function moveWater(angle){
 
     /*
-       Giới hạn góc.
-       Nước sẽ không nghiêng quá mạnh.
+       Giới hạn độ nghiêng
     */
 
     let tilt =
         Math.max(
-            -25,
+            -24,
             Math.min(
-                25,
+                24,
                 angle
             )
         );
@@ -1012,7 +1350,7 @@ function moveWater(angle){
     */
 
     water.style.transform =
-        `rotate(${tilt}deg) scale(1.15)`;
+        `rotate(${tilt}deg) scale(1.2)`;
 
 
     /*
@@ -1024,26 +1362,20 @@ function moveWater(angle){
 
 
     /*
-       KHUNG ĐỒNG HỒ
-       CHỈ NGHIÊNG RẤT NHẸ
+       KHUNG GẦN NHƯ KHÔNG NGHIÊNG
     */
 
     clockBox.style.transform =
-        `rotate(${tilt * .08}deg)`;
+        `rotate(${tilt * .05}deg)`;
 
 }
 
 
 /* =====================================================
-   CẢM BIẾN XOAY
+   XOAY THIẾT BỊ
 ===================================================== */
 
 function orientationHandler(event){
-
-    /*
-       gamma:
-       nghiêng trái/phải của thiết bị
-    */
 
     const angle =
         event.gamma || 0;
@@ -1055,7 +1387,7 @@ function orientationHandler(event){
 
 
 /* =====================================================
-   KÍCH HOẠT CẢM BIẾN
+   CẢM BIẾN
 ===================================================== */
 
 async function enableMotion(){
@@ -1065,12 +1397,16 @@ async function enableMotion(){
     */
 
     if(
+
         typeof DeviceOrientationEvent !==
         "undefined"
+
         &&
+
         typeof DeviceOrientationEvent
             .requestPermission ===
         "function"
+
     ){
 
         try{
@@ -1093,6 +1429,7 @@ async function enableMotion(){
             }
 
         }
+
         catch(error){
 
             console.log(error);
@@ -1102,7 +1439,7 @@ async function enableMotion(){
     }
 
     /*
-       Android / trình duyệt hỗ trợ sẵn
+       Android
     */
 
     else{
@@ -1118,8 +1455,8 @@ async function enableMotion(){
 
 
 /*
-   Kích hoạt cảm biến sau
-   lần chạm đầu tiên.
+   Bật cảm biến sau lần
+   chạm đầu tiên.
 */
 
 document.addEventListener(
@@ -1130,8 +1467,10 @@ document.addEventListener(
     }
 );
 
+
 </script>
 
 </body>
+
 </html>
 ```
