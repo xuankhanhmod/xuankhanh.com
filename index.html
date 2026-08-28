@@ -1,1 +1,1139 @@
+```html
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>XUÂN KHÁNH</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:#000;
+    color:#fff;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+/* ================= NỀN ================= */
+
+body{
+    background:
+        radial-gradient(
+            circle at center,
+            #202020 0%,
+            #090909 55%,
+            #000 100%
+        );
+}
+
+/* ================= MƯA ================= */
+
+#rain{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:1;
+}
+
+.rain{
+    position:absolute;
+    top:-100px;
+    width:1px;
+    height:45px;
+    background:linear-gradient(
+        transparent,
+        rgba(255,255,255,.55)
+    );
+
+    animation:rain linear infinite;
+}
+
+@keyframes rain{
+    0%{
+        transform:translateY(-100px) translateX(0);
+    }
+
+    100%{
+        transform:translateY(110vh) translateX(-90px);
+    }
+}
+
+/* ================= LOADING ================= */
+
+#loading{
+    position:fixed;
+    inset:0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    background:#000;
+
+    z-index:100;
+
+    transition:
+        opacity 1.2s ease,
+        visibility 1.2s ease;
+}
+
+#loading.hidden{
+    opacity:0;
+    visibility:hidden;
+}
+
+.loading-content{
+    width:90%;
+    max-width:600px;
+}
+
+.loading-small{
+    color:#777;
+    font-size:12px;
+    letter-spacing:8px;
+}
+
+.loading-title{
+    margin-top:22px;
+
+    font-size:
+        clamp(40px,9vw,90px);
+
+    font-weight:700;
+
+    letter-spacing:6px;
+}
+
+.loading-website{
+    margin-top:8px;
+
+    color:#666;
+
+    font-size:11px;
+
+    letter-spacing:9px;
+}
+
+.loading-line{
+    width:180px;
+    height:1px;
+
+    background:#444;
+
+    margin:35px auto;
+}
+
+.loading-label{
+    color:#777;
+
+    font-size:10px;
+
+    letter-spacing:4px;
+
+    margin-bottom:14px;
+}
+
+.loading-bar{
+    width:280px;
+    max-width:80vw;
+
+    height:2px;
+
+    margin:auto;
+
+    background:#222;
+
+    overflow:hidden;
+}
+
+.loading-progress{
+    width:0%;
+    height:100%;
+
+    background:#fff;
+}
+
+.loading-percent{
+    margin-top:15px;
+
+    color:#777;
+
+    font-size:11px;
+
+    letter-spacing:2px;
+}
+
+/* ================= ENTER ================= */
+
+#enter{
+    position:fixed;
+    inset:0;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    opacity:0;
+    visibility:hidden;
+
+    z-index:90;
+
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
+}
+
+#enter.show{
+    opacity:1;
+    visibility:visible;
+}
+
+.enter-content{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+/* MÈO */
+
+.cat{
+    font-size:45px;
+
+    animation:
+        catFloat 3s ease-in-out infinite;
+}
+
+@keyframes catFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-6px);
+    }
+}
+
+/* TÊN */
+
+.enter-name{
+
+    margin-top:4px;
+
+    font-size:
+        clamp(24px,5vw,42px);
+
+    font-weight:bold;
+
+    letter-spacing:4px;
+}
+
+.enter-line{
+
+    width:180px;
+    height:1px;
+
+    background:#444;
+
+    margin:20px auto;
+}
+
+/* NÚT */
+
+.enter-button{
+
+    padding:13px 28px;
+
+    border:1px solid #555;
+
+    border-radius:30px;
+
+    background:transparent;
+
+    color:#fff;
+
+    cursor:pointer;
+
+    font-size:10px;
+
+    letter-spacing:3px;
+
+    transition:.35s;
+}
+
+.enter-button:hover{
+
+    background:#fff;
+
+    color:#000;
+
+    transform:
+        translateY(-3px);
+}
+
+/* ================= WEBSITE ================= */
+
+#website{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    overflow-y:auto;
+
+    overflow-x:hidden;
+
+    z-index:10;
+}
+
+#website.show{
+    display:block;
+}
+
+/* ================= MENU ================= */
+
+.menu{
+
+    position:fixed;
+
+    top:22px;
+
+    left:0;
+    right:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:30px;
+
+    z-index:50;
+}
+
+.menu button{
+
+    border:0;
+
+    background:none;
+
+    color:#777;
+
+    cursor:pointer;
+
+    font-size:10px;
+
+    letter-spacing:2px;
+
+    transition:.3s;
+}
+
+.menu button:hover{
+
+    color:#fff;
+
+}
+
+/* ================= TRANG ================= */
+
+.page{
+
+    display:none;
+
+    min-height:100vh;
+
+    width:100%;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    padding:
+        90px 20px 50px;
+}
+
+.page.active{
+    display:flex;
+}
+
+.content{
+
+    width:100%;
+
+    max-width:1100px;
+
+    margin:auto;
+}
+
+/* ================= MAIN ================= */
+
+.main-cat{
+
+    font-size:38px;
+
+    animation:
+        catFloat 3s ease-in-out infinite;
+}
+
+/* */
+
+.name{
+
+    margin-top:2px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:7px;
+
+    font-size:
+        clamp(22px,4vw,36px);
+
+    font-weight:bold;
+
+    letter-spacing:4px;
+}
+
+.trophy{
+
+    font-size:25px;
+
+    animation:
+        trophy 2.5s ease-in-out infinite;
+}
+
+@keyframes trophy{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-4px);
+    }
+}
+
+.divider{
+
+    width:180px;
+
+    height:1px;
+
+    background:#444;
+
+    margin:20px auto;
+}
+
+.mod-title{
+
+    font-size:
+        clamp(32px,7vw,68px);
+
+    font-weight:bold;
+
+    letter-spacing:4px;
+}
+
+.hello{
+
+    margin-top:10px;
+
+    color:#888;
+
+    font-size:11px;
+
+    letter-spacing:3px;
+}
+
+/* ================= MOD ================= */
+
+.mods{
+
+    margin-top:40px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:20px;
+}
+
+.mod{
+
+    padding:30px 20px;
+
+    border:1px solid #242424;
+
+    border-radius:15px;
+
+    background:
+        rgba(255,255,255,.035);
+
+    transition:
+        transform .4s ease,
+        background .4s ease,
+        border-color .4s ease;
+}
+
+.mod:hover{
+
+    transform:
+        translateY(-8px);
+
+    background:
+        rgba(255,255,255,.08);
+
+    border-color:#555;
+}
+
+.mod-number{
+
+    color:#555;
+
+    font-size:10px;
+
+    letter-spacing:3px;
+}
+
+.mod h2{
+
+    margin-top:12px;
+
+    font-size:20px;
+
+    letter-spacing:2px;
+}
+
+.mod p{
+
+    margin-top:10px;
+
+    color:#888;
+
+    font-size:12px;
+
+    line-height:1.7;
+}
+
+.mod-button{
+
+    display:inline-block;
+
+    margin-top:18px;
+
+    padding:10px 20px;
+
+    border:
+        1px solid #555;
+
+    border-radius:30px;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    font-size:9px;
+
+    letter-spacing:2px;
+
+    transition:.3s;
+}
+
+.mod-button:hover{
+
+    background:#fff;
+
+    color:#000;
+}
+
+/* ================= GIỚI THIỆU ================= */
+
+.small-title{
+
+    color:#666;
+
+    font-size:10px;
+
+    letter-spacing:7px;
+}
+
+.big-title{
+
+    margin-top:12px;
+
+    font-size:
+        clamp(40px,8vw,75px);
+
+    letter-spacing:6px;
+}
+
+.text{
+
+    max-width:650px;
+
+    margin:25px auto 0;
+
+    color:#999;
+
+    font-size:13px;
+
+    line-height:2;
+}
+
+/* ================= LIÊN HỆ ================= */
+
+.discord{
+
+    display:inline-block;
+
+    margin-top:25px;
+
+    padding:14px 30px;
+
+    border:
+        1px solid #666;
+
+    border-radius:30px;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    font-size:10px;
+
+    letter-spacing:3px;
+
+    transition:.35s;
+}
+
+.discord:hover{
+
+    background:#fff;
+
+    color:#000;
+
+    transform:scale(1.05);
+}
+
+/* ================= ĐIỆN THOẠI ================= */
+
+@media(max-width:700px){
+
+    .menu{
+        gap:14px;
+    }
+
+    .menu button{
+        font-size:8px;
+    }
+
+    .mods{
+        grid-template-columns:1fr;
+    }
+
+    .mod-title{
+        letter-spacing:2px;
+    }
+
+    .name{
+        letter-spacing:2px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= MƯA ================= -->
+
+<div id="rain"></div>
+
+
+<!-- ================= LOADING ================= -->
+
+<section id="loading">
+
+    <div class="loading-content">
+
+        <div class="loading-small">
+            WELCOME TO
+        </div>
+
+        <div class="loading-title">
+            XUÂN KHÁNH
+        </div>
+
+        <div class="loading-website">
+            WEBSITE
+        </div>
+
+        <div class="loading-line"></div>
+
+        <div class="loading-label">
+            LOADING
+        </div>
+
+        <div class="loading-bar">
+
+            <div
+                id="progress"
+                class="loading-progress">
+            </div>
+
+        </div>
+
+        <div
+            id="percent"
+            class="loading-percent">
+
+            0%
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ENTER ================= -->
+
+<section id="enter">
+
+    <div class="enter-content">
+
+        <div class="cat">
+            🐱
+        </div>
+
+        <div class="enter-name">
+            XUÂN KHÁNH 🏆
+        </div>
+
+        <div class="enter-line"></div>
+
+        <button
+            id="enterButton"
+            class="enter-button">
+
+            ENTER WEBSITE
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= WEBSITE ================= -->
+
+<main id="website">
+
+
+    <!-- MENU -->
+
+    <nav class="menu">
+
+        <button
+            onclick="showPage('main')">
+
+            MAIN
+
+        </button>
+
+        <button
+            onclick="showPage('about')">
+
+            GIỚI THIỆU
+
+        </button>
+
+        <button
+            onclick="showPage('contact')">
+
+            LIÊN HỆ
+
+        </button>
+
+    </nav>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <section
+        id="main"
+        class="page active">
+
+        <div class="content">
+
+            <div class="main-cat">
+                🐱
+            </div>
+
+            <div class="name">
+
+                <span>
+                    XUÂN KHÁNH
+                </span>
+
+                <span class="trophy">
+                    🏆
+                </span>
+
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="mod-title">
+                XUÂN KHÁNH MOD
+            </div>
+
+            <div class="hello">
+                HELLO EVERYONE...
+            </div>
+
+
+            <div class="mods">
+
+
+                <!-- MOD 01 -->
+
+                <div class="mod">
+
+                    <div class="mod-number">
+                        MOD 01
+                    </div>
+
+                    <h2>
+                        MOD 01
+                    </h2>
+
+                    <p>
+                        MOD của XUÂN KHÁNH.
+                    </p>
+
+                    <a
+                        href="#"
+                        class="mod-button">
+
+                        XEM MOD
+
+                    </a>
+
+                </div>
+
+
+                <!-- MOD 02 -->
+
+                <div class="mod">
+
+                    <div class="mod-number">
+                        MOD 02
+                    </div>
+
+                    <h2>
+                        MOD 02
+                    </h2>
+
+                    <p>
+                        MOD của XUÂN KHÁNH.
+                    </p>
+
+                    <a
+                        href="#"
+                        class="mod-button">
+
+                        XEM MOD
+
+                    </a>
+
+                </div>
+
+
+                <!-- MOD 03 -->
+
+                <div class="mod">
+
+                    <div class="mod-number">
+                        MOD 03
+                    </div>
+
+                    <h2>
+                        MOD 03
+                    </h2>
+
+                    <p>
+                        MOD của XUÂN KHÁNH.
+                    </p>
+
+                    <a
+                        href="#"
+                        class="mod-button">
+
+                        XEM MOD
+
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= GIỚI THIỆU ================= -->
+
+    <section
+        id="about"
+        class="page">
+
+        <div class="content">
+
+            <div class="small-title">
+                XUÂN KHÁNH
+            </div>
+
+            <div class="big-title">
+                GIỚI THIỆU
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="text">
+
+                Xin chào mọi người!
+
+                <br><br>
+
+                Chào mừng bạn đến với
+                website XUÂN KHÁNH.
+
+                <br><br>
+
+                Đây là nơi chia sẻ
+                những nội dung của
+                XUÂN KHÁNH.
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= LIÊN HỆ ================= -->
+
+    <section
+        id="contact"
+        class="page">
+
+        <div class="content">
+
+            <div class="small-title">
+                XUÂN KHÁNH
+            </div>
+
+            <div class="big-title">
+                LIÊN HỆ
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="text">
+
+                Muốn liên hệ với
+                XUÂN KHÁNH?
+
+                <br><br>
+
+                Hãy tham gia Discord.
+
+            </div>
+
+            <a
+                href="https://discord.gg/yMKkt3vwf"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="discord">
+
+                💬 JOIN DISCORD
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<script>
+
+/* ================= TẠO MƯA ================= */
+
+const rain =
+    document.getElementById("rain");
+
+for(let i = 0; i < 150; i++){
+
+    const drop =
+        document.createElement("div");
+
+    drop.className = "rain";
+
+    drop.style.left =
+        Math.random() * 100 + "%";
+
+    drop.style.height =
+        (20 + Math.random() * 45) + "px";
+
+    drop.style.animationDuration =
+        (0.5 + Math.random() * 0.8) + "s";
+
+    drop.style.animationDelay =
+        Math.random() * 2 + "s";
+
+    drop.style.opacity =
+        0.15 + Math.random() * 0.65;
+
+    rain.appendChild(drop);
+}
+
+
+/* ================= LOADING ================= */
+
+let number = 0;
+
+const progress =
+    document.getElementById("progress");
+
+const percent =
+    document.getElementById("percent");
+
+const loading =
+    document.getElementById("loading");
+
+const enter =
+    document.getElementById("enter");
+
+
+const loadingTimer =
+    setInterval(() => {
+
+        number++;
+
+        progress.style.width =
+            number + "%";
+
+        percent.textContent =
+            number + "%";
+
+
+        if(number >= 100){
+
+            clearInterval(loadingTimer);
+
+            setTimeout(() => {
+
+                loading.classList.add(
+                    "hidden"
+                );
+
+                setTimeout(() => {
+
+                    enter.classList.add(
+                        "show"
+                    );
+
+                },1200);
+
+            },500);
+
+        }
+
+    },30);
+
+
+/* ================= ENTER ================= */
+
+document
+    .getElementById("enterButton")
+    .addEventListener(
+        "click",
+        function(){
+
+            enter.style.opacity = "0";
+
+            setTimeout(() => {
+
+                enter.style.visibility =
+                    "hidden";
+
+                document
+                    .getElementById("website")
+                    .classList.add("show");
+
+                showPage("main");
+
+            },700);
+
+        }
+    );
+
+
+/* ================= ĐỔI TRANG ================= */
+
+function showPage(page){
+
+    document
+        .querySelectorAll(".page")
+        .forEach(function(item){
+
+            item.classList.remove(
+                "active"
+            );
+
+        });
+
+
+    document
+        .getElementById(page)
+        .classList.add("active");
+
+
+    const website =
+        document.getElementById("website");
+
+    website.scrollTop = 0;
+}
+
+</script>
+
+</body>
+</html>
+```
