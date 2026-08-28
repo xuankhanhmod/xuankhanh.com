@@ -1,1547 +1,1236 @@
 <!DOCTYPE html>
-
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-```
 <title>XUÂN KHÁNH</title>
 
-<!-- Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link
-    href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap"
-    rel="stylesheet"
->
-
 <style>
+/* ==============================
+   CÀI ĐẶT CHUNG
+================================ */
 
-    /* ==============================
-       RESET
-    ============================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+html {
+    scroll-behavior: smooth;
+}
 
-    html {
-        scroll-behavior: smooth;
-    }
+body {
+    font-family: Arial, sans-serif;
+    background: #050505;
+    color: white;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
 
-    body {
-        font-family: "Be Vietnam Pro", sans-serif;
-        background: #050505;
-        color: white;
-        min-height: 100vh;
-        overflow-x: hidden;
-    }
+/* ==============================
+   LOADING
+================================ */
 
+#loading {
+    position: fixed;
+    inset: 0;
+    background: #050505;
+    z-index: 99999;
 
-    /* ==============================
-       LOADING SCREEN
-    ============================== */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
 
-    #loading {
-        position: fixed;
-        inset: 0;
+.loading-text {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 18px;
+    letter-spacing: 2px;
+}
 
-        z-index: 99999;
+.loading-box {
+    width: min(420px, 80%);
+    height: 8px;
+    background: #222;
+    border-radius: 20px;
+    overflow: hidden;
+}
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
+.loading-bar {
+    width: 0%;
+    height: 100%;
+    background: white;
+    border-radius: 20px;
+    animation: loading 2.5s ease forwards;
+}
 
-        background:
-            radial-gradient(
-                circle at center,
-                #151515 0%,
-                #080808 45%,
-                #000 100%
-            );
-
-        opacity: 1;
-        visibility: visible;
-
-        transition:
-            opacity 0.7s ease,
-            visibility 0.7s ease;
-    }
-
-    #loading.hide {
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-    }
-
-    .loading-content {
-        width: min(420px, 85%);
-        text-align: center;
-    }
-
-    .loading-title {
-        font-family: "Nunito", sans-serif;
-
-        font-size: clamp(28px, 7vw, 42px);
-        font-weight: 800;
-
-        letter-spacing: 5px;
-
-        margin-bottom: 28px;
-    }
-
-    .loading-subtitle {
-        color: #888;
-        font-size: 13px;
-
-        margin-bottom: 15px;
-    }
-
-    /* Thanh loading ngang */
-
-    .loading-bar {
-        width: 100%;
-        height: 6px;
-
-        overflow: hidden;
-
-        border-radius: 20px;
-
-        background: rgba(255,255,255,0.12);
-    }
-
-    .loading-progress {
+@keyframes loading {
+    0% {
         width: 0%;
-        height: 100%;
-
-        border-radius: 20px;
-
-        background: #fff;
-
-        animation:
-            loadingProgress 2.4s
-            cubic-bezier(.4,0,.2,1)
-            forwards;
     }
 
-    @keyframes loadingProgress {
+    100% {
+        width: 100%;
+    }
+}
 
-        0% {
-            width: 0%;
-        }
+/* ==============================
+   MƯA
+================================ */
 
-        20% {
-            width: 20%;
-        }
+.rain {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+}
 
-        50% {
-            width: 55%;
-        }
+.drop {
+    position: absolute;
+    top: -30px;
+    width: 1px;
+    height: 70px;
+    background: rgba(255,255,255,0.25);
+    animation: rain linear infinite;
+}
 
-        75% {
-            width: 78%;
-        }
-
-        100% {
-            width: 100%;
-        }
-
+@keyframes rain {
+    0% {
+        transform: translateY(-100px);
     }
 
-    .loading-percent {
-        margin-top: 13px;
+    100% {
+        transform: translateY(110vh);
+    }
+}
 
-        color: #666;
+/* ==============================
+   NỀN
+================================ */
 
-        font-size: 12px;
-        font-family: monospace;
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+
+    background:
+        radial-gradient(circle at 50% 20%, #222 0%, #080808 40%, #000 100%);
+}
+
+/* ==============================
+   THANH MENU
+================================ */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 65px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 30px;
+
+    background: rgba(0,0,0,0.65);
+    backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+
+    z-index: 100;
+}
+
+.logo {
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    opacity: .8;
+    transition: .3s;
+}
+
+.nav-links a:hover {
+    opacity: 1;
+}
+
+/* ==============================
+   HERO
+================================ */
+
+.hero {
+    position: relative;
+    z-index: 5;
+
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 100px 20px 60px;
+}
+
+.hero-content {
+    width: 100%;
+    max-width: 900px;
+}
+
+/* ==============================
+   AVATAR
+================================ */
+
+.avatar-wrap {
+    width: 145px;
+    height: 145px;
+
+    margin: 0 auto 25px;
+
+    padding: 5px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        white,
+        #555,
+        white
+    );
+
+    box-shadow:
+        0 0 25px rgba(255,255,255,.2),
+        0 0 70px rgba(255,255,255,.08);
+}
+
+.hero-avatar {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    display: block;
+
+    background: #111;
+}
+
+/* ==============================
+   TÊN
+================================ */
+
+.hero h1 {
+    font-size: clamp(40px, 8vw, 82px);
+
+    font-weight: 900;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 12px;
+}
+
+.subtitle {
+    font-size: 17px;
+    color: #aaa;
+    margin-bottom: 28px;
+}
+
+/* ==============================
+   CHỮ CHẠY
+================================ */
+
+.typing-box {
+    min-height: 45px;
+
+    font-size: clamp(20px, 4vw, 32px);
+
+    font-weight: bold;
+
+    margin-bottom: 35px;
+}
+
+#typed {
+    color: white;
+}
+
+.cursor {
+    display: inline-block;
+    width: 3px;
+    height: 32px;
+
+    background: white;
+
+    margin-left: 4px;
+
+    vertical-align: middle;
+
+    animation: blink .7s infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* ==============================
+   NÚT
+================================ */
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 160px;
+
+    padding: 14px 24px;
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(255,255,255,.2);
+
+    color: white;
+
+    text-decoration: none;
+
+    background: rgba(255,255,255,.07);
+
+    backdrop-filter: blur(10px);
+
+    transition: .3s;
+
+    font-weight: bold;
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+    background: rgba(255,255,255,.15);
+}
+
+/* ==============================
+   ĐỒNG HỒ
+================================ */
+
+.clock {
+    position: fixed;
+
+    top: 80px;
+    right: 20px;
+
+    z-index: 50;
+
+    padding: 12px 17px;
+
+    border-radius: 12px;
+
+    background: rgba(0,0,0,.65);
+
+    border: 1px solid rgba(255,255,255,.15);
+
+    backdrop-filter: blur(10px);
+
+    font-family: monospace;
+
+    font-size: 15px;
+}
+
+/* ==============================
+   CON THUYỀN
+================================ */
+
+.boat-area {
+    position: fixed;
+
+    left: -150px;
+    bottom: 20px;
+
+    z-index: 4;
+
+    pointer-events: none;
+
+    animation: boatMove 18s linear infinite;
+}
+
+.boat {
+    font-size: 65px;
+
+    filter:
+        drop-shadow(0 8px 10px rgba(0,0,0,.6));
+}
+
+.wave {
+    position: absolute;
+
+    width: 170px;
+    height: 25px;
+
+    left: -20px;
+    bottom: 0;
+
+    border-bottom: 3px solid rgba(255,255,255,.3);
+
+    border-radius: 50%;
+}
+
+@keyframes boatMove {
+    0% {
+        left: -180px;
+        transform: translateY(0) rotate(-2deg);
     }
 
-
-    /* ==============================
-       BACKGROUND
-    ============================== */
-
-    .background {
-        position: fixed;
-        inset: 0;
-
-        z-index: -10;
-
-        background:
-            radial-gradient(
-                circle at 50% 10%,
-                rgba(255,255,255,0.08),
-                transparent 35%
-            ),
-            linear-gradient(
-                135deg,
-                #111 0%,
-                #070707 50%,
-                #000 100%
-            );
+    25% {
+        transform: translateY(-10px) rotate(2deg);
     }
 
-    .glow {
-        position: fixed;
-
-        width: 350px;
-        height: 350px;
-
-        border-radius: 50%;
-
-        filter: blur(110px);
-
-        opacity: 0.13;
-
-        pointer-events: none;
-
-        z-index: -5;
+    50% {
+        transform: translateY(0) rotate(-2deg);
     }
 
-    .glow-one {
-        top: -150px;
-        left: -120px;
-
-        background: white;
+    75% {
+        transform: translateY(-8px) rotate(2deg);
     }
 
-    .glow-two {
-        right: -150px;
-        bottom: -150px;
-
-        background: #888;
+    100% {
+        left: 110%;
+        transform: translateY(0) rotate(-2deg);
     }
+}
 
+/* ==============================
+   MODE
+================================ */
 
-    /* ==============================
-       NAVIGATION
-    ============================== */
+.modes-section {
+    position: relative;
+    z-index: 5;
 
-    header {
-        position: fixed;
+    padding: 80px 20px 100px;
 
-        top: 0;
-        left: 0;
-        right: 0;
+    max-width: 1200px;
 
-        height: 72px;
+    margin: auto;
+}
 
-        z-index: 1000;
+.section-title {
+    text-align: center;
 
-        background:
-            rgba(5,5,5,0.72);
+    font-size: 34px;
 
-        backdrop-filter: blur(18px);
+    margin-bottom: 45px;
+}
 
-        border-bottom:
-            1px solid rgba(255,255,255,0.07);
-    }
+.mode-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.mode-card {
+    position: relative;
+
+    padding: 30px;
+
+    min-height: 210px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.10),
+            rgba(255,255,255,.03)
+        );
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    backdrop-filter: blur(15px);
+
+    transition: .35s;
+
+    overflow: hidden;
+}
+
+.mode-card:hover {
+    transform: translateY(-8px);
+
+    border-color:
+        rgba(255,255,255,.35);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.5);
+}
+
+.mode-number {
+    font-size: 13px;
+
+    color: #888;
+
+    margin-bottom: 18px;
+
+    letter-spacing: 2px;
+}
+
+.mode-card h3 {
+    font-size: 22px;
+
+    margin-bottom: 12px;
+}
+
+.mode-card p {
+    color: #999;
+
+    line-height: 1.6;
+
+    font-size: 14px;
+}
+
+.mode-btn {
+    display: inline-block;
+
+    margin-top: 20px;
+
+    padding: 9px 17px;
+
+    border-radius: 8px;
+
+    background: white;
+
+    color: black;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: bold;
+}
+
+/* ==============================
+   DISCORD
+================================ */
+
+.discord-section {
+    position: relative;
+
+    z-index: 5;
+
+    padding: 40px 20px 100px;
+
+    text-align: center;
+}
+
+.discord-box {
+    max-width: 700px;
+
+    margin: auto;
+
+    padding: 45px 25px;
+
+    border-radius: 20px;
+
+    background: rgba(255,255,255,.06);
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    backdrop-filter: blur(15px);
+}
+
+.discord-box h2 {
+    font-size: 30px;
+
+    margin-bottom: 12px;
+}
+
+.discord-box p {
+    color: #999;
+
+    margin-bottom: 25px;
+}
+
+.discord-btn {
+    display: inline-block;
+
+    padding: 14px 30px;
+
+    border-radius: 12px;
+
+    background: white;
+
+    color: black;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    transition: .3s;
+}
+
+.discord-btn:hover {
+    transform: scale(1.05);
+}
+
+/* ==============================
+   GIỚI THIỆU
+================================ */
+
+.about {
+    position: relative;
+
+    z-index: 5;
+
+    padding: 50px 20px 100px;
+
+    text-align: center;
+}
+
+.about-box {
+    max-width: 800px;
+
+    margin: auto;
+
+    color: #aaa;
+
+    line-height: 1.8;
+
+    font-size: 15px;
+}
+
+/* ==============================
+   FOOTER
+================================ */
+
+footer {
+    position: relative;
+
+    z-index: 5;
+
+    padding: 30px;
+
+    text-align: center;
+
+    color: #666;
+
+    border-top:
+        1px solid rgba(255,255,255,.08);
+}
+
+/* ==============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 800px) {
 
     .navbar {
-        width: 100%;
-        max-width: 1150px;
-
-        height: 100%;
-
-        margin: auto;
-
-        padding:
-            0 22px;
-
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .logo {
-        font-family: "Nunito", sans-serif;
-
-        font-size: 21px;
-
-        font-weight: 800;
-
-        letter-spacing: 1px;
+        padding: 0 15px;
     }
 
     .nav-links {
-        display: flex;
-
-        gap: 28px;
-
-        list-style: none;
-    }
-
-    .nav-links a {
-        color: #aaa;
-
-        text-decoration: none;
-
-        font-size: 13px;
-
-        transition: 0.25s;
-    }
-
-    .nav-links a:hover {
-        color: white;
+        display: none;
     }
 
     .clock {
-        color: #888;
-
-        font-family: monospace;
-
-        font-size: 13px;
-
-        min-width: 70px;
-
-        text-align: right;
-    }
-
-
-    /* ==============================
-       HERO
-    ============================== */
-
-    .hero {
-        min-height: 100vh;
-
-        padding:
-            130px 20px 80px;
-
-        display: flex;
-
-        align-items: center;
-        justify-content: center;
-
-        text-align: center;
-    }
-
-    .hero-content {
-        width: 100%;
-        max-width: 900px;
-    }
-
-
-    /* ==============================
-       AVATAR
-    ============================== */
-
-    .avatar-wrapper {
-        width: 125px;
-        height: 125px;
-
-        margin:
-            0 auto 26px;
-
-        padding: 4px;
-
-        border-radius: 50%;
-
-        background:
-            linear-gradient(
-                135deg,
-                white,
-                #555,
-                white
-            );
-
-        box-shadow:
-            0 0 40px
-            rgba(255,255,255,0.12);
-    }
-
-    .hero-avatar {
-        width: 100%;
-        height: 100%;
-
-        display: block;
-
-        object-fit: cover;
-
-        border-radius: 50%;
-
-        background: #111;
-    }
-
-
-    /* ==============================
-       HERO TEXT
-    ============================== */
-
-    .hero-small {
-        color: #777;
+        top: 75px;
+        right: 10px;
 
         font-size: 12px;
-
-        letter-spacing: 4px;
-
-        text-transform: uppercase;
-
-        margin-bottom: 14px;
     }
-
-    .hero-title {
-        font-family: "Nunito", sans-serif;
-
-        font-size:
-            clamp(45px, 9vw, 85px);
-
-        line-height: 1;
-
-        font-weight: 800;
-
-        margin-bottom: 22px;
-    }
-
-    .typed-container {
-        min-height: 36px;
-
-        color: #ddd;
-
-        font-size:
-            clamp(17px, 3vw, 24px);
-
-        font-weight: 500;
-    }
-
-    #typed {
-        white-space: pre;
-    }
-
-    .typed-cursor {
-        color: white;
-    }
-
-    .description {
-        max-width: 650px;
-
-        margin:
-            25px auto 0;
-
-        color: #888;
-
-        font-size: 14px;
-
-        line-height: 1.8;
-    }
-
-
-    /* ==============================
-       BUTTONS
-    ============================== */
-
-    .hero-buttons {
-        margin-top: 32px;
-
-        display: flex;
-
-        justify-content: center;
-
-        flex-wrap: wrap;
-
-        gap: 12px;
-    }
-
-    .btn {
-        display: inline-block;
-
-        padding:
-            13px 22px;
-
-        border:
-            1px solid
-            rgba(255,255,255,0.13);
-
-        border-radius: 12px;
-
-        background:
-            rgba(255,255,255,0.055);
-
-        color: white;
-
-        text-decoration: none;
-
-        font-size: 13px;
-
-        font-weight: 600;
-
-        transition:
-            0.25s ease;
-    }
-
-    .btn:hover {
-        transform:
-            translateY(-3px);
-
-        background:
-            rgba(255,255,255,0.11);
-
-        border-color:
-            rgba(255,255,255,0.25);
-    }
-
-    .btn-main {
-        color: #000;
-
-        background: white;
-
-        border-color: white;
-    }
-
-    .btn-main:hover {
-        background: #eee;
-    }
-
-
-    /* ==============================
-       MODES
-    ============================== */
-
-    .modes-section {
-        max-width: 1100px;
-
-        margin: auto;
-
-        padding:
-            90px 20px 110px;
-    }
-
-    .section-heading {
-        text-align: center;
-
-        margin-bottom: 45px;
-    }
-
-    .section-heading .small {
-        color: #666;
-
-        font-size: 11px;
-
-        letter-spacing: 4px;
-
-        text-transform: uppercase;
-    }
-
-    .section-heading h2 {
-        margin-top: 10px;
-
-        font-family: "Nunito", sans-serif;
-
-        font-size: 36px;
-    }
-
-
-    /* LƯỚT NGANG */
 
     .mode-grid {
-        display: flex;
-
-        gap: 18px;
-
-        overflow-x: auto;
-        overflow-y: hidden;
-
-        padding:
-            10px 5px 22px;
-
-        scroll-snap-type:
-            x mandatory;
-
-        scrollbar-width: thin;
+        grid-template-columns: 1fr;
     }
 
-    .mode-grid::-webkit-scrollbar {
-        height: 5px;
+    .hero {
+        padding-top: 120px;
     }
 
-    .mode-grid::-webkit-scrollbar-track {
-        background:
-            rgba(255,255,255,0.06);
+    .avatar-wrap {
+        width: 120px;
+        height: 120px;
     }
 
-    .mode-grid::-webkit-scrollbar-thumb {
-        background:
-            rgba(255,255,255,0.35);
-
-        border-radius: 20px;
-    }
-
-    .mode-card {
-        flex:
-            0 0 320px;
-
-        min-height: 230px;
-
-        padding: 28px;
-
-        scroll-snap-align: center;
-
-        border:
-            1px solid
-            rgba(255,255,255,0.09);
-
-        border-radius: 20px;
-
-        background:
-            linear-gradient(
-                145deg,
-                rgba(255,255,255,0.075),
-                rgba(255,255,255,0.025)
-            );
-
-        transition:
-            0.3s ease;
-    }
-
-    .mode-card:hover {
-        transform:
-            translateY(-6px);
-
-        border-color:
-            rgba(255,255,255,0.22);
-    }
-
-    .mode-number {
-        color: #666;
-
-        font-size: 11px;
-
+    .hero h1 {
         letter-spacing: 3px;
     }
 
-    .mode-card h3 {
-        margin-top: 14px;
+    .boat {
+        font-size: 50px;
+    }
+}
 
-        font-family: "Nunito", sans-serif;
+@media (max-width: 450px) {
 
-        font-size: 22px;
+    .btn {
+        width: 100%;
+        max-width: 280px;
     }
 
-    .mode-card p {
-        margin-top: 12px;
-
-        color: #888;
-
-        font-size: 13px;
-
-        line-height: 1.7;
+    .typing-box {
+        font-size: 20px;
     }
-
-    .mode-button {
-        margin-top: 20px;
-
-        padding:
-            9px 15px;
-
-        border:
-            1px solid
-            rgba(255,255,255,0.13);
-
-        border-radius: 9px;
-
-        background:
-            rgba(255,255,255,0.05);
-
-        color: #ddd;
-
-        cursor: pointer;
-
-        font-family: inherit;
-
-        font-size: 12px;
-
-        transition: 0.25s;
-    }
-
-    .mode-button:hover {
-        background:
-            rgba(255,255,255,0.12);
-    }
-
-
-    /* ==============================
-       ABOUT
-    ============================== */
-
-    .about {
-        max-width: 850px;
-
-        margin: auto;
-
-        padding:
-            20px 20px 100px;
-    }
-
-    .about-box {
-        padding: 35px;
-
-        text-align: center;
-
-        border:
-            1px solid
-            rgba(255,255,255,0.08);
-
-        border-radius: 22px;
-
-        background:
-            rgba(255,255,255,0.035);
-    }
-
-    .about-box h2 {
-        font-family: "Nunito", sans-serif;
-
-        margin-bottom: 15px;
-    }
-
-    .about-box p {
-        color: #888;
-
-        font-size: 14px;
-
-        line-height: 1.8;
-    }
-
-
-    /* ==============================
-       MINI AVATAR
-    ============================== */
-
-    .mini-profile {
-        position: fixed;
-
-        right: 20px;
-        bottom: 20px;
-
-        z-index: 900;
-
-        display: flex;
-
-        align-items: center;
-
-        gap: 10px;
-
-        padding:
-            7px 13px 7px 7px;
-
-        border:
-            1px solid
-            rgba(255,255,255,0.1);
-
-        border-radius: 50px;
-
-        background:
-            rgba(10,10,10,0.8);
-
-        backdrop-filter:
-            blur(14px);
-    }
-
-    .mini-profile img {
-        width: 37px;
-        height: 37px;
-
-        object-fit: cover;
-
-        border-radius: 50%;
-    }
-
-    .mini-profile span {
-        color: #ddd;
-
-        font-size: 12px;
-    }
-
-
-    /* ==============================
-       TOAST
-    ============================== */
-
-    #toast {
-        position: fixed;
-
-        left: 50%;
-        bottom: 30px;
-
-        z-index: 9999;
-
-        transform:
-            translate(-50%, 30px);
-
-        opacity: 0;
-
-        padding:
-            12px 18px;
-
-        border:
-            1px solid
-            rgba(255,255,255,0.1);
-
-        border-radius: 10px;
-
-        background:
-            rgba(15,15,15,0.95);
-
-        color: #ddd;
-
-        font-size: 13px;
-
-        pointer-events: none;
-
-        transition: 0.3s;
-    }
-
-    #toast.show {
-        transform:
-            translate(-50%, 0);
-
-        opacity: 1;
-    }
-
-
-    /* ==============================
-       FOOTER
-    ============================== */
-
-    footer {
-        padding:
-            30px 20px;
-
-        text-align: center;
-
-        border-top:
-            1px solid
-            rgba(255,255,255,0.07);
-
-        color: #555;
-
-        font-size: 12px;
-    }
-
-
-    /* ==============================
-       MOBILE
-    ============================== */
-
-    @media (max-width: 800px) {
-
-        .nav-links {
-            display: none;
-        }
-
-        .hero {
-            padding-top: 110px;
-        }
-
-        .mode-card {
-            flex-basis: 300px;
-        }
-
-    }
-
-
-    @media (max-width: 480px) {
-
-        .navbar {
-            padding:
-                0 15px;
-        }
-
-        .clock {
-            display: none;
-        }
-
-        .avatar-wrapper {
-            width: 105px;
-            height: 105px;
-        }
-
-        .hero-title {
-            font-size: 43px;
-        }
-
-        .description {
-            font-size: 13px;
-        }
-
-        .hero-buttons {
-            flex-direction: column;
-        }
-
-        .btn {
-            width: 100%;
-        }
-
-        .mode-card {
-            flex-basis: 285px;
-        }
-
-        .mini-profile {
-            right: 12px;
-            bottom: 12px;
-        }
-
-    }
-
+}
 </style>
-```
-
 </head>
 
 <body>
 
-```
-<!-- ====================================
+<!-- ==============================
      LOADING
-===================================== -->
+================================ -->
 
 <div id="loading">
 
-    <div class="loading-content">
+    <div class="loading-text">
+        XUÂN KHÁNH
+    </div>
 
-        <div class="loading-title">
-            XUÂN KHÁNH
-        </div>
-
-        <div class="loading-subtitle">
-            ĐANG TẢI WEBSITE...
-        </div>
-
-        <div class="loading-bar">
-
-            <div
-                class="loading-progress"
-            ></div>
-
-        </div>
-
-        <div
-            class="loading-percent"
-            id="loadingPercent"
-        >
-            0%
-        </div>
-
+    <div class="loading-box">
+        <div class="loading-bar"></div>
     </div>
 
 </div>
 
-
-<!-- BACKGROUND -->
+<!-- ==============================
+     NỀN
+================================ -->
 
 <div class="background"></div>
 
-<div class="glow glow-one"></div>
+<!-- ==============================
+     MƯA
+================================ -->
 
-<div class="glow glow-two"></div>
+<div class="rain" id="rain"></div>
 
+<!-- ==============================
+     MENU
+================================ -->
 
-<!-- ====================================
-     NAVBAR
-===================================== -->
+<nav class="navbar">
 
-<header>
-
-    <nav class="navbar">
-
-        <div class="logo">
-            XUÂN KHÁNH
-        </div>
-
-        <ul class="nav-links">
-
-            <li>
-                <a href="#home">
-                    Trang chủ
-                </a>
-            </li>
-
-            <li>
-                <a href="#modes">
-                    Modes
-                </a>
-            </li>
-
-            <li>
-                <a href="#about">
-                    Giới thiệu
-                </a>
-            </li>
-
-        </ul>
-
-        <div
-            class="clock"
-            id="clock"
-        >
-            00:00:00
-        </div>
-
-    </nav>
-
-</header>
-
-
-<!-- ====================================
-     MAIN
-===================================== -->
-
-<main id="home">
-
-
-    <!-- ====================================
-         HERO
-    ===================================== -->
-
-    <section class="hero">
-
-        <div class="hero-content">
-
-
-            <!-- AVATAR -->
-
-            <div class="avatar-wrapper">
-
-                <img
-                    id="mainAvatarImage"
-                    class="hero-avatar"
-                    src="_7da372b3b4c51b49db120dbbf0c06858.tplv-tiktokx-cropcenter100100.jpeg"
-                    alt="XUÂN KHÁNH"
-                >
-
-            </div>
-
-
-            <div class="hero-small">
-                WELCOME
-            </div>
-
-
-            <h1 class="hero-title">
-                XUÂN KHÁNH
-            </h1>
-
-
-            <!-- TYPED TEXT -->
-
-            <div class="typed-container">
-
-                <span id="typed"></span>
-
-            </div>
-
-
-            <p class="description">
-
-                Chào mừng bạn đến với website
-                XUÂN KHÁNH.
-
-                <br>
-
-                Tại đây bạn có thể xem các
-                nội dung và lựa chọn những
-                mục được cung cấp.
-
-            </p>
-
-
-            <div class="hero-buttons">
-
-                <a
-                    href="#modes"
-                    class="btn btn-main"
-                >
-                    TẢI GAME MOD TẠI ĐÂY
-                </a>
-
-                <a
-                    href="#about"
-                    class="btn"
-                >
-                    XEM THÊM
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ====================================
-         MODES
-    ===================================== -->
-
-    <section
-        id="modes"
-        class="modes-section"
-    >
-
-        <div class="section-heading">
-
-            <div class="small">
-                DOWNLOAD
-            </div>
-
-            <h2>
-                CHỌN MODE
-            </h2>
-
-        </div>
-
-
-        <div class="mode-grid">
-
-
-            <!-- MODE 1 -->
-
-            <div class="mode-card">
-
-                <div class="mode-number">
-                    MODE 01
-                </div>
-
-                <h3>
-                    MOD AVO ESP
-                </h3>
-
-                <p>
-                    Khu vực dành cho nội dung
-                    MOD AVO ESP.
-                </p>
-
-                <button
-                    class="mode-button"
-                    onclick="showMessage('Bạn đã chọn MODE 1')"
-                >
-                    CHỌN MODE 1
-                </button>
-
-            </div>
-
-
-            <!-- MODE 2 -->
-
-            <div class="mode-card">
-
-                <div class="mode-number">
-                    MODE 02
-                </div>
-
-                <h3>
-                    AOV CHEAT
-                </h3>
-
-                <p>
-                    Khu vực dành cho nội dung
-                    AOV Map + Mod.
-                </p>
-
-                <button
-                    class="mode-button"
-                    onclick="showMessage('Bạn đã chọn MODE 2')"
-                >
-                    CHỌN MODE 2
-                </button>
-
-            </div>
-
-
-            <!-- MODE 3 -->
-
-            <div class="mode-card">
-
-                <div class="mode-number">
-                    MODE 03
-                </div>
-
-                <h3>
-                    AOV ESP
-                </h3>
-
-                <p>
-                    Khu vực dành cho nội dung
-                    AOV ESP.
-                </p>
-
-                <button
-                    class="mode-button"
-                    onclick="showMessage('Bạn đã chọn MODE 3')"
-                >
-                    CHỌN MODE 3
-                </button>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-    <!-- ====================================
-         ABOUT
-    ===================================== -->
-
-    <section
-        id="about"
-        class="about"
-    >
-
-        <div class="about-box">
-
-            <h2>
-                GIỚI THIỆU
-            </h2>
-
-            <p>
-
-                Đây là website XUÂN KHÁNH,
-                được thiết kế theo phong cách
-                tối giản và hiện đại.
-
-                <br><br>
-
-                Website tương thích với máy tính,
-                điện thoại và các thiết bị có
-                trình duyệt web.
-
-            </p>
-
-        </div>
-
-    </section>
-
-
-</main>
-
-
-<!-- ====================================
-     MINI AVATAR
-===================================== -->
-
-<div class="mini-profile">
-
-    <img
-        id="miniAvatarImage"
-        src="_7da372b3b4c51b49db120dbbf0c06858.tplv-tiktokx-cropcenter100100.jpeg"
-        alt="Avatar"
-    >
-
-    <span>
+    <div class="logo">
         XUÂN KHÁNH
-    </span>
+    </div>
+
+    <div class="nav-links">
+
+        <a href="#home">
+            Trang chủ
+        </a>
+
+        <a href="#modes">
+            Modes
+        </a>
+
+        <a href="#discord">
+            Discord
+        </a>
+
+        <a href="#about">
+            Giới thiệu
+        </a>
+
+    </div>
+
+</nav>
+
+<!-- ==============================
+     ĐỒNG HỒ
+================================ -->
+
+<div class="clock" id="clock">
+    00:00:00
+</div>
+
+<!-- ==============================
+     CON THUYỀN
+================================ -->
+
+<div class="boat-area">
+
+    <div class="boat">
+        🚢
+    </div>
+
+    <div class="wave"></div>
 
 </div>
 
+<!-- ==============================
+     TRANG CHỦ
+================================ -->
 
-<!-- TOAST -->
+<section class="hero" id="home">
 
-<div id="toast"></div>
+    <div class="hero-content">
 
+        <!-- AVATAR CỦA BẠN -->
 
-<!-- ====================================
+        <div class="avatar-wrap">
+
+            <img
+                class="hero-avatar"
+                src="https://raw.githubusercontent.com/xuankhanh/xuankhanh/main/_7da372b3b4c51b49db120dbbf0c06858.tplv-tiktokx-cropcenter100100.jpeg"
+                alt="XUÂN KHÁNH"
+            >
+
+        </div>
+
+        <h1>
+            XUÂN KHÁNH
+        </h1>
+
+        <div class="subtitle">
+            Welcome to my website
+        </div>
+
+        <!-- CHỮ CHẠY -->
+
+        <div class="typing-box">
+
+            <span id="typed"></span>
+            <span class="cursor"></span>
+
+        </div>
+
+        <div class="buttons">
+
+            <a
+                class="btn"
+                href="#modes"
+            >
+                XEM MOD
+            </a>
+
+            <a
+                class="btn"
+                href="#discord"
+            >
+                DISCORD
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==============================
+     MODES
+================================ -->
+
+<section
+    class="modes-section"
+    id="modes"
+>
+
+    <h2 class="section-title">
+        CÁC MODE
+    </h2>
+
+    <div class="mode-grid">
+
+        <!-- MODE 01 -->
+
+        <div class="mode-card">
+
+            <div class="mode-number">
+                MODE 01
+            </div>
+
+            <h3>
+                AOV ESP
+            </h3>
+
+            <p>
+                Giao diện giới thiệu và quản lý
+                nội dung dành cho game AOV.
+            </p>
+
+            <a
+                class="mode-btn"
+                href="#"
+                onclick="showNotice(event)"
+            >
+                XEM THÊM
+            </a>
+
+        </div>
+
+        <!-- MODE 02 -->
+
+        <div class="mode-card">
+
+            <div class="mode-number">
+                MODE 02
+            </div>
+
+            <h3>
+                AOV MAP + MOD
+            </h3>
+
+            <p>
+                Khu vực thông tin về các bản mod
+                và nội dung tùy chỉnh của website.
+            </p>
+
+            <a
+                class="mode-btn"
+                href="#"
+                onclick="showNotice(event)"
+            >
+                XEM THÊM
+            </a>
+
+        </div>
+
+        <!-- MODE 03 -->
+
+        <div class="mode-card">
+
+            <div class="mode-number">
+                MODE 03
+            </div>
+
+            <h3>
+                AOV ESP
+            </h3>
+
+            <p>
+                Trang thông tin riêng cho MODE 03,
+                được thiết kế theo giao diện website.
+            </p>
+
+            <a
+                class="mode-btn"
+                href="#"
+                onclick="showNotice(event)"
+            >
+                XEM THÊM
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==============================
+     DISCORD
+================================ -->
+
+<section
+    class="discord-section"
+    id="discord"
+>
+
+    <div class="discord-box">
+
+        <h2>
+            💬 DISCORD
+        </h2>
+
+        <p>
+            Tham gia Discord để cập nhật thông tin
+            và theo dõi các nội dung mới.
+        </p>
+
+        <!--
+        THAY LINK BÊN DƯỚI BẰNG LINK DISCORD CỦA BẠN
+        Ví dụ:
+        https://discord.gg/xxxxxxxx
+        -->
+
+        <a
+            class="discord-btn"
+            href="https://discord.gg/"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            THAM GIA DISCORD
+        </a>
+
+    </div>
+
+</section>
+
+<!-- ==============================
+     GIỚI THIỆU
+================================ -->
+
+<section
+    class="about"
+    id="about"
+>
+
+    <h2 class="section-title">
+        GIỚI THIỆU
+    </h2>
+
+    <div class="about-box">
+
+        <p>
+            Chào mừng bạn đến với website
+            <strong>XUÂN KHÁNH</strong>.
+        </p>
+
+        <p>
+            Đây là trang giao diện cá nhân được
+            thiết kế với hiệu ứng mưa, loading,
+            đồng hồ, chữ chạy, avatar và các khu vực
+            nội dung riêng.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ==============================
      FOOTER
-===================================== -->
+================================ -->
 
 <footer>
 
-    © 2026 XUÂN KHÁNH — All Rights Reserved.
+    © 2026 XUÂN KHÁNH
 
 </footer>
 
-
-<!-- ====================================
-     TYPED.JS
-===================================== -->
-
-<script
-    src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0"
-></script>
-
+<!-- ==============================
+     JAVASCRIPT
+================================ -->
 
 <script>
 
+/* ==============================
+   LOADING
+================================ */
 
-    /* ==================================
-       AVATAR
-    ================================== */
+window.addEventListener("load", function () {
 
-    const AVATAR_URL =
-        "_7da372b3b4c51b49db120dbbf0c06858.tplv-tiktokx-cropcenter100100.jpeg";
+    setTimeout(function () {
 
-    document
-        .getElementById("mainAvatarImage")
-        .src = AVATAR_URL;
+        const loading =
+            document.getElementById("loading");
 
-    document
-        .getElementById("miniAvatarImage")
-        .src = AVATAR_URL;
+        loading.style.opacity = "0";
 
+        loading.style.transition =
+            "opacity .5s ease";
 
-    /* ==================================
-       TYPED.JS
-    ================================== */
+        setTimeout(function () {
 
-    new Typed("#typed", {
+            loading.style.display = "none";
 
-        strings: [
+        }, 500);
 
-            "TẢI GAME MOD TẠI ĐÂY",
+    }, 2700);
 
-            "CHÀO MỪNG ĐẾN WEBSITE XUÂN KHÁNH",
-
-            "WELCOME TO XUÂN KHÁNH"
-
-        ],
-
-        typeSpeed: 60,
-
-        backSpeed: 35,
-
-        backDelay: 1500,
-
-        startDelay: 500,
-
-        smartBackspace: true,
-
-        loop: true,
-
-        showCursor: true,
-
-        cursorChar: "|"
-
-    });
+});
 
 
-    /* ==================================
-       CLOCK
-    ================================== */
+/* ==============================
+   TẠO MƯA
+================================ */
 
-    function updateClock() {
+const rain =
+    document.getElementById("rain");
 
-        const now = new Date();
+for (let i = 0; i < 100; i++) {
 
-        const hours =
-            String(
-                now.getHours()
-            ).padStart(2, "0");
+    const drop =
+        document.createElement("div");
 
-        const minutes =
-            String(
-                now.getMinutes()
-            ).padStart(2, "0");
+    drop.className = "drop";
 
-        const seconds =
-            String(
-                now.getSeconds()
-            ).padStart(2, "0");
+    drop.style.left =
+        Math.random() * 100 + "%";
 
-        document
-            .getElementById("clock")
-            .textContent =
-            `${hours}:${minutes}:${seconds}`;
+    drop.style.height =
+        (30 + Math.random() * 60) + "px";
 
-    }
+    drop.style.opacity =
+        0.1 + Math.random() * 0.5;
 
-    updateClock();
+    drop.style.animationDuration =
+        (0.5 + Math.random() * 1) + "s";
 
-    setInterval(
-        updateClock,
-        1000
-    );
+    drop.style.animationDelay =
+        Math.random() * 2 + "s";
+
+    rain.appendChild(drop);
+
+}
 
 
-    /* ==================================
-       LOADING PERCENT
-    ================================== */
+/* ==============================
+   ĐỒNG HỒ
+================================ */
 
-    let percent = 0;
+function updateClock() {
 
-    const percentElement =
-        document.getElementById(
-            "loadingPercent"
-        );
+    const now = new Date();
 
-    const percentTimer =
-        setInterval(
-            function() {
+    let h = String(
+        now.getHours()
+    ).padStart(2, "0");
 
-                if (percent < 100) {
+    let m = String(
+        now.getMinutes()
+    ).padStart(2, "0");
 
-                    percent++;
+    let s = String(
+        now.getSeconds()
+    ).padStart(2, "0");
 
-                    percentElement
-                        .textContent =
-                        percent + "%";
+    document.getElementById("clock")
+        .textContent =
+        h + ":" + m + ":" + s;
 
-                } else {
+}
 
-                    clearInterval(
-                        percentTimer
-                    );
+setInterval(updateClock, 1000);
 
-                }
-
-            },
-            23
-        );
+updateClock();
 
 
-    /* ==================================
-       HIDE LOADING
-    ================================== */
+/* ==============================
+   CHỮ CHẠY
+================================ */
 
-    window.addEventListener(
-        "load",
-        function() {
+const texts = [
+
+    "TẢI GAME MOD TẠI ĐÂY",
+
+    "CHÀO MỪNG ĐẾN WEBSITE",
+
+    "XUÂN KHÁNH WEBSITE",
+
+    "WELCOME TO XUÂN KHÁNH"
+
+];
+
+let textIndex = 0;
+
+let charIndex = 0;
+
+let deleting = false;
+
+const typed =
+    document.getElementById("typed");
+
+
+function typeText() {
+
+    const current =
+        texts[textIndex];
+
+    if (!deleting) {
+
+        typed.textContent =
+            current.substring(
+                0,
+                charIndex + 1
+            );
+
+        charIndex++;
+
+        if (
+            charIndex >=
+            current.length
+        ) {
+
+            deleting = true;
 
             setTimeout(
-                function() {
-
-                    document
-                        .getElementById(
-                            "loading"
-                        )
-                        .classList
-                        .add("hide");
-
-                },
-                2700
+                typeText,
+                1500
             );
+
+            return;
 
         }
-    );
 
+    } else {
 
-    /* ==================================
-       MODE MESSAGE
-    ================================== */
-
-    function showMessage(message) {
-
-        const toast =
-            document.getElementById(
-                "toast"
+        typed.textContent =
+            current.substring(
+                0,
+                charIndex - 1
             );
 
-        toast.textContent =
-            message;
+        charIndex--;
 
-        toast.classList.add(
-            "show"
-        );
+        if (charIndex <= 0) {
 
-        setTimeout(
-            function() {
+            deleting = false;
 
-                toast.classList.remove(
-                    "show"
-                );
+            textIndex++;
 
-            },
-            2200
-        );
+            if (
+                textIndex >=
+                texts.length
+            ) {
+                textIndex = 0;
+            }
+
+        }
 
     }
 
-
-    /* ==================================
-       MODE AUTO SCROLL
-    ================================== */
-
-    const modeGrid =
-        document.querySelector(
-            ".mode-grid"
-        );
-
-    let autoScroll =
-        setInterval(
-            function() {
-
-                if (
-                    modeGrid.scrollLeft +
-                    modeGrid.clientWidth >=
-                    modeGrid.scrollWidth - 10
-                ) {
-
-                    modeGrid.scrollTo({
-                        left: 0,
-                        behavior: "smooth"
-                    });
-
-                } else {
-
-                    modeGrid.scrollBy({
-                        left: 338,
-                        behavior: "smooth"
-                    });
-
-                }
-
-            },
-            3000
-        );
-
-
-    /* Dừng tự động lướt khi rê chuột */
-
-    modeGrid.addEventListener(
-        "mouseenter",
-        function() {
-
-            clearInterval(
-                autoScroll
-            );
-
-        }
+    setTimeout(
+        typeText,
+        deleting ? 45 : 90
     );
 
+}
 
-    /* Chạy lại khi đưa chuột ra */
+typeText();
 
-    modeGrid.addEventListener(
-        "mouseleave",
-        function() {
 
-            autoScroll =
-                setInterval(
-                    function() {
+/* ==============================
+   THÔNG BÁO
+================================ */
 
-                        if (
-                            modeGrid.scrollLeft +
-                            modeGrid.clientWidth >=
-                            modeGrid.scrollWidth - 10
-                        ) {
+function showNotice(event) {
 
-                            modeGrid.scrollTo({
-                                left: 0,
-                                behavior: "smooth"
-                            });
+    event.preventDefault();
 
-                        } else {
-
-                            modeGrid.scrollBy({
-                                left: 338,
-                                behavior: "smooth"
-                            });
-
-                        }
-
-                    },
-                    3000
-                );
-
-        }
+    alert(
+        "Khu vực này đang được cập nhật."
     );
 
+}
 
 </script>
-```
 
 </body>
 </html>
