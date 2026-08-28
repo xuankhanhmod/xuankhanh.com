@@ -4,14 +4,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>XUÂN KHÁNH MOD</title>
 
 <style>
 
-/* =====================================================
+/* ==============================
    RESET
-===================================================== */
+============================== */
 
 *{
     margin:0;
@@ -27,6 +26,8 @@ body{
 
 body{
     overflow:hidden;
+    color:#fff;
+    font-family:Arial,Helvetica,sans-serif;
 
     background:
         radial-gradient(
@@ -35,35 +36,23 @@ body{
             #081219 50%,
             #000 100%
         );
-
-    color:#fff;
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
 }
 
 
-/* =====================================================
+/* ==============================
    LOADING
-===================================================== */
+============================== */
 
 #loading{
-
     position:fixed;
-
     inset:0;
 
-    background:#000;
-
     display:flex;
-
     flex-direction:column;
-
     align-items:center;
-
     justify-content:center;
+
+    background:#000;
 
     z-index:9999;
 
@@ -73,23 +62,13 @@ body{
 }
 
 #loading.hide{
-
     opacity:0;
-
     visibility:hidden;
 }
 
 .loadingLogo{
-
-    font-size:
-        clamp(
-            30px,
-            8vw,
-            60px
-        );
-
+    font-size:clamp(30px,8vw,60px);
     font-weight:bold;
-
     letter-spacing:7px;
 
     margin-bottom:25px;
@@ -113,7 +92,6 @@ body{
 }
 
 .loadingText{
-
     color:#777;
 
     font-family:monospace;
@@ -126,9 +104,7 @@ body{
 }
 
 .loadingBar{
-
     width:180px;
-
     height:2px;
 
     background:#222;
@@ -137,9 +113,7 @@ body{
 }
 
 .loadingProgress{
-
     width:0%;
-
     height:100%;
 
     background:#fff;
@@ -163,14 +137,12 @@ body{
 }
 
 
-/* =====================================================
+/* ==============================
    MƯA TOÀN TRANG
-===================================================== */
+============================== */
 
 #rain{
-
     position:fixed;
-
     inset:0;
 
     overflow:hidden;
@@ -181,7 +153,6 @@ body{
 }
 
 .rainDrop{
-
     position:absolute;
 
     top:-80px;
@@ -220,27 +191,24 @@ body{
 }
 
 
-/* =====================================================
+/* ==============================
    ĐỒNG HỒ MINI
    GÓC TRÊN BÊN TRÁI
-===================================================== */
+============================== */
 
 #clockBox{
 
     position:fixed;
 
     top:10px;
-
     left:10px;
 
     width:85px;
-
     height:52px;
 
     overflow:hidden;
 
-    border:
-        1.5px solid #fff;
+    border:1.5px solid #fff;
 
     border-radius:8px;
 
@@ -257,9 +225,9 @@ body{
 }
 
 
-/* =====================================================
-   BẦU TRỜI
-===================================================== */
+/* ==============================
+   BẦU TRỜI TRONG ĐỒNG HỒ
+============================== */
 
 #sky{
 
@@ -274,7 +242,7 @@ body{
     background:
         linear-gradient(
             to bottom,
-            #fff,
+            #ffffff,
             #f1faff
         );
 
@@ -284,9 +252,9 @@ body{
 }
 
 
-/* =====================================================
+/* ==============================
    MƯA TRONG ĐỒNG HỒ
-===================================================== */
+============================== */
 
 #clockRain{
 
@@ -306,7 +274,6 @@ body{
     top:-15px;
 
     width:1px;
-
     height:7px;
 
     background:#00aaff;
@@ -333,20 +300,18 @@ body{
 }
 
 
-/* =====================================================
+/* ==============================
    BIỂN
-===================================================== */
+============================== */
 
 #water{
 
     position:absolute;
 
     left:-20%;
-
     bottom:-4px;
 
     width:140%;
-
     height:53%;
 
     background:
@@ -365,17 +330,16 @@ body{
 
     z-index:3;
 
-    transform-origin:
-        center center;
+    transform-origin:center center;
 
     transition:
         transform .12s ease;
 }
 
 
-/* =====================================================
+/* ==============================
    SÓNG
-===================================================== */
+============================== */
 
 .wave{
 
@@ -384,7 +348,6 @@ body{
     left:-5%;
 
     width:110%;
-
     height:7px;
 
     border-top:
@@ -445,16 +408,15 @@ body{
 }
 
 
-/* =====================================================
+/* ==============================
    THUYỀN
-===================================================== */
+============================== */
 
 #boat{
 
     position:absolute;
 
     left:50%;
-
     top:-18px;
 
     font-size:17px;
@@ -472,16 +434,15 @@ body{
 }
 
 
-/* =====================================================
-   GIỜ
-===================================================== */
+/* ==============================
+   ĐỒNG HỒ
+============================== */
 
 #clock{
 
     position:absolute;
 
     top:5px;
-
     left:0;
 
     width:100%;
@@ -502,27 +463,60 @@ body{
 }
 
 
-/* =====================================================
+/* ==============================
+   AVATAR BÊN TRONG ĐỒNG HỒ
+============================== */
+
+#miniAvatar{
+
+    position:absolute;
+
+    right:4px;
+    top:4px;
+
+    width:15px;
+    height:15px;
+
+    border:1px solid #111;
+
+    border-radius:50%;
+
+    overflow:hidden;
+
+    z-index:20;
+
+    background:#ddd;
+}
+
+#miniAvatar img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+}
+
+
+/* ==============================
    AVATAR BÊN NGOÀI
-===================================================== */
+============================== */
 
 #mainAvatar{
 
     position:fixed;
 
     top:70px;
-
     left:50%;
 
     transform:
         translateX(-50%);
 
     width:105px;
-
     height:105px;
 
-    border:
-        2px solid #fff;
+    border:2px solid #fff;
 
     border-radius:50%;
 
@@ -546,7 +540,6 @@ body{
 #mainAvatar img{
 
     width:100%;
-
     height:100%;
 
     object-fit:cover;
@@ -570,54 +563,15 @@ body{
 }
 
 
-/* =====================================================
-   AVATAR BÊN TRONG ĐỒNG HỒ
-===================================================== */
-
-#miniAvatar{
-
-    position:absolute;
-
-    right:4px;
-
-    top:4px;
-
-    width:15px;
-
-    height:15px;
-
-    border:
-        1px solid #111;
-
-    border-radius:50%;
-
-    overflow:hidden;
-
-    z-index:20;
-
-    background:#ddd;
-}
-
-#miniAvatar img{
-
-    width:100%;
-
-    height:100%;
-
-    object-fit:cover;
-}
-
-
-/* =====================================================
+/* ==============================
    MENU
-===================================================== */
+============================== */
 
 .menu{
 
     position:fixed;
 
     top:18px;
-
     right:22px;
 
     display:flex;
@@ -645,14 +599,13 @@ body{
 }
 
 .menu button:hover{
-
     color:#fff;
 }
 
 
-/* =====================================================
-   TRANG
-===================================================== */
+/* ==============================
+   CÁC TRANG
+============================== */
 
 .page{
 
@@ -663,7 +616,6 @@ body{
     display:none;
 
     align-items:center;
-
     justify-content:center;
 
     text-align:center;
@@ -675,14 +627,13 @@ body{
 }
 
 .page.active{
-
     display:flex;
 }
 
 
-/* =====================================================
-   TRANG CHÍNH
-===================================================== */
+/* ==============================
+   NỘI DUNG
+============================== */
 
 .content{
 
@@ -692,6 +643,11 @@ body{
 
     margin-top:145px;
 }
+
+
+/* ==============================
+   TÊN
+============================== */
 
 .name{
 
@@ -733,6 +689,11 @@ body{
     }
 }
 
+
+/* ==============================
+   ĐƯỜNG KẺ
+============================== */
+
 .divider{
 
     width:180px;
@@ -740,15 +701,16 @@ body{
     height:1px;
 
     margin:
-        18px auto;
+        18px
+        auto;
 
     background:#444;
 }
 
 
-/* =====================================================
+/* ==============================
    XUÂN KHÁNH MOD
-===================================================== */
+============================== */
 
 .modTitle{
 
@@ -776,9 +738,9 @@ body{
 }
 
 
-/* =====================================================
-   MOD BOX
-===================================================== */
+/* ==============================
+   MOD
+============================== */
 
 .mods{
 
@@ -879,9 +841,9 @@ body{
 }
 
 
-/* =====================================================
+/* ==============================
    GIỚI THIỆU / LIÊN HỆ
-===================================================== */
+============================== */
 
 .otherTitle{
 
@@ -931,20 +893,18 @@ body{
 }
 
 
-/* =====================================================
+/* ==============================
    MOBILE
-===================================================== */
+============================== */
 
 @media(max-width:600px){
 
     #clockBox{
 
         top:8px;
-
         left:8px;
 
         width:82px;
-
         height:50px;
     }
 
@@ -953,26 +913,22 @@ body{
         top:65px;
 
         width:90px;
-
         height:90px;
     }
 
     .menu{
 
         top:15px;
-
         right:10px;
 
         gap:9px;
     }
 
     .menu button{
-
         font-size:7px;
     }
 
     .content{
-
         margin-top:135px;
     }
 
@@ -986,20 +942,18 @@ body{
 
         padding:5px;
     }
-
 }
 
 </style>
-
 </head>
 
 
 <body>
 
 
-<!-- =====================================================
+<!-- ==============================
      LOADING
-===================================================== -->
+============================== -->
 
 <div id="loading">
 
@@ -1020,16 +974,16 @@ body{
 </div>
 
 
-<!-- =====================================================
+<!-- ==============================
      MƯA
-===================================================== -->
+============================== -->
 
 <div id="rain"></div>
 
 
-<!-- =====================================================
+<!-- ==============================
      ĐỒNG HỒ MINI
-===================================================== -->
+============================== -->
 
 <div id="clockBox">
 
@@ -1060,7 +1014,7 @@ body{
     <div id="miniAvatar">
 
         <img
-            src="avatar.jpeg"
+            src="avata.jpeg"
             alt="Avatar"
         >
 
@@ -1069,53 +1023,47 @@ body{
 </div>
 
 
-<!-- =====================================================
-     AVATAR BÊN NGOÀI
-===================================================== -->
+<!-- ==============================
+     AVATAR LỚN BÊN NGOÀI
+============================== -->
 
 <div id="mainAvatar">
 
     <img
-        src="avatar.jpeg"
+        src="avata.jpeg"
         alt="Avatar XUÂN KHÁNH"
     >
 
 </div>
 
 
-<!-- =====================================================
+<!-- ==============================
      MENU
-===================================================== -->
+============================== -->
 
 <nav class="menu">
 
     <button
         onclick="showPage('home')">
-
         MAIN
-
     </button>
 
     <button
         onclick="showPage('about')">
-
         GIỚI THIỆU
-
     </button>
 
     <button
         onclick="showPage('contact')">
-
         LIÊN HỆ
-
     </button>
 
 </nav>
 
 
-<!-- =====================================================
+<!-- ==============================
      TRANG CHÍNH
-===================================================== -->
+============================== -->
 
 <section
     id="home"
@@ -1133,11 +1081,14 @@ body{
 
         </div>
 
+
         <div class="divider"></div>
+
 
         <div class="modTitle">
             XUÂN KHÁNH MOD
         </div>
+
 
         <div class="subtitle">
             WELCOME TO MY WEBSITE
@@ -1229,9 +1180,9 @@ body{
 </section>
 
 
-<!-- =====================================================
+<!-- ==============================
      GIỚI THIỆU
-===================================================== -->
+============================== -->
 
 <section
     id="about"
@@ -1271,9 +1222,9 @@ body{
 </section>
 
 
-<!-- =====================================================
+<!-- ==============================
      LIÊN HỆ
-===================================================== -->
+============================== -->
 
 <section
     id="contact"
@@ -1309,9 +1260,9 @@ body{
 <script>
 
 
-/* =====================================================
+/* ==============================
    LOADING
-===================================================== */
+============================== */
 
 window.addEventListener(
     "load",
@@ -1321,9 +1272,7 @@ window.addEventListener(
             function(){
 
                 document
-                    .getElementById(
-                        "loading"
-                    )
+                    .getElementById("loading")
                     .classList
                     .add("hide");
 
@@ -1335,14 +1284,12 @@ window.addEventListener(
 );
 
 
-/* =====================================================
+/* ==============================
    MƯA TOÀN TRANG
-===================================================== */
+============================== */
 
 const rain =
-    document.getElementById(
-        "rain"
-    );
+    document.getElementById("rain");
 
 
 for(
@@ -1352,9 +1299,7 @@ for(
 ){
 
     const drop =
-        document.createElement(
-            "div"
-        );
+        document.createElement("div");
 
     drop.className =
         "rainDrop";
@@ -1386,26 +1331,22 @@ for(
 }
 
 
-/* =====================================================
+/* ==============================
    MƯA TRONG ĐỒNG HỒ
-===================================================== */
+============================== */
 
 const clockRain =
-    document.getElementById(
-        "clockRain"
-    );
+    document.getElementById("clockRain");
 
 
 for(
-    let i = 18;
-    i > 0;
-    i--
+    let i = 0;
+    i < 18;
+    i++
 ){
 
     const drop =
-        document.createElement(
-            "div"
-        );
+        document.createElement("div");
 
     drop.className =
         "smallRain";
@@ -1427,9 +1368,9 @@ for(
 }
 
 
-/* =====================================================
+/* ==============================
    ĐỒNG HỒ
-===================================================== */
+============================== */
 
 function updateClock(){
 
@@ -1461,9 +1402,7 @@ function updateClock(){
         );
 
     document
-        .getElementById(
-            "clock"
-        )
+        .getElementById("clock")
         .textContent =
         `${h}:${m}:${s}`;
 
@@ -1477,23 +1416,19 @@ setInterval(
 );
 
 
-/* =====================================================
+/* ==============================
    CHUYỂN TRANG
-===================================================== */
+============================== */
 
 function showPage(page){
 
     document
-        .querySelectorAll(
-            ".page"
-        )
+        .querySelectorAll(".page")
         .forEach(
             function(item){
 
                 item.classList
-                    .remove(
-                        "active"
-                    );
+                    .remove("active");
 
             }
         );
@@ -1506,24 +1441,18 @@ function showPage(page){
 }
 
 
-/* =====================================================
+/* ==============================
    NƯỚC + THUYỀN
-===================================================== */
+============================== */
 
 const water =
-    document.getElementById(
-        "water"
-    );
+    document.getElementById("water");
 
 const boat =
-    document.getElementById(
-        "boat"
-    );
+    document.getElementById("boat");
 
 const clockBox =
-    document.getElementById(
-        "clockBox"
-    );
+    document.getElementById("clockBox");
 
 
 function moveWater(angle){
@@ -1552,9 +1481,9 @@ function moveWater(angle){
 }
 
 
-/* =====================================================
-   CẢM BIẾN XOAY
-===================================================== */
+/* ==============================
+   XOAY THIẾT BỊ
+============================== */
 
 function orientationHandler(event){
 
@@ -1566,9 +1495,9 @@ function orientationHandler(event){
 }
 
 
-/* =====================================================
-   BẬT CẢM BIẾN
-===================================================== */
+/* ==============================
+   CẢM BIẾN
+============================== */
 
 async function enableMotion(){
 
@@ -1590,7 +1519,6 @@ async function enableMotion(){
             const permission =
                 await DeviceOrientationEvent
                     .requestPermission();
-
 
             if(
                 permission ===
@@ -1626,10 +1554,9 @@ async function enableMotion(){
 }
 
 
-/*
-   Bật cảm biến khi người dùng
-   chạm vào trang.
-*/
+/* ==============================
+   BẬT CẢM BIẾN
+============================== */
 
 document.addEventListener(
     "click",
