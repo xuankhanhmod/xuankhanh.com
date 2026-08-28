@@ -8,89 +8,318 @@
 <title>XUÂN KHÁNH</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
-html,body{
+html,
+body{
     width:100%;
     height:100%;
     overflow:hidden;
+
     background:#000;
     color:#fff;
-    font-family:Arial,Helvetica,sans-serif;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 }
 
-/* ===== NỀN ===== */
+
+/* ==================================================
+   NỀN
+================================================== */
 
 body{
+
     background:
         radial-gradient(
             circle at center,
-            #202020 0%,
-            #090909 55%,
+            #14242e 0%,
+            #070b0e 50%,
             #000 100%
         );
 }
 
-/* ===== MƯA ===== */
+
+/* ==================================================
+   MƯA XANH BIỂN
+================================================== */
 
 #rain{
+
     position:fixed;
+
     inset:0;
+
     overflow:hidden;
+
     pointer-events:none;
+
     z-index:2;
 }
 
+
 .rain-drop{
+
     position:absolute;
+
     top:-100px;
-    width:1px;
-    background:linear-gradient(
-        transparent,
-        rgba(255,255,255,.65)
-    );
-    animation:rainFall linear infinite;
+
+    width:2px;
+
+    background:
+        linear-gradient(
+            transparent,
+            rgba(0,170,255,.95)
+        );
+
+    box-shadow:
+        0 0 7px
+        rgba(0,170,255,.75);
+
+    animation:
+        rainFall
+        linear
+        infinite;
 }
 
+
 @keyframes rainFall{
+
     from{
-        transform:translateY(-100px) translateX(0);
+
+        transform:
+            translateY(-100px)
+            translateX(0);
+
     }
 
     to{
-        transform:translateY(110vh) translateX(-100px);
+
+        transform:
+            translateY(110vh)
+            translateX(-100px);
+
     }
+
 }
 
-/* ===== ĐỒNG HỒ ===== */
 
-#clock{
+/* ==================================================
+   ĐỒNG HỒ
+================================================== */
+
+#clockBox{
+
     position:fixed;
+
     top:18px;
-    right:25px;
+    left:20px;
+
+    width:155px;
+    height:90px;
+
+    overflow:hidden;
+
+    border:
+        2px solid #fff;
+
+    border-radius:15px;
+
+    background:#030303;
+
     z-index:60;
 
+    box-shadow:
+        0 0 12px
+        rgba(255,255,255,.25);
+
+    transition:
+        transform .25s ease;
+}
+
+
+/* NƯỚC */
+
+#water{
+
+    position:absolute;
+
+    left:-30%;
+
+    bottom:-32%;
+
+    width:160%;
+
+    height:72%;
+
+    background:
+        linear-gradient(
+            #00aaff,
+            #0055cc
+        );
+
+    border-radius:
+        50%
+        50%
+        0
+        0;
+
+    z-index:1;
+
+    transition:
+        transform .25s ease;
+}
+
+
+/* SÓNG */
+
+.wave{
+
+    position:absolute;
+
+    left:-10%;
+
+    width:120%;
+
+    height:15px;
+
+    border-top:
+        2px solid
+        rgba(255,255,255,.6);
+
+    border-radius:50%;
+}
+
+
+.wave1{
+
+    top:2px;
+
+    animation:
+        waveMove
+        2s
+        linear
+        infinite;
+}
+
+
+.wave2{
+
+    top:9px;
+
+    opacity:.45;
+
+    animation:
+        waveMove
+        3s
+        linear
+        infinite
+        reverse;
+}
+
+
+@keyframes waveMove{
+
+    from{
+
+        transform:
+            translateX(-20px);
+
+    }
+
+    to{
+
+        transform:
+            translateX(20px);
+
+    }
+
+}
+
+
+/* THUYỀN */
+
+#boat{
+
+    position:absolute;
+
+    top:-28px;
+
+    left:50%;
+
+    font-size:28px;
+
+    transform:
+        translateX(-50%)
+        rotate(0deg);
+
+    transition:
+        transform .3s ease;
+
+    z-index:4;
+
+    filter:
+        drop-shadow(
+            0 2px 2px
+            rgba(0,0,0,.5)
+        );
+}
+
+
+/* GIỜ */
+
+#clock{
+
+    position:absolute;
+
+    top:12px;
+
+    left:0;
+
+    width:100%;
+
+    text-align:center;
+
     color:#fff;
+
     font-family:monospace;
+
     font-size:14px;
+
+    font-weight:bold;
+
     letter-spacing:2px;
 
     text-shadow:
-        0 0 8px rgba(255,255,255,.6);
+        0 0 8px #fff;
+
+    z-index:5;
+
+    pointer-events:none;
 }
 
-/* ===== LOADING ===== */
+
+/* ==================================================
+   LOADING
+================================================== */
 
 #loading{
+
     position:fixed;
+
     inset:0;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
     text-align:center;
@@ -104,33 +333,53 @@ body{
         visibility 1s ease;
 }
 
+
 #loading.hide{
+
     opacity:0;
+
     visibility:hidden;
+
 }
 
+
 .loading-content{
+
     width:90%;
+
     max-width:600px;
 }
 
+
 .loading-small{
+
     color:#777;
+
     font-size:11px;
+
     letter-spacing:8px;
 }
 
+
 .loading-title{
+
     margin-top:20px;
 
-    font-size:clamp(42px,9vw,90px);
+    font-size:
+        clamp(
+            42px,
+            9vw,
+            90px
+        );
 
     font-weight:bold;
 
     letter-spacing:6px;
 }
 
+
 .loading-website{
+
     margin-top:8px;
 
     color:#666;
@@ -140,8 +389,11 @@ body{
     letter-spacing:9px;
 }
 
+
 .loading-line{
+
     width:180px;
+
     height:1px;
 
     background:#444;
@@ -149,7 +401,9 @@ body{
     margin:35px auto;
 }
 
+
 .loading-label{
+
     color:#777;
 
     font-size:10px;
@@ -159,8 +413,11 @@ body{
     margin-bottom:14px;
 }
 
+
 .loading-bar{
+
     width:280px;
+
     max-width:80vw;
 
     height:2px;
@@ -170,14 +427,19 @@ body{
     background:#222;
 }
 
+
 .loading-progress{
+
     width:0%;
+
     height:100%;
 
     background:#fff;
 }
 
+
 .loading-percent{
+
     margin-top:15px;
 
     color:#777;
@@ -187,65 +449,107 @@ body{
     font-family:monospace;
 }
 
-/* ===== ENTER ===== */
+
+/* ==================================================
+   ENTER
+================================================== */
 
 #enter{
+
     position:fixed;
+
     inset:0;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
     text-align:center;
 
     opacity:0;
+
     visibility:hidden;
 
     z-index:80;
 
-    transition:opacity 1s ease;
+    transition:
+        opacity 1s ease;
 }
 
+
 #enter.show{
+
     opacity:1;
+
     visibility:visible;
 }
 
+
 .enter-content{
+
     display:flex;
+
     flex-direction:column;
+
     align-items:center;
 }
 
+
 .cat{
+
     font-size:48px;
 
-    animation:catFloat 3s ease-in-out infinite;
+    animation:
+        catFloat
+        3s
+        ease-in-out
+        infinite;
 }
 
+
 @keyframes catFloat{
-    0%,100%{
-        transform:translateY(0);
+
+    0%,
+    100%{
+
+        transform:
+            translateY(0);
+
     }
 
     50%{
-        transform:translateY(-7px);
+
+        transform:
+            translateY(-7px);
+
     }
+
 }
 
+
 .enter-name{
+
     margin-top:5px;
 
-    font-size:clamp(25px,5vw,43px);
+    font-size:
+        clamp(
+            25px,
+            5vw,
+            43px
+        );
 
     font-weight:bold;
 
     letter-spacing:5px;
 }
 
+
 .enter-line{
+
     width:180px;
+
     height:1px;
 
     background:#444;
@@ -253,67 +557,95 @@ body{
     margin:20px auto;
 }
 
+
 .enter-button{
+
     padding:13px 28px;
 
-    border:1px solid #555;
+    border:
+        1px solid #fff;
+
     border-radius:30px;
 
     background:transparent;
+
     color:#fff;
 
     cursor:pointer;
 
     font-size:10px;
+
     letter-spacing:3px;
 
     transition:.3s;
 }
 
+
 .enter-button:hover{
+
     background:#fff;
+
     color:#000;
 
-    transform:scale(1.06);
+    transform:
+        scale(1.06);
 }
 
-/* ===== WEBSITE ===== */
+
+/* ==================================================
+   WEBSITE
+================================================== */
 
 #website{
+
     display:none;
 
     position:fixed;
+
     inset:0;
 
     overflow-y:auto;
+
     overflow-x:hidden;
 
     z-index:10;
 }
 
+
 #website.show{
+
     display:block;
 }
 
-/* ===== MENU ===== */
+
+/* ==================================================
+   MENU
+================================================== */
 
 .menu{
+
     position:fixed;
 
     top:20px;
+
     left:0;
+
     right:0;
 
     z-index:40;
 
     display:flex;
+
     justify-content:center;
 
     gap:30px;
 }
 
+
 .menu button{
+
     border:none;
+
     background:transparent;
 
     color:#777;
@@ -321,83 +653,135 @@ body{
     cursor:pointer;
 
     font-size:10px;
+
     letter-spacing:2px;
 
     transition:.3s;
 }
 
+
 .menu button:hover{
+
     color:#fff;
 }
 
-/* ===== TRANG ===== */
+
+/* ==================================================
+   TRANG
+================================================== */
 
 .page{
+
     display:none;
 
     min-height:100vh;
 
-    padding:90px 20px 60px;
+    padding:
+        100px
+        20px
+        60px;
 
     align-items:center;
+
     justify-content:center;
 
     text-align:center;
 }
 
+
 .page.active{
+
     display:flex;
 }
 
+
 .content{
+
     width:100%;
+
     max-width:1100px;
+
     margin:auto;
 }
 
-/* ===== MAIN ===== */
+
+/* ==================================================
+   MAIN
+================================================== */
 
 .main-cat{
+
     font-size:45px;
 
-    animation:catFloat 3s ease-in-out infinite;
+    animation:
+        catFloat
+        3s
+        ease-in-out
+        infinite;
 }
 
+
 .name{
+
     display:flex;
 
     align-items:center;
+
     justify-content:center;
 
     gap:8px;
 
     margin-top:5px;
 
-    font-size:clamp(24px,5vw,40px);
+    font-size:
+        clamp(
+            24px,
+            5vw,
+            40px
+        );
 
     font-weight:bold;
 
     letter-spacing:4px;
 }
 
+
 .trophy{
+
     font-size:28px;
 
-    animation:trophyFloat 2s ease-in-out infinite;
+    animation:
+        trophyFloat
+        2s
+        ease-in-out
+        infinite;
 }
 
+
 @keyframes trophyFloat{
-    0%,100%{
-        transform:translateY(0);
+
+    0%,
+    100%{
+
+        transform:
+            translateY(0);
+
     }
 
     50%{
-        transform:translateY(-5px);
+
+        transform:
+            translateY(-5px);
+
     }
+
 }
 
+
 .divider{
+
     width:180px;
+
     height:1px;
 
     background:#444;
@@ -405,15 +789,24 @@ body{
     margin:22px auto;
 }
 
+
 .mod-title{
-    font-size:clamp(34px,7vw,70px);
+
+    font-size:
+        clamp(
+            34px,
+            7vw,
+            70px
+        );
 
     font-weight:bold;
 
     letter-spacing:5px;
 }
 
+
 .hello{
+
     margin-top:10px;
 
     color:#888;
@@ -423,48 +816,79 @@ body{
     letter-spacing:3px;
 }
 
-/* ===== MOD ===== */
+
+/* ==================================================
+   MOD
+================================================== */
 
 .mods{
+
     display:grid;
 
     grid-template-columns:
-        repeat(3,1fr);
+        repeat(
+            3,
+            1fr
+        );
 
     gap:20px;
 
     margin-top:40px;
 }
 
-.mod{
-    padding:30px 20px;
 
-    border:1px solid #252525;
+.mod{
+
+    padding:
+        30px
+        20px;
+
+    border:
+        1px solid #252525;
 
     border-radius:15px;
 
-    background:rgba(255,255,255,.035);
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .035
+        );
 
     transition:.4s;
 }
 
+
 .mod:hover{
-    transform:translateY(-8px);
 
-    background:rgba(255,255,255,.08);
+    transform:
+        translateY(-8px);
 
-    border-color:#555;
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .08
+        );
+
+    border-color:#00aaff;
 }
 
+
 .mod-number{
-    color:#555;
+
+    color:#00aaff;
 
     font-size:10px;
 
     letter-spacing:3px;
 }
 
+
 .mod h2{
+
     margin-top:10px;
 
     font-size:20px;
@@ -472,7 +896,9 @@ body{
     letter-spacing:2px;
 }
 
+
 .mod p{
+
     margin-top:10px;
 
     color:#888;
@@ -482,14 +908,19 @@ body{
     line-height:1.7;
 }
 
+
 .mod-button{
+
     display:inline-block;
 
     margin-top:18px;
 
-    padding:10px 20px;
+    padding:
+        10px
+        20px;
 
-    border:1px solid #555;
+    border:
+        1px solid #555;
 
     border-radius:30px;
 
@@ -504,33 +935,52 @@ body{
     transition:.3s;
 }
 
+
 .mod-button:hover{
+
     background:#fff;
+
     color:#000;
 }
 
-/* ===== GIỚI THIỆU ===== */
+
+/* ==================================================
+   GIỚI THIỆU
+================================================== */
 
 .small-title{
-    color:#666;
+
+    color:#00aaff;
 
     font-size:10px;
 
     letter-spacing:7px;
 }
 
+
 .big-title{
+
     margin-top:10px;
 
-    font-size:clamp(40px,8vw,75px);
+    font-size:
+        clamp(
+            40px,
+            8vw,
+            75px
+        );
 
     letter-spacing:6px;
 }
 
+
 .text{
+
     max-width:650px;
 
-    margin:25px auto 0;
+    margin:
+        25px
+        auto
+        0;
 
     color:#999;
 
@@ -539,16 +989,23 @@ body{
     line-height:2;
 }
 
-/* ===== LIÊN HỆ ===== */
+
+/* ==================================================
+   LIÊN HỆ
+================================================== */
 
 .discord{
+
     display:inline-block;
 
     margin-top:25px;
 
-    padding:14px 30px;
+    padding:
+        14px
+        30px;
 
-    border:1px solid #666;
+    border:
+        1px solid #fff;
 
     border-radius:30px;
 
@@ -563,56 +1020,117 @@ body{
     transition:.3s;
 }
 
+
 .discord:hover{
+
     background:#fff;
+
     color:#000;
 
-    transform:scale(1.05);
+    transform:
+        scale(1.05);
 }
 
-/* ===== MOBILE ===== */
+
+/* ==================================================
+   MOBILE
+================================================== */
 
 @media(max-width:700px){
 
-    #clock{
+    #clockBox{
+
         top:15px;
-        right:15px;
+
+        left:15px;
+
+        width:140px;
+
+        height:82px;
+    }
+
+
+    #clock{
+
         font-size:11px;
     }
 
+
     .menu{
+
         gap:12px;
     }
 
+
     .menu button{
+
         font-size:8px;
     }
 
+
     .mods{
-        grid-template-columns:1fr;
+
+        grid-template-columns:
+            1fr;
     }
+
 
     .mod-title{
+
         letter-spacing:2px;
     }
 
+
     .name{
+
         letter-spacing:2px;
     }
+
 }
+
 </style>
 </head>
 
+
 <body>
 
-<!-- MƯA -->
+
+<!-- ==================================================
+     MƯA
+================================================== -->
+
 <div id="rain"></div>
 
-<!-- ĐỒNG HỒ -->
-<div id="clock">00:00:00</div>
+
+<!-- ==================================================
+     ĐỒNG HỒ + NƯỚC + THUYỀN
+================================================== -->
+
+<div id="clockBox">
+
+    <div id="water">
+
+        <div class="wave wave1"></div>
+
+        <div class="wave wave2"></div>
+
+        <div id="boat">
+            ⛵
+        </div>
+
+    </div>
 
 
-<!-- LOADING -->
+    <div id="clock">
+        00:00:00
+    </div>
+
+</div>
+
+
+<!-- ==================================================
+     LOADING
+================================================== -->
 
 <section id="loading">
 
@@ -648,7 +1166,9 @@ body{
         <div
             id="percent"
             class="loading-percent">
+
             0%
+
         </div>
 
     </div>
@@ -656,7 +1176,9 @@ body{
 </section>
 
 
-<!-- ENTER -->
+<!-- ==================================================
+     ENTER
+================================================== -->
 
 <section id="enter">
 
@@ -685,228 +1207,258 @@ body{
 </section>
 
 
-<!-- WEBSITE -->
+<!-- ==================================================
+     WEBSITE
+================================================== -->
 
 <main id="website">
 
 
-    <!-- MENU -->
+<!-- MENU -->
 
-    <nav class="menu">
+<nav class="menu">
 
-        <button onclick="showPage('main')">
-            MAIN
-        </button>
+    <button
+        onclick="showPage('main')">
 
-        <button onclick="showPage('about')">
+        MAIN
+
+    </button>
+
+
+    <button
+        onclick="showPage('about')">
+
+        GIỚI THIỆU
+
+    </button>
+
+
+    <button
+        onclick="showPage('contact')">
+
+        LIÊN HỆ
+
+    </button>
+
+</nav>
+
+
+<!-- ==================================================
+     MAIN
+================================================== -->
+
+<section
+    id="main"
+    class="page active">
+
+    <div class="content">
+
+        <div class="main-cat">
+            🐱
+        </div>
+
+
+        <div class="name">
+
+            <span>
+                XUÂN KHÁNH
+            </span>
+
+            <span class="trophy">
+                🏆
+            </span>
+
+        </div>
+
+
+        <div class="divider"></div>
+
+
+        <div class="mod-title">
+            XUÂN KHÁNH MOD
+        </div>
+
+
+        <div class="hello">
+            HELLO EVERYONE...
+        </div>
+
+
+        <div class="mods">
+
+
+            <div class="mod">
+
+                <div class="mod-number">
+                    MOD 01
+                </div>
+
+                <h2>
+                    MOD 01
+                </h2>
+
+                <p>
+                    MOD của XUÂN KHÁNH.
+                </p>
+
+                <a
+                    href="#"
+                    class="mod-button">
+
+                    XEM MOD
+
+                </a>
+
+            </div>
+
+
+            <div class="mod">
+
+                <div class="mod-number">
+                    MOD 02
+                </div>
+
+                <h2>
+                    MOD 02
+                </h2>
+
+                <p>
+                    MOD của XUÂN KHÁNH.
+                </p>
+
+                <a
+                    href="#"
+                    class="mod-button">
+
+                    XEM MOD
+
+                </a>
+
+            </div>
+
+
+            <div class="mod">
+
+                <div class="mod-number">
+                    MOD 03
+                </div>
+
+                <h2>
+                    MOD 03
+                </h2>
+
+                <p>
+                    MOD của XUÂN KHÁNH.
+                </p>
+
+                <a
+                    href="#"
+                    class="mod-button">
+
+                    XEM MOD
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     GIỚI THIỆU
+================================================== -->
+
+<section
+    id="about"
+    class="page">
+
+    <div class="content">
+
+        <div class="small-title">
+            XUÂN KHÁNH
+        </div>
+
+
+        <div class="big-title">
             GIỚI THIỆU
-        </button>
+        </div>
 
-        <button onclick="showPage('contact')">
+
+        <div class="divider"></div>
+
+
+        <div class="text">
+
+            Xin chào mọi người!
+
+            <br><br>
+
+            Chào mừng bạn đến với
+            website XUÂN KHÁNH.
+
+            <br><br>
+
+            Đây là website của
+            XUÂN KHÁNH.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     LIÊN HỆ
+================================================== -->
+
+<section
+    id="contact"
+    class="page">
+
+    <div class="content">
+
+        <div class="small-title">
+            XUÂN KHÁNH
+        </div>
+
+
+        <div class="big-title">
             LIÊN HỆ
-        </button>
-
-    </nav>
+        </div>
 
 
-    <!-- MAIN -->
-
-    <section
-        id="main"
-        class="page active">
-
-        <div class="content">
-
-            <div class="main-cat">
-                🐱
-            </div>
-
-            <div class="name">
-
-                <span>
-                    XUÂN KHÁNH
-                </span>
-
-                <span class="trophy">
-                    🏆
-                </span>
-
-            </div>
-
-            <div class="divider"></div>
-
-            <div class="mod-title">
-                XUÂN KHÁNH MOD
-            </div>
-
-            <div class="hello">
-                HELLO EVERYONE...
-            </div>
+        <div class="divider"></div>
 
 
-            <div class="mods">
+        <div class="text">
 
-
-                <div class="mod">
-
-                    <div class="mod-number">
-                        MOD 01
-                    </div>
-
-                    <h2>
-                        MOD 01
-                    </h2>
-
-                    <p>
-                        MOD của XUÂN KHÁNH.
-                    </p>
-
-                    <a
-                        href="#"
-                        class="mod-button">
-
-                        XEM MOD
-
-                    </a>
-
-                </div>
-
-
-                <div class="mod">
-
-                    <div class="mod-number">
-                        MOD 02
-                    </div>
-
-                    <h2>
-                        MOD 02
-                    </h2>
-
-                    <p>
-                        MOD của XUÂN KHÁNH.
-                    </p>
-
-                    <a
-                        href="#"
-                        class="mod-button">
-
-                        XEM MOD
-
-                    </a>
-
-                </div>
-
-
-                <div class="mod">
-
-                    <div class="mod-number">
-                        MOD 03
-                    </div>
-
-                    <h2>
-                        MOD 03
-                    </h2>
-
-                    <p>
-                        MOD của XUÂN KHÁNH.
-                    </p>
-
-                    <a
-                        href="#"
-                        class="mod-button">
-
-                        XEM MOD
-
-                    </a>
-
-                </div>
-
-
-            </div>
+            Bạn có thể liên hệ
+            với XUÂN KHÁNH
+            qua Discord.
 
         </div>
 
-    </section>
 
+        <a
+            href="https://discord.gg/yMKkt3vwf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="discord">
 
-    <!-- GIỚI THIỆU -->
+            💬 JOIN DISCORD
 
-    <section
-        id="about"
-        class="page">
+        </a>
 
-        <div class="content">
+    </div>
 
-            <div class="small-title">
-                XUÂN KHÁNH
-            </div>
-
-            <div class="big-title">
-                GIỚI THIỆU
-            </div>
-
-            <div class="divider"></div>
-
-            <div class="text">
-
-                Xin chào mọi người!
-
-                <br><br>
-
-                Chào mừng bạn đến với
-                website XUÂN KHÁNH.
-
-                <br><br>
-
-                Đây là website của
-                XUÂN KHÁNH.
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- LIÊN HỆ -->
-
-    <section
-        id="contact"
-        class="page">
-
-        <div class="content">
-
-            <div class="small-title">
-                XUÂN KHÁNH
-            </div>
-
-            <div class="big-title">
-                LIÊN HỆ
-            </div>
-
-            <div class="divider"></div>
-
-            <div class="text">
-
-                Bạn có thể liên hệ
-                với XUÂN KHÁNH
-                qua Discord.
-
-            </div>
-
-            <a
-                href="https://discord.gg/yMKkt3vwf"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="discord">
-
-                💬 JOIN DISCORD
-
-            </a>
-
-        </div>
-
-    </section>
+</section>
 
 
 </main>
@@ -914,67 +1466,108 @@ body{
 
 <script>
 
-/* ===== MƯA ===== */
+
+/* ==================================================
+   TẠO MƯA
+================================================== */
 
 const rain =
     document.getElementById("rain");
 
-for(let i = 0; i < 160; i++){
+
+for(
+    let i = 0;
+    i < 180;
+    i++
+){
 
     const drop =
         document.createElement("div");
 
+
     drop.className =
         "rain-drop";
+
 
     drop.style.left =
         Math.random() * 100 + "%";
 
+
     drop.style.height =
-        (20 + Math.random() * 50) + "px";
+        (
+            25 +
+            Math.random() * 55
+        ) + "px";
+
 
     drop.style.animationDuration =
-        (0.5 + Math.random() * 0.8) + "s";
+        (
+            .45 +
+            Math.random() * .75
+        ) + "s";
+
 
     drop.style.animationDelay =
         Math.random() * 2 + "s";
 
+
     drop.style.opacity =
-        0.15 + Math.random() * 0.7;
+        .25 +
+        Math.random() * .75;
+
 
     rain.appendChild(drop);
+
 }
 
 
-/* ===== ĐỒNG HỒ ===== */
+/* ==================================================
+   ĐỒNG HỒ
+================================================== */
 
 function updateClock(){
 
     const now =
         new Date();
 
+
     const h =
         String(
             now.getHours()
-        ).padStart(2,"0");
+        ).padStart(
+            2,
+            "0"
+        );
+
 
     const m =
         String(
             now.getMinutes()
-        ).padStart(2,"0");
+        ).padStart(
+            2,
+            "0"
+        );
+
 
     const s =
         String(
             now.getSeconds()
-        ).padStart(2,"0");
+        ).padStart(
+            2,
+            "0"
+        );
+
 
     document
         .getElementById("clock")
         .textContent =
         `${h}:${m}:${s}`;
+
 }
 
+
 updateClock();
+
 
 setInterval(
     updateClock,
@@ -982,59 +1575,91 @@ setInterval(
 );
 
 
-/* ===== LOADING ===== */
+/* ==================================================
+   LOADING
+================================================== */
 
 let value = 0;
 
+
 const progress =
-    document.getElementById("progress");
+    document.getElementById(
+        "progress"
+    );
+
 
 const percent =
-    document.getElementById("percent");
+    document.getElementById(
+        "percent"
+    );
+
 
 const loading =
-    document.getElementById("loading");
+    document.getElementById(
+        "loading"
+    );
+
 
 const enter =
-    document.getElementById("enter");
+    document.getElementById(
+        "enter"
+    );
 
 
 const timer =
-    setInterval(function(){
+    setInterval(
+        function(){
 
-        value++;
-
-        progress.style.width =
-            value + "%";
-
-        percent.textContent =
-            value + "%";
+            value++;
 
 
-        if(value >= 100){
-
-            clearInterval(timer);
-
-            setTimeout(function(){
-
-                loading.classList
-                    .add("hide");
-
-                setTimeout(function(){
-
-                    enter.classList
-                        .add("show");
-
-                },1000);
-
-            },500);
-
-        }
-
-    },30);
+            progress.style.width =
+                value + "%";
 
 
-/* ===== ENTER ===== */
+            percent.textContent =
+                value + "%";
+
+
+            if(
+                value >= 100
+            ){
+
+                clearInterval(timer);
+
+
+                setTimeout(
+                    function(){
+
+                        loading.classList
+                            .add("hide");
+
+
+                        setTimeout(
+                            function(){
+
+                                enter.classList
+                                    .add("show");
+
+                            },
+                            1000
+                        );
+
+
+                    },
+                    500
+                );
+
+            }
+
+        },
+        30
+    );
+
+
+/* ==================================================
+   ENTER WEBSITE
+================================================== */
 
 document
     .getElementById("enterButton")
@@ -1045,36 +1670,48 @@ document
             enter.style.opacity =
                 "0";
 
-            setTimeout(function(){
 
-                enter.style.visibility =
-                    "hidden";
+            setTimeout(
+                function(){
 
-                document
-                    .getElementById("website")
-                    .classList
-                    .add("show");
+                    enter.style.visibility =
+                        "hidden";
 
-                showPage("main");
 
-            },700);
+                    document
+                        .getElementById(
+                            "website"
+                        )
+                        .classList
+                        .add("show");
+
+
+                    showPage("main");
+
+                },
+                700
+            );
 
         }
     );
 
 
-/* ===== CHUYỂN TRANG ===== */
+/* ==================================================
+   CHUYỂN TRANG
+================================================== */
 
 function showPage(page){
 
     document
         .querySelectorAll(".page")
-        .forEach(function(item){
+        .forEach(
+            function(item){
 
-            item.classList
-                .remove("active");
+                item.classList
+                    .remove("active");
 
-        });
+            }
+        );
 
 
     document
@@ -1083,6 +1720,138 @@ function showPage(page){
         .add("active");
 
 }
+
+
+/* ==================================================
+   XOAY ĐIỆN THOẠI
+================================================== */
+
+const water =
+    document.getElementById(
+        "water"
+    );
+
+
+const boat =
+    document.getElementById(
+        "boat"
+    );
+
+
+const clockBox =
+    document.getElementById(
+        "clockBox"
+    );
+
+
+function updateWater(angle){
+
+    let tilt =
+        Math.max(
+            -25,
+            Math.min(
+                25,
+                angle
+            )
+        );
+
+
+    water.style.transform =
+        `rotate(${tilt}deg) scale(1.15)`;
+
+
+    boat.style.transform =
+        `translateX(-50%) rotate(${tilt}deg)`;
+
+
+    clockBox.style.transform =
+        `rotate(${tilt * .12}deg)`;
+
+}
+
+
+/* Android */
+
+function handleOrientation(event){
+
+    const angle =
+        event.gamma || 0;
+
+
+    updateWater(angle);
+
+}
+
+
+/* iPhone / iPad */
+
+async function enableMotion(){
+
+    if(
+
+        typeof DeviceOrientationEvent !==
+        "undefined"
+
+        &&
+
+        typeof DeviceOrientationEvent
+            .requestPermission ===
+        "function"
+
+    ){
+
+        try{
+
+            const permission =
+                await DeviceOrientationEvent
+                    .requestPermission();
+
+
+            if(
+                permission ===
+                "granted"
+            ){
+
+                window.addEventListener(
+                    "deviceorientation",
+                    handleOrientation
+                );
+
+            }
+
+        }
+
+        catch(error){
+
+            console.log(error);
+
+        }
+
+    }
+
+    else{
+
+        window.addEventListener(
+            "deviceorientation",
+            handleOrientation
+        );
+
+    }
+
+}
+
+
+/*
+   Một số điện thoại chỉ cho phép
+   cảm biến sau khi người dùng chạm.
+*/
+
+document.addEventListener(
+    "click",
+    enableMotion,
+    {once:true}
+);
+
 
 </script>
 
