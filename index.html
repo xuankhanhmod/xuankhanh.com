@@ -1,31 +1,58 @@
 ```html
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>XUÂN KHÁNH</title>
 
+
 <style>
+
+/* ======================
+   CƠ BẢN
+====================== */
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
-html,body{
+html,
+body{
+
     width:100%;
     height:100%;
+
     overflow:hidden;
+
     background:#000;
-    color:#fff;
-    font-family:Arial,Helvetica,sans-serif;
+
+    color:white;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 }
 
-/* ================= NỀN ================= */
 
-body{
+/* ======================
+   NỀN
+====================== */
+
+#background{
+
+    position:fixed;
+
+    inset:0;
+
     background:
         radial-gradient(
             circle at center,
@@ -33,50 +60,109 @@ body{
             #090909 55%,
             #000 100%
         );
+
+    z-index:0;
 }
 
-/* ================= MƯA ================= */
+
+/* ======================
+   MƯA
+====================== */
 
 #rain{
+
     position:fixed;
+
     inset:0;
+
     overflow:hidden;
+
     pointer-events:none;
-    z-index:1;
+
+    z-index:2;
 }
 
-.rain{
+.rain-drop{
+
     position:absolute;
+
     top:-100px;
+
     width:1px;
-    height:45px;
-    background:linear-gradient(
-        transparent,
-        rgba(255,255,255,.55)
-    );
 
-    animation:rain linear infinite;
+    background:
+        linear-gradient(
+            transparent,
+            rgba(255,255,255,.65)
+        );
+
+    animation:
+        rainFall linear infinite;
 }
 
-@keyframes rain{
-    0%{
-        transform:translateY(-100px) translateX(0);
+@keyframes rainFall{
+
+    from{
+
+        transform:
+            translateY(-100px)
+            translateX(0);
+
     }
 
-    100%{
-        transform:translateY(110vh) translateX(-90px);
+    to{
+
+        transform:
+            translateY(110vh)
+            translateX(-100px);
+
     }
 }
 
-/* ================= LOADING ================= */
+
+/* ======================
+   ĐỒNG HỒ
+====================== */
+
+#clock{
+
+    position:fixed;
+
+    top:18px;
+
+    right:25px;
+
+    z-index:50;
+
+    color:white;
+
+    font-family:monospace;
+
+    font-size:14px;
+
+    letter-spacing:2px;
+
+    text-shadow:
+        0 0 8px
+        rgba(255,255,255,.5);
+}
+
+
+/* ======================
+   LOADING
+====================== */
 
 #loading{
+
     position:fixed;
+
     inset:0;
 
     display:flex;
-    align-items:center;
+
     justify-content:center;
+
+    align-items:center;
 
     text-align:center;
 
@@ -85,49 +171,60 @@ body{
     z-index:100;
 
     transition:
-        opacity 1.2s ease,
-        visibility 1.2s ease;
+        opacity 1s ease,
+        visibility 1s ease;
 }
 
-#loading.hidden{
+#loading.hide{
+
     opacity:0;
+
     visibility:hidden;
 }
 
 .loading-content{
+
     width:90%;
+
     max-width:600px;
 }
 
 .loading-small{
+
     color:#777;
-    font-size:12px;
+
+    font-size:11px;
+
     letter-spacing:8px;
 }
 
 .loading-title{
-    margin-top:22px;
+
+    margin-top:20px;
 
     font-size:
-        clamp(40px,9vw,90px);
+        clamp(42px,9vw,90px);
 
-    font-weight:700;
+    font-weight:bold;
 
     letter-spacing:6px;
 }
 
 .loading-website{
+
     margin-top:8px;
 
     color:#666;
 
-    font-size:11px;
+    font-size:10px;
 
     letter-spacing:9px;
 }
 
 .loading-line{
+
     width:180px;
+
     height:1px;
 
     background:#444;
@@ -136,6 +233,7 @@ body{
 }
 
 .loading-label{
+
     color:#777;
 
     font-size:10px;
@@ -146,7 +244,9 @@ body{
 }
 
 .loading-bar{
+
     width:280px;
+
     max-width:80vw;
 
     height:2px;
@@ -154,65 +254,82 @@ body{
     margin:auto;
 
     background:#222;
-
-    overflow:hidden;
 }
 
 .loading-progress{
+
     width:0%;
+
     height:100%;
 
-    background:#fff;
+    background:white;
+
+    transition:
+        width .03s linear;
 }
 
 .loading-percent{
+
     margin-top:15px;
 
     color:#777;
 
     font-size:11px;
 
-    letter-spacing:2px;
+    font-family:monospace;
 }
 
-/* ================= ENTER ================= */
+
+/* ======================
+   ENTER
+====================== */
 
 #enter{
+
     position:fixed;
+
     inset:0;
 
     display:flex;
 
-    align-items:center;
     justify-content:center;
+
+    align-items:center;
 
     text-align:center;
 
     opacity:0;
+
     visibility:hidden;
 
-    z-index:90;
+    z-index:80;
 
     transition:
-        opacity 1s ease,
-        visibility 1s ease;
+        opacity 1s ease;
 }
 
 #enter.show{
+
     opacity:1;
+
     visibility:visible;
 }
 
 .enter-content{
+
     display:flex;
+
     flex-direction:column;
+
     align-items:center;
 }
+
 
 /* MÈO */
 
 .cat{
-    font-size:45px;
+
+    font-size:48px;
 
     animation:
         catFloat 3s ease-in-out infinite;
@@ -220,38 +337,48 @@ body{
 
 @keyframes catFloat{
 
-    0%,100%{
-        transform:translateY(0);
+    0%,
+    100%{
+
+        transform:
+            translateY(0);
+
     }
 
     50%{
-        transform:translateY(-6px);
+
+        transform:
+            translateY(-7px);
+
     }
 }
+
 
 /* TÊN */
 
 .enter-name{
 
-    margin-top:4px;
+    margin-top:5px;
 
     font-size:
-        clamp(24px,5vw,42px);
+        clamp(25px,5vw,43px);
 
     font-weight:bold;
 
-    letter-spacing:4px;
+    letter-spacing:5px;
 }
 
 .enter-line{
 
     width:180px;
+
     height:1px;
 
     background:#444;
 
     margin:20px auto;
 }
+
 
 /* NÚT */
 
@@ -265,7 +392,7 @@ body{
 
     background:transparent;
 
-    color:#fff;
+    color:white;
 
     cursor:pointer;
 
@@ -273,20 +400,23 @@ body{
 
     letter-spacing:3px;
 
-    transition:.35s;
+    transition:.3s;
 }
 
 .enter-button:hover{
 
-    background:#fff;
+    background:white;
 
-    color:#000;
+    color:black;
 
     transform:
-        translateY(-3px);
+        scale(1.06);
 }
 
-/* ================= WEBSITE ================= */
+
+/* ======================
+   WEBSITE
+====================== */
 
 #website{
 
@@ -304,34 +434,39 @@ body{
 }
 
 #website.show{
+
     display:block;
 }
 
-/* ================= MENU ================= */
+
+/* ======================
+   MENU
+====================== */
 
 .menu{
 
     position:fixed;
 
-    top:22px;
+    top:20px;
 
     left:0;
+
     right:0;
+
+    z-index:40;
 
     display:flex;
 
     justify-content:center;
 
     gap:30px;
-
-    z-index:50;
 }
 
 .menu button{
 
-    border:0;
+    border:none;
 
-    background:none;
+    background:transparent;
 
     color:#777;
 
@@ -346,11 +481,13 @@ body{
 
 .menu button:hover{
 
-    color:#fff;
-
+    color:white;
 }
 
-/* ================= TRANG ================= */
+
+/* ======================
+   TRANG
+====================== */
 
 .page{
 
@@ -358,19 +495,18 @@ body{
 
     min-height:100vh;
 
-    width:100%;
+    padding:
+        90px 20px 60px;
 
     align-items:center;
 
     justify-content:center;
 
     text-align:center;
-
-    padding:
-        90px 20px 50px;
 }
 
 .page.active{
+
     display:flex;
 }
 
@@ -383,32 +519,33 @@ body{
     margin:auto;
 }
 
-/* ================= MAIN ================= */
+
+/* ======================
+   MAIN
+====================== */
 
 .main-cat{
 
-    font-size:38px;
+    font-size:45px;
 
     animation:
         catFloat 3s ease-in-out infinite;
 }
 
-/* */
-
 .name{
-
-    margin-top:2px;
 
     display:flex;
 
-    align-items:center;
-
     justify-content:center;
 
-    gap:7px;
+    align-items:center;
+
+    gap:8px;
+
+    margin-top:5px;
 
     font-size:
-        clamp(22px,4vw,36px);
+        clamp(24px,5vw,40px);
 
     font-weight:bold;
 
@@ -417,20 +554,27 @@ body{
 
 .trophy{
 
-    font-size:25px;
+    font-size:28px;
 
     animation:
-        trophy 2.5s ease-in-out infinite;
+        trophyFloat 2s ease-in-out infinite;
 }
 
-@keyframes trophy{
+@keyframes trophyFloat{
 
-    0%,100%{
-        transform:translateY(0);
+    0%,
+    100%{
+
+        transform:
+            translateY(0);
+
     }
 
     50%{
-        transform:translateY(-4px);
+
+        transform:
+            translateY(-5px);
+
     }
 }
 
@@ -442,17 +586,17 @@ body{
 
     background:#444;
 
-    margin:20px auto;
+    margin:22px auto;
 }
 
 .mod-title{
 
     font-size:
-        clamp(32px,7vw,68px);
+        clamp(34px,7vw,70px);
 
     font-weight:bold;
 
-    letter-spacing:4px;
+    letter-spacing:5px;
 }
 
 .hello{
@@ -466,11 +610,12 @@ body{
     letter-spacing:3px;
 }
 
-/* ================= MOD ================= */
+
+/* ======================
+   MOD
+====================== */
 
 .mods{
-
-    margin-top:40px;
 
     display:grid;
 
@@ -478,23 +623,22 @@ body{
         repeat(3,1fr);
 
     gap:20px;
+
+    margin-top:40px;
 }
 
 .mod{
 
     padding:30px 20px;
 
-    border:1px solid #242424;
+    border:1px solid #252525;
 
     border-radius:15px;
 
     background:
         rgba(255,255,255,.035);
 
-    transition:
-        transform .4s ease,
-        background .4s ease,
-        border-color .4s ease;
+    transition:.4s;
 }
 
 .mod:hover{
@@ -519,7 +663,7 @@ body{
 
 .mod h2{
 
-    margin-top:12px;
+    margin-top:10px;
 
     font-size:20px;
 
@@ -545,12 +689,11 @@ body{
 
     padding:10px 20px;
 
-    border:
-        1px solid #555;
+    border:1px solid #555;
 
     border-radius:30px;
 
-    color:#fff;
+    color:white;
 
     text-decoration:none;
 
@@ -563,12 +706,15 @@ body{
 
 .mod-button:hover{
 
-    background:#fff;
+    background:white;
 
-    color:#000;
+    color:black;
 }
 
-/* ================= GIỚI THIỆU ================= */
+
+/* ======================
+   GIỚI THIỆU
+====================== */
 
 .small-title{
 
@@ -581,7 +727,7 @@ body{
 
 .big-title{
 
-    margin-top:12px;
+    margin-top:10px;
 
     font-size:
         clamp(40px,8vw,75px);
@@ -602,7 +748,10 @@ body{
     line-height:2;
 }
 
-/* ================= LIÊN HỆ ================= */
+
+/* ======================
+   LIÊN HỆ
+====================== */
 
 .discord{
 
@@ -612,12 +761,11 @@ body{
 
     padding:14px 30px;
 
-    border:
-        1px solid #666;
+    border:1px solid #666;
 
     border-radius:30px;
 
-    color:#fff;
+    color:white;
 
     text-decoration:none;
 
@@ -625,368 +773,415 @@ body{
 
     letter-spacing:3px;
 
-    transition:.35s;
+    transition:.3s;
 }
 
 .discord:hover{
 
-    background:#fff;
+    background:white;
 
-    color:#000;
+    color:black;
 
-    transform:scale(1.05);
+    transform:
+        scale(1.05);
 }
 
-/* ================= ĐIỆN THOẠI ================= */
+
+/* ======================
+   MOBILE
+====================== */
 
 @media(max-width:700px){
 
+    #clock{
+
+        top:15px;
+
+        right:15px;
+
+        font-size:11px;
+    }
+
     .menu{
-        gap:14px;
+
+        gap:12px;
+
     }
 
     .menu button{
+
         font-size:8px;
+
     }
 
     .mods{
+
         grid-template-columns:1fr;
+
     }
 
     .mod-title{
+
         letter-spacing:2px;
+
     }
 
     .name{
+
         letter-spacing:2px;
+
     }
 }
+
 </style>
+
 </head>
+
 
 <body>
 
-<!-- ================= MƯA ================= -->
+
+<!-- NỀN -->
+
+<div id="background"></div>
+
+
+<!-- MƯA -->
 
 <div id="rain"></div>
 
 
-<!-- ================= LOADING ================= -->
+<!-- ĐỒNG HỒ -->
+
+<div id="clock">
+00:00:00
+</div>
+
+
+<!-- ======================
+     LOADING
+====================== -->
 
 <section id="loading">
 
-    <div class="loading-content">
+<div class="loading-content">
 
-        <div class="loading-small">
-            WELCOME TO
-        </div>
+<div class="loading-small">
+WELCOME TO
+</div>
 
-        <div class="loading-title">
-            XUÂN KHÁNH
-        </div>
+<div class="loading-title">
+XUÂN KHÁNH
+</div>
 
-        <div class="loading-website">
-            WEBSITE
-        </div>
+<div class="loading-website">
+WEBSITE
+</div>
 
-        <div class="loading-line"></div>
+<div class="loading-line"></div>
 
-        <div class="loading-label">
-            LOADING
-        </div>
+<div class="loading-label">
+LOADING...
+</div>
 
-        <div class="loading-bar">
+<div class="loading-bar">
 
-            <div
-                id="progress"
-                class="loading-progress">
-            </div>
+<div
+id="progress"
+class="loading-progress">
+</div>
 
-        </div>
+</div>
 
-        <div
-            id="percent"
-            class="loading-percent">
+<div
+id="percent"
+class="loading-percent">
 
-            0%
+0%
 
-        </div>
+</div>
 
-    </div>
+</div>
 
 </section>
 
 
-<!-- ================= ENTER ================= -->
+<!-- ======================
+     ENTER
+====================== -->
 
 <section id="enter">
 
-    <div class="enter-content">
+<div class="enter-content">
 
-        <div class="cat">
-            🐱
-        </div>
+<div class="cat">
+🐱
+</div>
 
-        <div class="enter-name">
-            XUÂN KHÁNH 🏆
-        </div>
+<div class="enter-name">
+XUÂN KHÁNH 🏆
+</div>
 
-        <div class="enter-line"></div>
+<div class="enter-line"></div>
 
-        <button
-            id="enterButton"
-            class="enter-button">
+<button
+id="enterButton"
+class="enter-button">
 
-            ENTER WEBSITE
+ENTER WEBSITE
 
-        </button>
+</button>
 
-    </div>
+</div>
 
 </section>
 
 
-<!-- ================= WEBSITE ================= -->
+<!-- ======================
+     WEBSITE
+====================== -->
 
 <main id="website">
 
 
-    <!-- MENU -->
+<!-- MENU -->
 
-    <nav class="menu">
+<nav class="menu">
 
-        <button
-            onclick="showPage('main')">
+<button
+onclick="showPage('main')">
 
-            MAIN
+MAIN
 
-        </button>
+</button>
 
-        <button
-            onclick="showPage('about')">
+<button
+onclick="showPage('about')">
 
-            GIỚI THIỆU
+GIỚI THIỆU
 
-        </button>
+</button>
 
-        <button
-            onclick="showPage('contact')">
+<button
+onclick="showPage('contact')">
 
-            LIÊN HỆ
+LIÊN HỆ
 
-        </button>
+</button>
 
-    </nav>
+</nav>
 
 
-    <!-- ================= MAIN ================= -->
+<!-- ======================
+     MAIN
+====================== -->
 
-    <section
-        id="main"
-        class="page active">
+<section
+id="main"
+class="page active">
 
-        <div class="content">
+<div class="content">
 
-            <div class="main-cat">
-                🐱
-            </div>
 
-            <div class="name">
+<div class="main-cat">
+🐱
+</div>
 
-                <span>
-                    XUÂN KHÁNH
-                </span>
 
-                <span class="trophy">
-                    🏆
-                </span>
+<div class="name">
 
-            </div>
+<span>
+XUÂN KHÁNH
+</span>
 
-            <div class="divider"></div>
+<span class="trophy">
+🏆
+</span>
 
-            <div class="mod-title">
-                XUÂN KHÁNH MOD
-            </div>
+</div>
 
-            <div class="hello">
-                HELLO EVERYONE...
-            </div>
 
+<div class="divider"></div>
 
-            <div class="mods">
 
+<div class="mod-title">
+XUÂN KHÁNH MOD
+</div>
 
-                <!-- MOD 01 -->
 
-                <div class="mod">
+<div class="hello">
+HELLO EVERYONE...
+</div>
 
-                    <div class="mod-number">
-                        MOD 01
-                    </div>
 
-                    <h2>
-                        MOD 01
-                    </h2>
+<div class="mods">
 
-                    <p>
-                        MOD của XUÂN KHÁNH.
-                    </p>
 
-                    <a
-                        href="#"
-                        class="mod-button">
+<div class="mod">
 
-                        XEM MOD
+<div class="mod-number">
+MOD 01
+</div>
 
-                    </a>
+<h2>
+MOD 01
+</h2>
 
-                </div>
+<p>
+MOD của XUÂN KHÁNH.
+</p>
 
+<a
+href="#"
+class="mod-button">
 
-                <!-- MOD 02 -->
+XEM MOD
 
-                <div class="mod">
+</a>
 
-                    <div class="mod-number">
-                        MOD 02
-                    </div>
+</div>
 
-                    <h2>
-                        MOD 02
-                    </h2>
 
-                    <p>
-                        MOD của XUÂN KHÁNH.
-                    </p>
+<div class="mod">
 
-                    <a
-                        href="#"
-                        class="mod-button">
+<div class="mod-number">
+MOD 02
+</div>
 
-                        XEM MOD
+<h2>
+MOD 02
+</h2>
 
-                    </a>
+<p>
+MOD của XUÂN KHÁNH.
+</p>
 
-                </div>
+<a
+href="#"
+class="mod-button">
 
+XEM MOD
 
-                <!-- MOD 03 -->
+</a>
 
-                <div class="mod">
+</div>
 
-                    <div class="mod-number">
-                        MOD 03
-                    </div>
 
-                    <h2>
-                        MOD 03
-                    </h2>
+<div class="mod">
 
-                    <p>
-                        MOD của XUÂN KHÁNH.
-                    </p>
+<div class="mod-number">
+MOD 03
+</div>
 
-                    <a
-                        href="#"
-                        class="mod-button">
+<h2>
+MOD 03
+</h2>
 
-                        XEM MOD
+<p>
+MOD của XUÂN KHÁNH.
+</p>
 
-                    </a>
+<a
+href="#"
+class="mod-button">
 
-                </div>
+XEM MOD
 
+</a>
 
-            </div>
+</div>
 
-        </div>
 
-    </section>
+</div>
 
+</div>
 
-    <!-- ================= GIỚI THIỆU ================= -->
+</section>
 
-    <section
-        id="about"
-        class="page">
 
-        <div class="content">
+<!-- ======================
+     GIỚI THIỆU
+====================== -->
 
-            <div class="small-title">
-                XUÂN KHÁNH
-            </div>
+<section
+id="about"
+class="page">
 
-            <div class="big-title">
-                GIỚI THIỆU
-            </div>
+<div class="content">
 
-            <div class="divider"></div>
+<div class="small-title">
+XUÂN KHÁNH
+</div>
 
-            <div class="text">
+<div class="big-title">
+GIỚI THIỆU
+</div>
 
-                Xin chào mọi người!
+<div class="divider"></div>
 
-                <br><br>
+<div class="text">
 
-                Chào mừng bạn đến với
-                website XUÂN KHÁNH.
+Xin chào mọi người!
 
-                <br><br>
+<br><br>
 
-                Đây là nơi chia sẻ
-                những nội dung của
-                XUÂN KHÁNH.
+Chào mừng bạn đến với
+website XUÂN KHÁNH.
 
-            </div>
+<br><br>
 
-        </div>
+Đây là website của
+XUÂN KHÁNH.
 
-    </section>
+</div>
 
+</div>
 
-    <!-- ================= LIÊN HỆ ================= -->
+</section>
 
-    <section
-        id="contact"
-        class="page">
 
-        <div class="content">
+<!-- ======================
+     LIÊN HỆ
+====================== -->
 
-            <div class="small-title">
-                XUÂN KHÁNH
-            </div>
+<section
+id="contact"
+class="page">
 
-            <div class="big-title">
-                LIÊN HỆ
-            </div>
+<div class="content">
 
-            <div class="divider"></div>
+<div class="small-title">
+XUÂN KHÁNH
+</div>
 
-            <div class="text">
+<div class="big-title">
+LIÊN HỆ
+</div>
 
-                Muốn liên hệ với
-                XUÂN KHÁNH?
+<div class="divider"></div>
 
-                <br><br>
+<div class="text">
 
-                Hãy tham gia Discord.
+Bạn có thể liên hệ
+với XUÂN KHÁNH
+qua Discord.
 
-            </div>
+</div>
 
-            <a
-                href="https://discord.gg/yMKkt3vwf"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="discord">
 
-                💬 JOIN DISCORD
+<a
+href="https://discord.gg/yMKkt3vwf"
+target="_blank"
+rel="noopener noreferrer"
+class="discord">
 
-            </a>
+💬 JOIN DISCORD
 
-        </div>
+</a>
 
-    </section>
+</div>
+
+</section>
 
 
 </main>
@@ -994,146 +1189,252 @@ body{
 
 <script>
 
-/* ================= TẠO MƯA ================= */
+
+/* ======================
+   TẠO MƯA
+====================== */
 
 const rain =
-    document.getElementById("rain");
+document.getElementById("rain");
 
-for(let i = 0; i < 150; i++){
+
+for(
+    let i = 0;
+    i < 160;
+    i++
+){
 
     const drop =
         document.createElement("div");
 
-    drop.className = "rain";
+    drop.className =
+        "rain-drop";
+
 
     drop.style.left =
         Math.random() * 100 + "%";
 
+
     drop.style.height =
-        (20 + Math.random() * 45) + "px";
+        (20 +
+        Math.random() * 50) +
+        "px";
+
 
     drop.style.animationDuration =
-        (0.5 + Math.random() * 0.8) + "s";
+        (0.5 +
+        Math.random() * 0.8) +
+        "s";
+
 
     drop.style.animationDelay =
-        Math.random() * 2 + "s";
+        Math.random() * 2 +
+        "s";
+
 
     drop.style.opacity =
-        0.15 + Math.random() * 0.65;
+        0.15 +
+        Math.random() * 0.7;
+
 
     rain.appendChild(drop);
 }
 
 
-/* ================= LOADING ================= */
+/* ======================
+   ĐỒNG HỒ
+====================== */
 
-let number = 0;
+function updateClock(){
+
+    const now =
+        new Date();
+
+
+    const h =
+        String(
+            now.getHours()
+        ).padStart(2,"0");
+
+
+    const m =
+        String(
+            now.getMinutes()
+        ).padStart(2,"0");
+
+
+    const s =
+        String(
+            now.getSeconds()
+        ).padStart(2,"0");
+
+
+    document
+        .getElementById("clock")
+        .textContent =
+        `${h}:${m}:${s}`;
+}
+
+
+updateClock();
+
+
+setInterval(
+    updateClock,
+    1000
+);
+
+
+/* ======================
+   LOADING
+====================== */
+
+let value = 0;
+
 
 const progress =
-    document.getElementById("progress");
+document.getElementById(
+    "progress"
+);
+
 
 const percent =
-    document.getElementById("percent");
+document.getElementById(
+    "percent"
+);
+
 
 const loading =
-    document.getElementById("loading");
+document.getElementById(
+    "loading"
+);
+
 
 const enter =
-    document.getElementById("enter");
+document.getElementById(
+    "enter"
+);
 
 
-const loadingTimer =
-    setInterval(() => {
+const timer =
+setInterval(
+function(){
 
-        number++;
-
-        progress.style.width =
-            number + "%";
-
-        percent.textContent =
-            number + "%";
+    value++;
 
 
-        if(number >= 100){
-
-            clearInterval(loadingTimer);
-
-            setTimeout(() => {
-
-                loading.classList.add(
-                    "hidden"
-                );
-
-                setTimeout(() => {
-
-                    enter.classList.add(
-                        "show"
-                    );
-
-                },1200);
-
-            },500);
-
-        }
-
-    },30);
+    progress.style.width =
+        value + "%";
 
 
-/* ================= ENTER ================= */
+    percent.textContent =
+        value + "%";
+
+
+    if(value >= 100){
+
+        clearInterval(timer);
+
+
+        setTimeout(
+        function(){
+
+            loading
+                .classList
+                .add("hide");
+
+
+            setTimeout(
+            function(){
+
+                enter
+                    .classList
+                    .add("show");
+
+            },
+            1000
+            );
+
+        },
+        500
+        );
+
+    }
+
+},
+30
+);
+
+
+/* ======================
+   ENTER WEBSITE
+====================== */
 
 document
-    .getElementById("enterButton")
+    .getElementById(
+        "enterButton"
+    )
     .addEventListener(
         "click",
         function(){
 
-            enter.style.opacity = "0";
+            enter.style.opacity =
+                "0";
 
-            setTimeout(() => {
+
+            setTimeout(
+            function(){
 
                 enter.style.visibility =
                     "hidden";
 
+
                 document
-                    .getElementById("website")
-                    .classList.add("show");
+                    .getElementById(
+                        "website"
+                    )
+                    .classList
+                    .add("show");
+
 
                 showPage("main");
 
-            },700);
+            },
+            700
+            );
 
         }
     );
 
 
-/* ================= ĐỔI TRANG ================= */
+/* ======================
+   CHUYỂN TRANG
+====================== */
 
 function showPage(page){
 
     document
         .querySelectorAll(".page")
-        .forEach(function(item){
+        .forEach(
+        function(item){
 
-            item.classList.remove(
-                "active"
-            );
+            item.classList
+                .remove("active");
 
         });
 
 
     document
         .getElementById(page)
-        .classList.add("active");
+        .classList
+        .add("active");
 
-
-    const website =
-        document.getElementById("website");
-
-    website.scrollTop = 0;
 }
 
 </script>
 
+
 </body>
+
 </html>
 ```
