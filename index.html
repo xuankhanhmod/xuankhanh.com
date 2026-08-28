@@ -1,58 +1,31 @@
 ```html
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>XUÂN KHÁNH</title>
 
-
 <style>
-
-/* ======================
-   CƠ BẢN
-====================== */
-
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
-html,
-body{
-
+html,body{
     width:100%;
     height:100%;
-
     overflow:hidden;
-
     background:#000;
-
-    color:white;
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+    color:#fff;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
+/* ===== NỀN ===== */
 
-/* ======================
-   NỀN
-====================== */
-
-#background{
-
-    position:fixed;
-
-    inset:0;
-
+body{
     background:
         radial-gradient(
             circle at center,
@@ -60,109 +33,65 @@ body{
             #090909 55%,
             #000 100%
         );
-
-    z-index:0;
 }
 
-
-/* ======================
-   MƯA
-====================== */
+/* ===== MƯA ===== */
 
 #rain{
-
     position:fixed;
-
     inset:0;
-
     overflow:hidden;
-
     pointer-events:none;
-
     z-index:2;
 }
 
 .rain-drop{
-
     position:absolute;
-
     top:-100px;
-
     width:1px;
-
-    background:
-        linear-gradient(
-            transparent,
-            rgba(255,255,255,.65)
-        );
-
-    animation:
-        rainFall linear infinite;
+    background:linear-gradient(
+        transparent,
+        rgba(255,255,255,.65)
+    );
+    animation:rainFall linear infinite;
 }
 
 @keyframes rainFall{
-
     from{
-
-        transform:
-            translateY(-100px)
-            translateX(0);
-
+        transform:translateY(-100px) translateX(0);
     }
 
     to{
-
-        transform:
-            translateY(110vh)
-            translateX(-100px);
-
+        transform:translateY(110vh) translateX(-100px);
     }
 }
 
-
-/* ======================
-   ĐỒNG HỒ
-====================== */
+/* ===== ĐỒNG HỒ ===== */
 
 #clock{
-
     position:fixed;
-
     top:18px;
-
     right:25px;
+    z-index:60;
 
-    z-index:50;
-
-    color:white;
-
+    color:#fff;
     font-family:monospace;
-
     font-size:14px;
-
     letter-spacing:2px;
 
     text-shadow:
-        0 0 8px
-        rgba(255,255,255,.5);
+        0 0 8px rgba(255,255,255,.6);
 }
 
-
-/* ======================
-   LOADING
-====================== */
+/* ===== LOADING ===== */
 
 #loading{
-
     position:fixed;
-
     inset:0;
 
     display:flex;
-
-    justify-content:center;
-
     align-items:center;
+    justify-content:center;
 
     text-align:center;
 
@@ -176,34 +105,25 @@ body{
 }
 
 #loading.hide{
-
     opacity:0;
-
     visibility:hidden;
 }
 
 .loading-content{
-
     width:90%;
-
     max-width:600px;
 }
 
 .loading-small{
-
     color:#777;
-
     font-size:11px;
-
     letter-spacing:8px;
 }
 
 .loading-title{
-
     margin-top:20px;
 
-    font-size:
-        clamp(42px,9vw,90px);
+    font-size:clamp(42px,9vw,90px);
 
     font-weight:bold;
 
@@ -211,7 +131,6 @@ body{
 }
 
 .loading-website{
-
     margin-top:8px;
 
     color:#666;
@@ -222,9 +141,7 @@ body{
 }
 
 .loading-line{
-
     width:180px;
-
     height:1px;
 
     background:#444;
@@ -233,7 +150,6 @@ body{
 }
 
 .loading-label{
-
     color:#777;
 
     font-size:10px;
@@ -244,9 +160,7 @@ body{
 }
 
 .loading-bar{
-
     width:280px;
-
     max-width:80vw;
 
     height:2px;
@@ -257,19 +171,13 @@ body{
 }
 
 .loading-progress{
-
     width:0%;
-
     height:100%;
 
-    background:white;
-
-    transition:
-        width .03s linear;
+    background:#fff;
 }
 
 .loading-percent{
-
     margin-top:15px;
 
     color:#777;
@@ -279,89 +187,57 @@ body{
     font-family:monospace;
 }
 
-
-/* ======================
-   ENTER
-====================== */
+/* ===== ENTER ===== */
 
 #enter{
-
     position:fixed;
-
     inset:0;
 
     display:flex;
-
-    justify-content:center;
-
     align-items:center;
+    justify-content:center;
 
     text-align:center;
 
     opacity:0;
-
     visibility:hidden;
 
     z-index:80;
 
-    transition:
-        opacity 1s ease;
+    transition:opacity 1s ease;
 }
 
 #enter.show{
-
     opacity:1;
-
     visibility:visible;
 }
 
 .enter-content{
-
     display:flex;
-
     flex-direction:column;
-
     align-items:center;
 }
 
-
-/* MÈO */
-
 .cat{
-
     font-size:48px;
 
-    animation:
-        catFloat 3s ease-in-out infinite;
+    animation:catFloat 3s ease-in-out infinite;
 }
 
 @keyframes catFloat{
-
-    0%,
-    100%{
-
-        transform:
-            translateY(0);
-
+    0%,100%{
+        transform:translateY(0);
     }
 
     50%{
-
-        transform:
-            translateY(-7px);
-
+        transform:translateY(-7px);
     }
 }
 
-
-/* TÊN */
-
 .enter-name{
-
     margin-top:5px;
 
-    font-size:
-        clamp(25px,5vw,43px);
+    font-size:clamp(25px,5vw,43px);
 
     font-weight:bold;
 
@@ -369,9 +245,7 @@ body{
 }
 
 .enter-line{
-
     width:180px;
-
     height:1px;
 
     background:#444;
@@ -379,93 +253,67 @@ body{
     margin:20px auto;
 }
 
-
-/* NÚT */
-
 .enter-button{
-
     padding:13px 28px;
 
     border:1px solid #555;
-
     border-radius:30px;
 
     background:transparent;
-
-    color:white;
+    color:#fff;
 
     cursor:pointer;
 
     font-size:10px;
-
     letter-spacing:3px;
 
     transition:.3s;
 }
 
 .enter-button:hover{
+    background:#fff;
+    color:#000;
 
-    background:white;
-
-    color:black;
-
-    transform:
-        scale(1.06);
+    transform:scale(1.06);
 }
 
-
-/* ======================
-   WEBSITE
-====================== */
+/* ===== WEBSITE ===== */
 
 #website{
-
     display:none;
 
     position:fixed;
-
     inset:0;
 
     overflow-y:auto;
-
     overflow-x:hidden;
 
     z-index:10;
 }
 
 #website.show{
-
     display:block;
 }
 
-
-/* ======================
-   MENU
-====================== */
+/* ===== MENU ===== */
 
 .menu{
-
     position:fixed;
 
     top:20px;
-
     left:0;
-
     right:0;
 
     z-index:40;
 
     display:flex;
-
     justify-content:center;
 
     gap:30px;
 }
 
 .menu button{
-
     border:none;
-
     background:transparent;
 
     color:#777;
@@ -473,79 +321,59 @@ body{
     cursor:pointer;
 
     font-size:10px;
-
     letter-spacing:2px;
 
     transition:.3s;
 }
 
 .menu button:hover{
-
-    color:white;
+    color:#fff;
 }
 
-
-/* ======================
-   TRANG
-====================== */
+/* ===== TRANG ===== */
 
 .page{
-
     display:none;
 
     min-height:100vh;
 
-    padding:
-        90px 20px 60px;
+    padding:90px 20px 60px;
 
     align-items:center;
-
     justify-content:center;
 
     text-align:center;
 }
 
 .page.active{
-
     display:flex;
 }
 
 .content{
-
     width:100%;
-
     max-width:1100px;
-
     margin:auto;
 }
 
-
-/* ======================
-   MAIN
-====================== */
+/* ===== MAIN ===== */
 
 .main-cat{
-
     font-size:45px;
 
-    animation:
-        catFloat 3s ease-in-out infinite;
+    animation:catFloat 3s ease-in-out infinite;
 }
 
 .name{
-
     display:flex;
 
-    justify-content:center;
-
     align-items:center;
+    justify-content:center;
 
     gap:8px;
 
     margin-top:5px;
 
-    font-size:
-        clamp(24px,5vw,40px);
+    font-size:clamp(24px,5vw,40px);
 
     font-weight:bold;
 
@@ -553,35 +381,23 @@ body{
 }
 
 .trophy{
-
     font-size:28px;
 
-    animation:
-        trophyFloat 2s ease-in-out infinite;
+    animation:trophyFloat 2s ease-in-out infinite;
 }
 
 @keyframes trophyFloat{
-
-    0%,
-    100%{
-
-        transform:
-            translateY(0);
-
+    0%,100%{
+        transform:translateY(0);
     }
 
     50%{
-
-        transform:
-            translateY(-5px);
-
+        transform:translateY(-5px);
     }
 }
 
 .divider{
-
     width:180px;
-
     height:1px;
 
     background:#444;
@@ -590,9 +406,7 @@ body{
 }
 
 .mod-title{
-
-    font-size:
-        clamp(34px,7vw,70px);
+    font-size:clamp(34px,7vw,70px);
 
     font-weight:bold;
 
@@ -600,7 +414,6 @@ body{
 }
 
 .hello{
-
     margin-top:10px;
 
     color:#888;
@@ -610,13 +423,9 @@ body{
     letter-spacing:3px;
 }
 
-
-/* ======================
-   MOD
-====================== */
+/* ===== MOD ===== */
 
 .mods{
-
     display:grid;
 
     grid-template-columns:
@@ -628,32 +437,26 @@ body{
 }
 
 .mod{
-
     padding:30px 20px;
 
     border:1px solid #252525;
 
     border-radius:15px;
 
-    background:
-        rgba(255,255,255,.035);
+    background:rgba(255,255,255,.035);
 
     transition:.4s;
 }
 
 .mod:hover{
+    transform:translateY(-8px);
 
-    transform:
-        translateY(-8px);
-
-    background:
-        rgba(255,255,255,.08);
+    background:rgba(255,255,255,.08);
 
     border-color:#555;
 }
 
 .mod-number{
-
     color:#555;
 
     font-size:10px;
@@ -662,7 +465,6 @@ body{
 }
 
 .mod h2{
-
     margin-top:10px;
 
     font-size:20px;
@@ -671,7 +473,6 @@ body{
 }
 
 .mod p{
-
     margin-top:10px;
 
     color:#888;
@@ -682,7 +483,6 @@ body{
 }
 
 .mod-button{
-
     display:inline-block;
 
     margin-top:18px;
@@ -693,7 +493,7 @@ body{
 
     border-radius:30px;
 
-    color:white;
+    color:#fff;
 
     text-decoration:none;
 
@@ -705,19 +505,13 @@ body{
 }
 
 .mod-button:hover{
-
-    background:white;
-
-    color:black;
+    background:#fff;
+    color:#000;
 }
 
-
-/* ======================
-   GIỚI THIỆU
-====================== */
+/* ===== GIỚI THIỆU ===== */
 
 .small-title{
-
     color:#666;
 
     font-size:10px;
@@ -726,17 +520,14 @@ body{
 }
 
 .big-title{
-
     margin-top:10px;
 
-    font-size:
-        clamp(40px,8vw,75px);
+    font-size:clamp(40px,8vw,75px);
 
     letter-spacing:6px;
 }
 
 .text{
-
     max-width:650px;
 
     margin:25px auto 0;
@@ -748,13 +539,9 @@ body{
     line-height:2;
 }
 
-
-/* ======================
-   LIÊN HỆ
-====================== */
+/* ===== LIÊN HỆ ===== */
 
 .discord{
-
     display:inline-block;
 
     margin-top:25px;
@@ -765,7 +552,7 @@ body{
 
     border-radius:30px;
 
-    color:white;
+    color:#fff;
 
     text-decoration:none;
 
@@ -777,411 +564,349 @@ body{
 }
 
 .discord:hover{
+    background:#fff;
+    color:#000;
 
-    background:white;
-
-    color:black;
-
-    transform:
-        scale(1.05);
+    transform:scale(1.05);
 }
 
-
-/* ======================
-   MOBILE
-====================== */
+/* ===== MOBILE ===== */
 
 @media(max-width:700px){
 
     #clock{
-
         top:15px;
-
         right:15px;
-
         font-size:11px;
     }
 
     .menu{
-
         gap:12px;
-
     }
 
     .menu button{
-
         font-size:8px;
-
     }
 
     .mods{
-
         grid-template-columns:1fr;
-
     }
 
     .mod-title{
-
         letter-spacing:2px;
-
     }
 
     .name{
-
         letter-spacing:2px;
-
     }
 }
-
 </style>
-
 </head>
-
 
 <body>
 
-
-<!-- NỀN -->
-
-<div id="background"></div>
-
-
 <!-- MƯA -->
-
 <div id="rain"></div>
 
-
 <!-- ĐỒNG HỒ -->
-
-<div id="clock">
-00:00:00
-</div>
+<div id="clock">00:00:00</div>
 
 
-<!-- ======================
-     LOADING
-====================== -->
+<!-- LOADING -->
 
 <section id="loading">
 
-<div class="loading-content">
+    <div class="loading-content">
 
-<div class="loading-small">
-WELCOME TO
-</div>
+        <div class="loading-small">
+            WELCOME TO
+        </div>
 
-<div class="loading-title">
-XUÂN KHÁNH
-</div>
+        <div class="loading-title">
+            XUÂN KHÁNH
+        </div>
 
-<div class="loading-website">
-WEBSITE
-</div>
+        <div class="loading-website">
+            WEBSITE
+        </div>
 
-<div class="loading-line"></div>
+        <div class="loading-line"></div>
 
-<div class="loading-label">
-LOADING...
-</div>
+        <div class="loading-label">
+            LOADING...
+        </div>
 
-<div class="loading-bar">
+        <div class="loading-bar">
 
-<div
-id="progress"
-class="loading-progress">
-</div>
+            <div
+                id="progress"
+                class="loading-progress">
+            </div>
 
-</div>
+        </div>
 
-<div
-id="percent"
-class="loading-percent">
+        <div
+            id="percent"
+            class="loading-percent">
+            0%
+        </div>
 
-0%
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
 
-<!-- ======================
-     ENTER
-====================== -->
+<!-- ENTER -->
 
 <section id="enter">
 
-<div class="enter-content">
+    <div class="enter-content">
 
-<div class="cat">
-🐱
-</div>
+        <div class="cat">
+            🐱
+        </div>
 
-<div class="enter-name">
-XUÂN KHÁNH 🏆
-</div>
+        <div class="enter-name">
+            XUÂN KHÁNH 🏆
+        </div>
 
-<div class="enter-line"></div>
+        <div class="enter-line"></div>
 
-<button
-id="enterButton"
-class="enter-button">
+        <button
+            id="enterButton"
+            class="enter-button">
 
-ENTER WEBSITE
+            ENTER WEBSITE
 
-</button>
+        </button>
 
-</div>
+    </div>
 
 </section>
 
 
-<!-- ======================
-     WEBSITE
-====================== -->
+<!-- WEBSITE -->
 
 <main id="website">
 
 
-<!-- MENU -->
+    <!-- MENU -->
 
-<nav class="menu">
+    <nav class="menu">
 
-<button
-onclick="showPage('main')">
+        <button onclick="showPage('main')">
+            MAIN
+        </button>
 
-MAIN
+        <button onclick="showPage('about')">
+            GIỚI THIỆU
+        </button>
 
-</button>
+        <button onclick="showPage('contact')">
+            LIÊN HỆ
+        </button>
 
-<button
-onclick="showPage('about')">
+    </nav>
 
-GIỚI THIỆU
 
-</button>
+    <!-- MAIN -->
 
-<button
-onclick="showPage('contact')">
+    <section
+        id="main"
+        class="page active">
 
-LIÊN HỆ
+        <div class="content">
 
-</button>
+            <div class="main-cat">
+                🐱
+            </div>
 
-</nav>
+            <div class="name">
 
+                <span>
+                    XUÂN KHÁNH
+                </span>
 
-<!-- ======================
-     MAIN
-====================== -->
+                <span class="trophy">
+                    🏆
+                </span>
 
-<section
-id="main"
-class="page active">
+            </div>
 
-<div class="content">
+            <div class="divider"></div>
 
+            <div class="mod-title">
+                XUÂN KHÁNH MOD
+            </div>
 
-<div class="main-cat">
-🐱
-</div>
+            <div class="hello">
+                HELLO EVERYONE...
+            </div>
 
 
-<div class="name">
+            <div class="mods">
 
-<span>
-XUÂN KHÁNH
-</span>
 
-<span class="trophy">
-🏆
-</span>
+                <div class="mod">
 
-</div>
+                    <div class="mod-number">
+                        MOD 01
+                    </div>
 
+                    <h2>
+                        MOD 01
+                    </h2>
 
-<div class="divider"></div>
+                    <p>
+                        MOD của XUÂN KHÁNH.
+                    </p>
 
+                    <a
+                        href="#"
+                        class="mod-button">
 
-<div class="mod-title">
-XUÂN KHÁNH MOD
-</div>
+                        XEM MOD
 
+                    </a>
 
-<div class="hello">
-HELLO EVERYONE...
-</div>
+                </div>
 
 
-<div class="mods">
+                <div class="mod">
 
+                    <div class="mod-number">
+                        MOD 02
+                    </div>
 
-<div class="mod">
+                    <h2>
+                        MOD 02
+                    </h2>
 
-<div class="mod-number">
-MOD 01
-</div>
+                    <p>
+                        MOD của XUÂN KHÁNH.
+                    </p>
 
-<h2>
-MOD 01
-</h2>
+                    <a
+                        href="#"
+                        class="mod-button">
 
-<p>
-MOD của XUÂN KHÁNH.
-</p>
+                        XEM MOD
 
-<a
-href="#"
-class="mod-button">
+                    </a>
 
-XEM MOD
+                </div>
 
-</a>
 
-</div>
+                <div class="mod">
 
+                    <div class="mod-number">
+                        MOD 03
+                    </div>
 
-<div class="mod">
+                    <h2>
+                        MOD 03
+                    </h2>
 
-<div class="mod-number">
-MOD 02
-</div>
+                    <p>
+                        MOD của XUÂN KHÁNH.
+                    </p>
 
-<h2>
-MOD 02
-</h2>
+                    <a
+                        href="#"
+                        class="mod-button">
 
-<p>
-MOD của XUÂN KHÁNH.
-</p>
+                        XEM MOD
 
-<a
-href="#"
-class="mod-button">
+                    </a>
 
-XEM MOD
+                </div>
 
-</a>
 
-</div>
+            </div>
 
+        </div>
 
-<div class="mod">
+    </section>
 
-<div class="mod-number">
-MOD 03
-</div>
 
-<h2>
-MOD 03
-</h2>
+    <!-- GIỚI THIỆU -->
 
-<p>
-MOD của XUÂN KHÁNH.
-</p>
+    <section
+        id="about"
+        class="page">
 
-<a
-href="#"
-class="mod-button">
+        <div class="content">
 
-XEM MOD
+            <div class="small-title">
+                XUÂN KHÁNH
+            </div>
 
-</a>
+            <div class="big-title">
+                GIỚI THIỆU
+            </div>
 
-</div>
+            <div class="divider"></div>
 
+            <div class="text">
 
-</div>
+                Xin chào mọi người!
 
-</div>
+                <br><br>
 
-</section>
+                Chào mừng bạn đến với
+                website XUÂN KHÁNH.
 
+                <br><br>
 
-<!-- ======================
-     GIỚI THIỆU
-====================== -->
+                Đây là website của
+                XUÂN KHÁNH.
 
-<section
-id="about"
-class="page">
+            </div>
 
-<div class="content">
+        </div>
 
-<div class="small-title">
-XUÂN KHÁNH
-</div>
+    </section>
 
-<div class="big-title">
-GIỚI THIỆU
-</div>
 
-<div class="divider"></div>
+    <!-- LIÊN HỆ -->
 
-<div class="text">
+    <section
+        id="contact"
+        class="page">
 
-Xin chào mọi người!
+        <div class="content">
 
-<br><br>
+            <div class="small-title">
+                XUÂN KHÁNH
+            </div>
 
-Chào mừng bạn đến với
-website XUÂN KHÁNH.
+            <div class="big-title">
+                LIÊN HỆ
+            </div>
 
-<br><br>
+            <div class="divider"></div>
 
-Đây là website của
-XUÂN KHÁNH.
+            <div class="text">
 
-</div>
+                Bạn có thể liên hệ
+                với XUÂN KHÁNH
+                qua Discord.
 
-</div>
+            </div>
 
-</section>
+            <a
+                href="https://discord.gg/yMKkt3vwf"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="discord">
 
+                💬 JOIN DISCORD
 
-<!-- ======================
-     LIÊN HỆ
-====================== -->
+            </a>
 
-<section
-id="contact"
-class="page">
+        </div>
 
-<div class="content">
-
-<div class="small-title">
-XUÂN KHÁNH
-</div>
-
-<div class="big-title">
-LIÊN HỆ
-</div>
-
-<div class="divider"></div>
-
-<div class="text">
-
-Bạn có thể liên hệ
-với XUÂN KHÁNH
-qua Discord.
-
-</div>
-
-
-<a
-href="https://discord.gg/yMKkt3vwf"
-target="_blank"
-rel="noopener noreferrer"
-class="discord">
-
-💬 JOIN DISCORD
-
-</a>
-
-</div>
-
-</section>
+    </section>
 
 
 </main>
@@ -1189,20 +914,12 @@ class="discord">
 
 <script>
 
-
-/* ======================
-   TẠO MƯA
-====================== */
+/* ===== MƯA ===== */
 
 const rain =
-document.getElementById("rain");
+    document.getElementById("rain");
 
-
-for(
-    let i = 0;
-    i < 160;
-    i++
-){
+for(let i = 0; i < 160; i++){
 
     const drop =
         document.createElement("div");
@@ -1210,64 +927,46 @@ for(
     drop.className =
         "rain-drop";
 
-
     drop.style.left =
         Math.random() * 100 + "%";
 
-
     drop.style.height =
-        (20 +
-        Math.random() * 50) +
-        "px";
-
+        (20 + Math.random() * 50) + "px";
 
     drop.style.animationDuration =
-        (0.5 +
-        Math.random() * 0.8) +
-        "s";
-
+        (0.5 + Math.random() * 0.8) + "s";
 
     drop.style.animationDelay =
-        Math.random() * 2 +
-        "s";
-
+        Math.random() * 2 + "s";
 
     drop.style.opacity =
-        0.15 +
-        Math.random() * 0.7;
-
+        0.15 + Math.random() * 0.7;
 
     rain.appendChild(drop);
 }
 
 
-/* ======================
-   ĐỒNG HỒ
-====================== */
+/* ===== ĐỒNG HỒ ===== */
 
 function updateClock(){
 
     const now =
         new Date();
 
-
     const h =
         String(
             now.getHours()
         ).padStart(2,"0");
-
 
     const m =
         String(
             now.getMinutes()
         ).padStart(2,"0");
 
-
     const s =
         String(
             now.getSeconds()
         ).padStart(2,"0");
-
 
     document
         .getElementById("clock")
@@ -1275,9 +974,7 @@ function updateClock(){
         `${h}:${m}:${s}`;
 }
 
-
 updateClock();
-
 
 setInterval(
     updateClock,
@@ -1285,95 +982,62 @@ setInterval(
 );
 
 
-/* ======================
-   LOADING
-====================== */
+/* ===== LOADING ===== */
 
 let value = 0;
 
-
 const progress =
-document.getElementById(
-    "progress"
-);
-
+    document.getElementById("progress");
 
 const percent =
-document.getElementById(
-    "percent"
-);
-
+    document.getElementById("percent");
 
 const loading =
-document.getElementById(
-    "loading"
-);
-
+    document.getElementById("loading");
 
 const enter =
-document.getElementById(
-    "enter"
-);
+    document.getElementById("enter");
 
 
 const timer =
-setInterval(
-function(){
+    setInterval(function(){
 
-    value++;
+        value++;
 
+        progress.style.width =
+            value + "%";
 
-    progress.style.width =
-        value + "%";
-
-
-    percent.textContent =
-        value + "%";
+        percent.textContent =
+            value + "%";
 
 
-    if(value >= 100){
+        if(value >= 100){
 
-        clearInterval(timer);
+            clearInterval(timer);
 
+            setTimeout(function(){
 
-        setTimeout(
-        function(){
+                loading.classList
+                    .add("hide");
 
-            loading
-                .classList
-                .add("hide");
+                setTimeout(function(){
 
+                    enter.classList
+                        .add("show");
 
-            setTimeout(
-            function(){
+                },1000);
 
-                enter
-                    .classList
-                    .add("show");
+            },500);
 
-            },
-            1000
-            );
+        }
 
-        },
-        500
-        );
-
-    }
-
-},
-30
-);
+    },30);
 
 
-/* ======================
-   ENTER WEBSITE
-====================== */
+/* ===== ENTER ===== */
 
 document
-    .getElementById(
-        "enterButton"
-    )
+    .getElementById("enterButton")
     .addEventListener(
         "click",
         function(){
@@ -1381,42 +1045,31 @@ document
             enter.style.opacity =
                 "0";
 
-
-            setTimeout(
-            function(){
+            setTimeout(function(){
 
                 enter.style.visibility =
                     "hidden";
 
-
                 document
-                    .getElementById(
-                        "website"
-                    )
+                    .getElementById("website")
                     .classList
                     .add("show");
 
-
                 showPage("main");
 
-            },
-            700
-            );
+            },700);
 
         }
     );
 
 
-/* ======================
-   CHUYỂN TRANG
-====================== */
+/* ===== CHUYỂN TRANG ===== */
 
 function showPage(page){
 
     document
         .querySelectorAll(".page")
-        .forEach(
-        function(item){
+        .forEach(function(item){
 
             item.classList
                 .remove("active");
@@ -1433,8 +1086,6 @@ function showPage(page){
 
 </script>
 
-
 </body>
-
 </html>
 ```
