@@ -7,551 +7,423 @@
 
 <title>XUÂN KHÁNH WEBSITE</title>
 
-<!-- Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: "Be Vietnam Pro", sans-serif;
-    background:
-        radial-gradient(circle at 20% 20%, rgba(0, 150, 255, .18), transparent 30%),
-        radial-gradient(circle at 80% 80%, rgba(0, 90, 255, .15), transparent 30%),
-        #020914;
-    color: white;
-    min-height: 100vh;
-    overflow-x: hidden;
+html,body{
+    width:100%;
+    min-height:100%;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#020b18;
+    color:white;
+    overflow-x:hidden;
 }
 
 /* =========================
-   LOADING
+   LOADING SCREEN
 ========================= */
 
-#loadingScreen {
-    position: fixed;
-    inset: 0;
-    z-index: 99999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+#loading{
+    position:fixed;
+    inset:0;
+    z-index:9999;
     background:
-        radial-gradient(circle at center, #062b52 0%, #020914 65%);
-    transition: opacity .8s ease, visibility .8s ease;
+        radial-gradient(circle at center,#08345c 0%,#031322 45%,#01060d 100%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    transition:opacity .8s ease,visibility .8s ease;
 }
 
-#loadingScreen.hide {
-    opacity: 0;
-    visibility: hidden;
+#loading.hide{
+    opacity:0;
+    visibility:hidden;
 }
 
-.loading-title {
-    font-family: "Nunito", sans-serif;
-    font-size: clamp(28px, 6vw, 65px);
-    font-weight: 800;
-    text-align: center;
-    letter-spacing: 2px;
-    margin-bottom: 35px;
+.loading-title{
+    font-size:clamp(25px,5vw,55px);
+    font-weight:800;
+    letter-spacing:4px;
+    text-align:center;
+    text-shadow:
+        0 0 10px #008cff,
+        0 0 30px #006eff;
 }
 
-.loading-subtitle {
-    color: #8ccfff;
-    margin-bottom: 20px;
-    font-size: 14px;
+.loading-sub{
+    margin-top:12px;
+    color:#8fd8ff;
+    font-size:14px;
+    letter-spacing:2px;
 }
 
-.loading-bar {
-    width: min(650px, 80vw);
-    height: 12px;
-    border-radius: 50px;
-    background: rgba(255,255,255,.12);
-    overflow: hidden;
-    box-shadow: 0 0 25px rgba(0,160,255,.25);
+.loading-bar{
+    width:min(420px,80%);
+    height:8px;
+    margin-top:30px;
+    border-radius:20px;
+    background:rgba(255,255,255,.12);
+    overflow:hidden;
+    border:1px solid rgba(0,174,255,.35);
 }
 
-.loading-progress {
-    width: 0%;
-    height: 100%;
-    border-radius: inherit;
-    background: linear-gradient(90deg,#008cff,#00d9ff,#4da6ff);
-    transition: width .08s linear;
+.loading-progress{
+    width:0%;
+    height:100%;
+    background:linear-gradient(90deg,#008cff,#00d9ff);
+    box-shadow:0 0 15px #00aaff;
+    transition:width .15s linear;
 }
 
-.loading-percent {
-    margin-top: 14px;
-    font-weight: 700;
-    color: #8edcff;
-}
-
-/* =========================
-   BACKGROUND RAIN
-========================= */
-
-#rainContainer {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    overflow: hidden;
-    z-index: 0;
-}
-
-.raindrop {
-    position: absolute;
-    top: -80px;
-    width: 2px;
-    border-radius: 20px;
-    background: linear-gradient(
-        to bottom,
-        transparent,
-        rgba(0,180,255,.85),
-        rgba(50,220,255,.95)
-    );
-    animation: rain linear infinite;
-    filter: drop-shadow(0 0 5px rgba(0,160,255,.6));
-}
-
-@keyframes rain {
-    to {
-        transform: translateY(115vh);
-    }
-}
-
-/* =========================
-   TOP BAR
-========================= */
-
-.topbar {
-    position: fixed;
-    top: 18px;
-    left: 18px;
-    right: 18px;
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    pointer-events: none;
-}
-
-.logo {
-    pointer-events: auto;
-    font-family: "Nunito", sans-serif;
-    font-weight: 800;
-    font-size: 18px;
-    padding: 10px 16px;
-    border: 1px solid rgba(100,200,255,.25);
-    border-radius: 15px;
-    background: rgba(0,20,40,.65);
-    backdrop-filter: blur(15px);
-}
-
-/* =========================
-   CLOCK TOP LEFT
-========================= */
-
-.clock-box {
-    position: fixed;
-    top: 18px;
-    left: 18px;
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    z-index: 1100;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background:
-        radial-gradient(circle,
-            rgba(4,38,65,.95) 0 54%,
-            rgba(0,139,255,.18) 55%,
-            rgba(0,160,255,.04) 68%,
-            transparent 70%);
-    border: 2px solid rgba(40,190,255,.5);
-    box-shadow:
-        0 0 25px rgba(0,150,255,.3),
-        inset 0 0 30px rgba(0,130,255,.15);
-    overflow: hidden;
-}
-
-.clock-box::before {
-    content: "";
-    position: absolute;
-    inset: 7px;
-    border-radius: 50%;
-    border: 1px dashed rgba(100,210,255,.35);
-}
-
-.clock-water {
-    position: absolute;
-    left: -20%;
-    bottom: -10%;
-    width: 140%;
-    height: 55%;
-    background:
-        linear-gradient(
-            to bottom,
-            rgba(0,180,255,.12),
-            rgba(0,90,180,.35)
-        );
-    border-radius: 50% 50% 0 0;
-    animation: waterMove 3s ease-in-out infinite alternate;
-}
-
-@keyframes waterMove {
-    from {
-        transform: translateX(-8px);
-    }
-    to {
-        transform: translateX(8px);
-    }
-}
-
-.clock-content {
-    position: relative;
-    z-index: 3;
-    text-align: center;
-}
-
-.clock-time {
-    font-family: "Nunito", sans-serif;
-    font-size: 24px;
-    font-weight: 800;
-    text-shadow: 0 0 12px rgba(0,200,255,.7);
-}
-
-.clock-period {
-    margin-top: 4px;
-    color: #7edbff;
-    font-size: 11px;
-    font-weight: 600;
-}
-
-/* Con thuyền */
-.boat {
-    position: absolute;
-    bottom: 50px;
-    z-index: 5;
-    font-size: 37px;
-    animation: boatFloat 2.4s ease-in-out infinite;
-    filter: drop-shadow(0 4px 5px rgba(0,0,0,.4));
-}
-
-@keyframes boatFloat {
-    0%,100% {
-        transform: translateY(0) rotate(-2deg);
-    }
-    50% {
-        transform: translateY(-5px) rotate(2deg);
-    }
+.loading-percent{
+    margin-top:12px;
+    color:#67cfff;
+    font-size:14px;
 }
 
 /* =========================
    MAIN
 ========================= */
 
-main {
-    position: relative;
-    z-index: 2;
+#main{
+    min-height:100vh;
+    position:relative;
+    overflow:hidden;
+    padding:90px 20px 60px;
+    background:
+        radial-gradient(circle at 50% 20%,rgba(0,132,255,.16),transparent 35%),
+        linear-gradient(180deg,#03182a,#010914 80%);
 }
 
-.hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 120px 20px 70px;
+/* =========================
+   BLUE RAIN
+========================= */
+
+.rain{
+    position:fixed;
+    top:-100px;
+    width:2px;
+    height:70px;
+    background:linear-gradient(
+        to bottom,
+        transparent,
+        rgba(0,174,255,.9)
+    );
+    opacity:.65;
+    pointer-events:none;
+    z-index:2;
+    animation:rainFall linear infinite;
 }
 
-.hero-inner {
-    max-width: 950px;
+@keyframes rainFall{
+    from{
+        transform:translateY(-100px);
+    }
+    to{
+        transform:translateY(110vh);
+    }
 }
 
-.hero-avatar {
-    width: 125px;
-    height: 125px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 4px solid rgba(60,190,255,.65);
+/* =========================
+   SMALL CLOCK
+========================= */
+
+.clock-box{
+    position:fixed;
+    top:15px;
+    left:15px;
+    z-index:100;
+    width:125px;
+    padding:8px 10px;
+    border-radius:12px;
+
+    background:rgba(2,18,32,.72);
+    border:1px solid rgba(0,174,255,.45);
+
     box-shadow:
-        0 0 25px rgba(0,160,255,.45),
-        0 0 80px rgba(0,100,255,.15);
-    margin-bottom: 25px;
+        0 0 15px rgba(0,136,255,.18),
+        inset 0 0 15px rgba(0,136,255,.05);
+
+    backdrop-filter:blur(8px);
 }
 
-.hero h1 {
-    font-family: "Nunito", sans-serif;
-    font-size: clamp(38px, 8vw, 82px);
-    font-weight: 800;
-    line-height: 1.05;
-    background: linear-gradient(
+.clock-time{
+    font-size:17px;
+    font-weight:700;
+    letter-spacing:1px;
+    text-align:center;
+    color:#e9f9ff;
+    text-shadow:0 0 8px rgba(0,174,255,.7);
+}
+
+.clock-date{
+    margin-top:3px;
+    text-align:center;
+    font-size:9px;
+    color:#72cfff;
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.content{
+    position:relative;
+    z-index:5;
+    width:min(720px,100%);
+    margin:auto;
+    text-align:center;
+}
+
+.avatar{
+    width:105px;
+    height:105px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid rgba(0,174,255,.8);
+
+    box-shadow:
+        0 0 15px rgba(0,153,255,.65),
+        0 0 45px rgba(0,102,255,.2);
+}
+
+.title{
+    margin-top:18px;
+    font-size:clamp(32px,7vw,62px);
+    font-weight:900;
+    letter-spacing:3px;
+
+    background:linear-gradient(
         90deg,
         #ffffff,
-        #75d8ff,
+        #66d7ff,
         #ffffff
     );
-    -webkit-background-clip: text;
-    color: transparent;
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    text-shadow:0 0 25px rgba(0,174,255,.25);
 }
 
-.hero-description {
-    margin-top: 18px;
-    color: #9bb6ca;
-    font-size: 16px;
-    min-height: 30px;
-}
-
-.typed {
-    color: #53c9ff;
-    font-weight: 700;
-}
-
-.cursor {
-    color: #53c9ff;
-    animation: blink .7s infinite;
-}
-
-@keyframes blink {
-    50% { opacity: 0; }
+.typing{
+    margin-top:10px;
+    min-height:26px;
+    color:#9bdcff;
+    font-size:15px;
 }
 
 /* =========================
-   BUTTONS
+   MOD LIST - DỌC
 ========================= */
 
-.buttons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 35px;
+.mod-list{
+    width:min(480px,100%);
+    margin:35px auto 0;
+
+    display:flex;
+    flex-direction:column;
+    gap:14px;
 }
 
-.btn {
-    text-decoration: none;
-    color: white;
-    padding: 13px 22px;
-    border-radius: 14px;
-    border: 1px solid rgba(90,200,255,.3);
-    background: rgba(10,35,60,.7);
-    backdrop-filter: blur(12px);
-    font-weight: 700;
-    transition: .25s ease;
-}
+.mod-card{
+    width:100%;
+    min-height:75px;
 
-.btn:hover {
-    transform: translateY(-4px);
-    border-color: #3cc7ff;
-    box-shadow: 0 8px 30px rgba(0,160,255,.25);
-}
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 
-/* =========================
-   MOD SECTION
-========================= */
+    padding:16px 20px;
 
-.section {
-    padding: 80px 20px;
-}
+    text-decoration:none;
+    color:white;
 
-.section-title {
-    text-align: center;
-    font-family: "Nunito", sans-serif;
-    font-size: clamp(30px, 5vw, 50px);
-    margin-bottom: 12px;
-}
+    border-radius:15px;
 
-.section-subtitle {
-    text-align: center;
-    color: #8ca7bb;
-    margin-bottom: 45px;
-}
-
-.mod-grid {
-    max-width: 1100px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
-}
-
-.mod-card {
-    min-height: 220px;
-    padding: 25px;
-    border-radius: 24px;
-    border: 1px solid rgba(90,190,255,.2);
     background:
         linear-gradient(
-            145deg,
-            rgba(15,50,80,.8),
-            rgba(2,17,30,.85)
+            135deg,
+            rgba(0,128,255,.15),
+            rgba(255,255,255,.035)
         );
-    box-shadow: 0 15px 40px rgba(0,0,0,.25);
-    transition: .3s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+
+    border:1px solid rgba(0,174,255,.28);
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,.25),
+        inset 0 0 20px rgba(0,120,255,.025);
+
+    backdrop-filter:blur(8px);
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease,
+        background .25s ease;
 }
 
-.mod-card:hover {
-    transform: translateY(-8px);
-    border-color: rgba(50,190,255,.65);
-    box-shadow: 0 20px 50px rgba(0,130,255,.2);
+.mod-card:hover{
+    transform:translateY(-3px);
+    border-color:rgba(0,196,255,.8);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0,145,255,.25),
+            rgba(255,255,255,.06)
+        );
+
+    box-shadow:
+        0 12px 35px rgba(0,112,255,.2),
+        0 0 20px rgba(0,174,255,.12);
 }
 
-.mod-number {
-    color: #45c9ff;
-    font-size: 13px;
-    font-weight: 700;
+.mod-left{
+    display:flex;
+    align-items:center;
+    gap:13px;
+    text-align:left;
 }
 
-.mod-icon {
-    font-size: 40px;
-    margin: 15px 0;
+.mod-number{
+    width:38px;
+    height:38px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:10px;
+
+    background:rgba(0,145,255,.15);
+    border:1px solid rgba(0,174,255,.3);
+
+    color:#70d6ff;
+    font-weight:800;
+    font-size:13px;
 }
 
-.mod-card h3 {
-    font-family: "Nunito", sans-serif;
-    font-size: 20px;
+.mod-name{
+    font-weight:800;
+    font-size:16px;
 }
 
-.mod-card p {
-    color: #8daabd;
-    font-size: 13px;
-    line-height: 1.6;
-    margin-top: 8px;
+.mod-desc{
+    margin-top:4px;
+    font-size:11px;
+    color:#7fb5cf;
 }
 
-.card-button {
-    display: inline-block;
-    text-align: center;
-    text-decoration: none;
-    color: white;
-    margin-top: 20px;
-    padding: 11px 14px;
-    border-radius: 12px;
-    background: rgba(0,140,255,.18);
-    border: 1px solid rgba(70,190,255,.3);
-    transition: .2s;
-}
-
-.card-button:hover {
-    background: rgba(0,160,255,.35);
-}
-
-/* =========================
-   ABOUT
-========================= */
-
-.about {
-    max-width: 850px;
-    margin: auto;
-    text-align: center;
-    color: #a8c0d0;
-    line-height: 1.9;
+.arrow{
+    color:#65d3ff;
+    font-size:20px;
 }
 
 /* =========================
    DISCORD
 ========================= */
 
-.discord-section {
-    text-align: center;
-    padding: 80px 20px 110px;
+.discord{
+    display:block;
+    width:min(480px,100%);
+    margin:25px auto 0;
+
+    padding:14px 20px;
+
+    border-radius:14px;
+
+    color:white;
+    text-decoration:none;
+
+    background:linear-gradient(
+        135deg,
+        rgba(80,100,255,.25),
+        rgba(0,150,255,.13)
+    );
+
+    border:1px solid rgba(111,137,255,.4);
+
+    transition:.25s ease;
 }
 
-.discord-button {
-    display: inline-block;
-    margin-top: 25px;
-    padding: 16px 30px;
-    border-radius: 16px;
-    background: linear-gradient(135deg,#5865f2,#4752c4);
-    color: white;
-    text-decoration: none;
-    font-weight: 800;
-    box-shadow: 0 12px 35px rgba(88,101,242,.25);
-    transition: .25s;
+.discord:hover{
+    transform:translateY(-2px);
+    box-shadow:0 0 25px rgba(75,100,255,.25);
 }
 
-.discord-button:hover {
-    transform: translateY(-5px) scale(1.02);
+.discord strong{
+    display:block;
+    font-size:15px;
+}
+
+.discord span{
+    display:block;
+    margin-top:4px;
+    font-size:11px;
+    color:#a7c7ff;
 }
 
 /* =========================
    FOOTER
 ========================= */
 
-footer {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    padding: 25px;
-    border-top: 1px solid rgba(100,190,255,.1);
-    color: #60798c;
-    font-size: 13px;
+.footer{
+    position:relative;
+    z-index:5;
+
+    margin-top:50px;
+
+    text-align:center;
+
+    color:#52778d;
+    font-size:11px;
 }
 
 /* =========================
-   RESPONSIVE
+   MOBILE
 ========================= */
 
-@media (max-width: 900px) {
-    .mod-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
+@media(max-width:600px){
 
-@media (max-width: 600px) {
-
-    .clock-box {
-        width: 125px;
-        height: 125px;
-        top: 12px;
-        left: 12px;
+    #main{
+        padding-top:80px;
+        padding-left:15px;
+        padding-right:15px;
     }
 
-    .clock-time {
-        font-size: 17px;
+    .clock-box{
+        width:110px;
+        top:10px;
+        left:10px;
     }
 
-    .clock-period {
-        font-size: 9px;
+    .clock-time{
+        font-size:15px;
     }
 
-    .boat {
-        bottom: 35px;
-        font-size: 27px;
+    .avatar{
+        width:90px;
+        height:90px;
     }
 
-    .logo {
-        display: none;
+    .title{
+        font-size:34px;
+        letter-spacing:2px;
     }
 
-    .hero {
-        padding-top: 170px;
+    .mod-card{
+        min-height:68px;
+        padding:13px 15px;
     }
 
-    .hero-avatar {
-        width: 100px;
-        height: 100px;
-    }
-
-    .mod-grid {
-        grid-template-columns: 1fr;
-        max-width: 420px;
-    }
-
-    .section {
-        padding-top: 60px;
+    .mod-name{
+        font-size:14px;
     }
 }
 </style>
@@ -563,293 +435,253 @@ footer {
      LOADING
 ========================= -->
 
-<div id="loadingScreen">
+<section id="loading">
 
     <div class="loading-title">
-        XUÂN KHÁNH WEBSITE
+        XUÂN KHÁNH
     </div>
 
-    <div class="loading-subtitle">
-        Welcome to XUÂN KHÁNH WEBSITE
+    <div class="loading-sub">
+        WELCOME TO MY WEBSITE
     </div>
 
     <div class="loading-bar">
-        <div id="loadingProgress" class="loading-progress"></div>
+        <div
+            class="loading-progress"
+            id="loadingProgress">
+        </div>
     </div>
 
-    <div id="loadingPercent" class="loading-percent">
+    <div
+        class="loading-percent"
+        id="loadingPercent">
         0%
     </div>
 
-</div>
+</section>
 
-<!-- =========================
-     BLUE RAIN
-========================= -->
-
-<div id="rainContainer"></div>
-
-<!-- =========================
-     CLOCK
-========================= -->
-
-<div class="clock-box">
-
-    <div class="clock-water"></div>
-
-    <div class="boat">
-        🚤
-    </div>
-
-    <div class="clock-content">
-
-        <div id="clockTime" class="clock-time">
-            00:00:00
-        </div>
-
-        <div id="clockPeriod" class="clock-period">
-            ĐANG TẢI...
-        </div>
-
-    </div>
-
-</div>
 
 <!-- =========================
      MAIN
 ========================= -->
 
-<main>
+<main id="main">
 
-<section class="hero">
+    <!-- CLOCK -->
 
-    <div class="hero-inner">
+    <div class="clock-box">
 
-        <!-- Avatar của bạn -->
+        <div
+            class="clock-time"
+            id="clock">
+            00:00:00
+        </div>
+
+        <div
+            class="clock-date"
+            id="date">
+            --
+        </div>
+
+    </div>
+
+
+    <!-- CONTENT -->
+
+    <div class="content">
+
+        <!-- AVATAR
+             Thay URL này bằng ảnh của bạn nếu cần.
+        -->
+
         <img
-            class="hero-avatar"
+            class="avatar"
             src="https://raw.githubusercontent.com/xuankhanh/xuankhanh/main/_7da372b3b4c51b49db120dbbf0c06858.tplv-tiktokx-cropcenter100100.jpeg"
             alt="XUÂN KHÁNH"
-            onerror="this.style.display='none'"
         >
 
-        <h1>XUÂN KHÁNH</h1>
 
-        <div class="hero-description">
-            <span id="typedText" class="typed"></span>
-            <span class="cursor">|</span>
+        <h1 class="title">
+            XUÂN KHÁNH
+        </h1>
+
+
+        <!-- TEXT GÕ -->
+
+        <div
+            class="typing"
+            id="typing">
         </div>
 
-        <div class="buttons">
 
-            <a class="btn" href="#mods">
-                🎮 XEM MOD
-            </a>
+        <!-- MOD LIST -->
+
+        <div class="mod-list">
 
             <a
-                class="btn"
-                href="https://discord.gg/cGgs4hTfN2"
-                target="_blank"
-                rel="noopener noreferrer"
+                class="mod-card"
+                href="#"
+                onclick="return false;"
             >
-                💬 DISCORD
+
+                <div class="mod-left">
+
+                    <div class="mod-number">
+                        01
+                    </div>
+
+                    <div>
+
+                        <div class="mod-name">
+                            AVO Esp
+                        </div>
+
+                        <div class="mod-desc">
+                            Game resource
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="arrow">
+                    ›
+                </div>
+
+            </a>
+
+
+            <a
+                class="mod-card"
+                href="#"
+                onclick="return false;"
+            >
+
+                <div class="mod-left">
+
+                    <div class="mod-number">
+                        02
+                    </div>
+
+                    <div>
+
+                        <div class="mod-name">
+                            AOV Map + Mod
+                        </div>
+
+                        <div class="mod-desc">
+                            Game resource
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="arrow">
+                    ›
+                </div>
+
+            </a>
+
+
+            <a
+                class="mod-card"
+                href="#"
+                onclick="return false;"
+            >
+
+                <div class="mod-left">
+
+                    <div class="mod-number">
+                        03
+                    </div>
+
+                    <div>
+
+                        <div class="mod-name">
+                            AOV ESP
+                        </div>
+
+                        <div class="mod-desc">
+                            Game resource
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="arrow">
+                    ›
+                </div>
+
+            </a>
+
+
+            <!-- ROBLOX -->
+
+            <a
+                class="mod-card"
+                href="#"
+                onclick="return false;"
+            >
+
+                <div class="mod-left">
+
+                    <div class="mod-number">
+                        R
+                    </div>
+
+                    <div>
+
+                        <div class="mod-name">
+                            Roblox
+                        </div>
+
+                        <div class="mod-desc">
+                            Roblox resources
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="arrow">
+                    ›
+                </div>
+
             </a>
 
         </div>
+
+
+        <!-- DISCORD -->
+
+        <a
+            class="discord"
+            href="https://discord.gg/cGgs4hTfN2"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+
+            <strong>
+                💬 THAM GIA DISCORD
+            </strong>
+
+            <span>
+                Tham gia cộng đồng XUÂN KHÁNH
+            </span>
+
+        </a>
 
     </div>
 
-</section>
 
-<!-- =========================
-     MODS
-========================= -->
-
-<section id="mods" class="section">
-
-    <h2 class="section-title">
-        MOD &amp; GAME
-    </h2>
-
-    <p class="section-subtitle">
-        Nội dung được cập nhật tại đây
-    </p>
-
-    <div class="mod-grid">
-
-        <!-- AVO Esp -->
-        <div class="mod-card">
-
-            <div>
-
-                <div class="mod-number">
-                    MOD 01
-                </div>
-
-                <div class="mod-icon">
-                    👁️
-                </div>
-
-                <h3>
-                    AVO Esp
-                </h3>
-
-                <p>
-                    Khu vực giới thiệu nội dung AVO Esp.
-                </p>
-
-            </div>
-
-            <a class="card-button" href="#contact">
-                XEM THÊM
-            </a>
-
-        </div>
-
-        <!-- AOV MAP + MOD -->
-        <div class="mod-card">
-
-            <div>
-
-                <div class="mod-number">
-                    MOD 02
-                </div>
-
-                <div class="mod-icon">
-                    🗺️
-                </div>
-
-                <h3>
-                    AOV MAP + MOD
-                </h3>
-
-                <p>
-                    Khu vực giới thiệu nội dung AOV.
-                </p>
-
-            </div>
-
-            <a class="card-button" href="#contact">
-                XEM THÊM
-            </a>
-
-        </div>
-
-        <!-- AOV ESP -->
-        <div class="mod-card">
-
-            <div>
-
-                <div class="mod-number">
-                    MOD 03
-                </div>
-
-                <div class="mod-icon">
-                    🎯
-                </div>
-
-                <h3>
-                    AOV ESP
-                </h3>
-
-                <p>
-                    Khu vực giới thiệu nội dung AOV ESP.
-                </p>
-
-            </div>
-
-            <a class="card-button" href="#contact">
-                XEM THÊM
-            </a>
-
-        </div>
-
-        <!-- ROBLOX -->
-        <div class="mod-card">
-
-            <div>
-
-                <div class="mod-number">
-                    GAME 04
-                </div>
-
-                <div class="mod-icon">
-                    🎮
-                </div>
-
-                <h3>
-                    MOD ROBLOX
-                </h3>
-
-                <p>
-                    Mở trang nội dung Roblox được cung cấp bên ngoài.
-                </p>
-
-            </div>
-
-            <a
-                class="card-button"
-                href="https://ipas.cc/ly7yzv"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                MỞ TRANG
-            </a>
-
-        </div>
-
+    <div class="footer">
+        © 2026 XUÂN KHÁNH • All Rights Reserved
     </div>
-
-</section>
-
-<!-- =========================
-     GIỚI THIỆU
-========================= -->
-
-<section class="section">
-
-    <h2 class="section-title">
-        GIỚI THIỆU
-    </h2>
-
-    <p class="about">
-        Chào mừng bạn đến với website của XUÂN KHÁNH.
-        Đây là nơi tổng hợp thông tin, nội dung game và các liên kết
-        được chia sẻ trên website.
-    </p>
-
-</section>
-
-<!-- =========================
-     DISCORD
-========================= -->
-
-<section id="contact" class="discord-section">
-
-    <h2 class="section-title">
-        THAM GIA DISCORD
-    </h2>
-
-    <p class="section-subtitle">
-        Tham gia Discord để cập nhật thông tin mới.
-    </p>
-
-    <a
-        class="discord-button"
-        href="https://discord.gg/cGgs4hTfN2"
-        target="_blank"
-        rel="noopener noreferrer"
-    >
-        💬 JOIN DISCORD
-    </a>
-
-</section>
 
 </main>
 
-<footer>
-    © 2026 XUÂN KHÁNH WEBSITE
-</footer>
 
 <script>
 
@@ -865,10 +697,10 @@ const progressBar =
 const progressText =
     document.getElementById("loadingPercent");
 
-const loadingScreen =
-    document.getElementById("loadingScreen");
+const loading =
+    document.getElementById("loading");
 
-const loadingInterval =
+const loadingTimer =
     setInterval(() => {
 
         progress++;
@@ -879,66 +711,68 @@ const loadingInterval =
         progressText.textContent =
             progress + "%";
 
-        if (progress >= 100) {
+        if(progress >= 100){
 
-            clearInterval(loadingInterval);
+            clearInterval(loadingTimer);
 
             setTimeout(() => {
 
-                loadingScreen.classList.add("hide");
+                loading.classList.add("hide");
 
-            }, 500);
+            },500);
+
         }
 
-    }, 25);
+    },25);
 
 
 /* =========================
    CLOCK
 ========================= */
 
-function updateClock() {
+function updateClock(){
 
     const now = new Date();
 
-    const h =
+    const hours =
         String(now.getHours()).padStart(2,"0");
 
-    const m =
+    const minutes =
         String(now.getMinutes()).padStart(2,"0");
 
-    const s =
+    const seconds =
         String(now.getSeconds()).padStart(2,"0");
 
-    document.getElementById("clockTime")
-        .textContent = `${h}:${m}:${s}`;
+    document.getElementById("clock")
+        .textContent =
+        `${hours}:${minutes}:${seconds}`;
 
 
-    let period = "";
+    const days = [
+        "CN",
+        "T2",
+        "T3",
+        "T4",
+        "T5",
+        "T6",
+        "T7"
+    ];
 
-    if (now.getHours() >= 5 &&
-        now.getHours() < 11) {
+    const day =
+        days[now.getDay()];
 
-        period = "🌅 BUỔI SÁNG";
+    const date =
+        String(now.getDate()).padStart(2,"0");
 
-    } else if (now.getHours() >= 11 &&
-               now.getHours() < 14) {
+    const month =
+        String(now.getMonth()+1).padStart(2,"0");
 
-        period = "☀️ BUỔI TRƯA";
+    const year =
+        now.getFullYear();
 
-    } else if (now.getHours() >= 14 &&
-               now.getHours() < 18) {
-
-        period = "🌇 BUỔI CHIỀU";
-
-    } else {
-
-        period = "🌙 BUỔI TỐI";
-
-    }
-
-    document.getElementById("clockPeriod")
-        .textContent = period;
+    document.getElementById("date")
+        .textContent =
+        `${day} ${date}/${month}/${year}`;
 }
 
 updateClock();
@@ -947,65 +781,65 @@ setInterval(updateClock,1000);
 
 
 /* =========================
-   TYPED TEXT
+   TYPING EFFECT
 ========================= */
 
-const typedStrings = [
+const messages = [
     "HELLO EVERYONE 👋",
     "WELCOME TO XUÂN KHÁNH WEBSITE",
-    "TẢI GAME TẠI ĐÂY 🎮",
-    "THANK YOU FOR VISITING ❤️"
+    "HAVE A NICE DAY ✨"
 ];
 
-let textIndex = 0;
+let messageIndex = 0;
 let charIndex = 0;
 let deleting = false;
 
-const typedElement =
-    document.getElementById("typedText");
+const typing =
+    document.getElementById("typing");
 
-function typeEffect() {
+function typeEffect(){
 
-    const current =
-        typedStrings[textIndex];
+    const text =
+        messages[messageIndex];
 
-    if (!deleting) {
+    if(!deleting){
 
-        typedElement.textContent =
-            current.substring(0,charIndex + 1);
+        typing.textContent =
+            text.substring(0,charIndex + 1);
 
         charIndex++;
 
-        if (charIndex >= current.length) {
+        if(charIndex === text.length){
 
             deleting = true;
 
-            setTimeout(typeEffect,1400);
+            setTimeout(typeEffect,1800);
 
             return;
         }
 
-    } else {
+    }else{
 
-        typedElement.textContent =
-            current.substring(0,charIndex - 1);
+        typing.textContent =
+            text.substring(0,charIndex - 1);
 
         charIndex--;
 
-        if (charIndex <= 0) {
+        if(charIndex === 0){
 
             deleting = false;
 
-            textIndex =
-                (textIndex + 1) %
-                typedStrings.length;
+            messageIndex++;
 
+            if(messageIndex >= messages.length){
+                messageIndex = 0;
+            }
         }
     }
 
     setTimeout(
         typeEffect,
-        deleting ? 35 : 75
+        deleting ? 35 : 70
     );
 }
 
@@ -1016,58 +850,46 @@ typeEffect();
    BLUE RAIN
 ========================= */
 
-const rainContainer =
-    document.getElementById("rainContainer");
+function createRain(){
 
-function createRain() {
-
-    const drop =
+    const rain =
         document.createElement("div");
 
-    drop.className =
-        "raindrop";
+    rain.className = "rain";
 
-    drop.style.left =
-        Math.random() * 100 + "%";
+    rain.style.left =
+        Math.random() * 100 + "vw";
 
-    drop.style.height =
-        (20 + Math.random() * 50) + "px";
+    rain.style.height =
+        (40 + Math.random()*70) + "px";
 
-    drop.style.opacity =
-        (0.25 + Math.random() * 0.7);
+    rain.style.opacity =
+        (0.25 + Math.random()*0.55);
 
-    drop.style.animationDuration =
-        (0.6 + Math.random() * 1.4) + "s";
+    rain.style.animationDuration =
+        (0.7 + Math.random()*1.2) + "s";
 
-    drop.style.animationDelay =
-        Math.random() * 1.5 + "s";
-
-    rainContainer.appendChild(drop);
+    document.body.appendChild(rain);
 
     setTimeout(() => {
-        drop.remove();
-    },3000);
+        rain.remove();
+    },2500);
 }
 
-setInterval(createRain,45);
+
+/* Tạo mưa liên tục */
+
+setInterval(createRain,70);
 
 
-/* =========================
-   REDUCE MOTION SUPPORT
-========================= */
+/* Tạo thêm một lượng mưa ban đầu */
 
-if (
-    window.matchMedia &&
-    window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-    ).matches
-) {
+for(let i=0;i<70;i++){
 
-    document
-        .querySelectorAll(".raindrop")
-        .forEach(el => {
-            el.style.animation = "none";
-        });
+    setTimeout(
+        createRain,
+        Math.random()*1800
+    );
 }
 
 </script>
