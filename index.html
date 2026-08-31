@@ -4,69 +4,42 @@
 <head>
     <meta charset="UTF-8">
 
-    <!-- =========================
-         SEO - XUÂN KHÁNH MOD
-         ========================= -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>XUÂN KHÁNH MOD | Xuankhanhmod</title>
+    <title>XUÂN KHÁNH MOD - Xuankhanhmod</title>
 
     <meta name="description"
-          content="XUÂN KHÁNH MOD - Xuankhanhmod. Website chính thức của XUÂN KHÁNH.">
+          content="XUÂN KHÁNH MOD - Xuankhanhmod. Website cập nhật các bản MOD và thông tin mới nhất.">
 
     <meta name="keywords"
-          content="xuankhanhmod, XUÂN KHÁNH MOD, Xuân Khánh, Xuankhanh, Roblox">
+          content="xuankhanhmod, XUÂN KHÁNH MOD, Xuân Khánh Mod, mod Roblox, Roblox">
 
     <meta name="author" content="XUÂN KHÁNH">
-    <meta name="robots" content="index, follow">
-    <meta name="googlebot" content="index, follow">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
 
     <link rel="canonical"
           href="https://xuankhanhmod.github.io/xuankhanh.com/">
 
-    <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="XUÂN KHÁNH MOD | Xuankhanhmod">
+
+    <meta property="og:title"
+          content="XUÂN KHÁNH MOD - Xuankhanhmod">
+
     <meta property="og:description"
-          content="Website chính thức của XUÂN KHÁNH.">
+          content="Website chính thức XUÂN KHÁNH MOD.">
+
     <meta property="og:url"
           content="https://xuankhanhmod.github.io/xuankhanh.com/">
-    <meta property="og:site_name" content="XUÂN KHÁNH MOD">
+
+    <meta property="og:site_name"
+          content="XUÂN KHÁNH MOD">
+
     <meta property="og:locale" content="vi_VN">
 
-    <!-- Favicon -->
-    <link rel="icon"
-          href="https://raw.githubusercontent.com/xuankhanh/xuankhanh/main/_7da372b3b4c51b49db120dbbf0c06858.tplv-tiktokx-cropcenter100100.jpeg"
-          type="image/jpeg">
-
-    <!-- Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap"
-          rel="stylesheet">
-
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "XUÂN KHÁNH MOD",
-        "alternateName": "xuankhanhmod",
-        "url": "https://xuankhanhmod.github.io/xuankhanh.com/",
-        "description": "Website chính thức của XUÂN KHÁNH.",
-        "inLanguage": "vi-VN"
-    }
-    </script>
+    <meta name="theme-color" content="#008cff">
 
     <style>
-
-        /* =========================
-           RESET
-           ========================= */
-
         * {
             margin: 0;
             padding: 0;
@@ -79,114 +52,94 @@
 
         body {
             min-height: 100vh;
-            font-family: "Be Vietnam Pro", Arial, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
             background:
-                radial-gradient(circle at 50% 0%, #12345c 0%, #07111f 45%, #02060c 100%);
+                radial-gradient(circle at top, #073b68 0%, #021522 45%, #01080d 100%);
             color: white;
             overflow-x: hidden;
         }
 
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        button {
-            font-family: inherit;
-        }
-
         /* =========================
-           LOADING SCREEN
+           LOADING
            ========================= */
 
-        #loading-screen {
+        #loading {
             position: fixed;
             inset: 0;
             z-index: 99999;
-            background:
-                radial-gradient(circle at center, #102c4b 0%, #050b13 55%, #02050a 100%);
+            background: #020b12;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: opacity .7s ease, visibility .7s ease;
+            flex-direction: column;
+            transition: opacity .5s ease, visibility .5s ease;
         }
 
-        #loading-screen.hide {
+        #loading.hide {
             opacity: 0;
             visibility: hidden;
         }
 
-        .loading-box {
-            width: min(600px, 85%);
+        .loading-title {
+            font-size: 25px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 22px;
             text-align: center;
         }
 
-        .loading-title {
-            font-size: clamp(26px, 5vw, 46px);
-            font-weight: 800;
-            letter-spacing: 2px;
-            margin-bottom: 12px;
-        }
-
-        .loading-subtitle {
-            color: #91a9c2;
-            font-size: 14px;
-            margin-bottom: 28px;
+        .loading-box {
+            width: min(400px, 80vw);
+            height: 6px;
+            background: rgba(255,255,255,.12);
+            border-radius: 20px;
+            overflow: hidden;
         }
 
         .loading-bar {
-            width: 100%;
-            height: 10px;
-            border-radius: 20px;
-            background: rgba(255,255,255,.08);
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,.1);
-        }
-
-        .loading-progress {
             width: 0%;
             height: 100%;
-            border-radius: inherit;
-            background: linear-gradient(90deg, #168cff, #55c8ff);
-            box-shadow: 0 0 20px rgba(30,150,255,.7);
-            transition: width .08s linear;
+            background: #00aaff;
+            box-shadow: 0 0 15px #00aaff;
+            animation: loading 2.2s ease forwards;
         }
 
-        .loading-percent {
-            margin-top: 15px;
-            font-size: 16px;
-            font-weight: 700;
-            color: #55c8ff;
+        @keyframes loading {
+            from {
+                width: 0%;
+            }
+
+            to {
+                width: 100%;
+            }
         }
 
         /* =========================
-           BLUE RAIN
+           MƯA XANH
            ========================= */
 
         #rain {
             position: fixed;
             inset: 0;
             pointer-events: none;
-            z-index: 2;
+            z-index: 1;
             overflow: hidden;
         }
 
-        .rain-drop {
+        .drop {
             position: absolute;
-            top: -120px;
+            top: -100px;
             width: 1px;
             height: 70px;
             background: linear-gradient(
-                to bottom,
                 transparent,
-                rgba(60,180,255,.25),
-                rgba(30,145,255,.85)
+                rgba(0, 174, 255, .9)
             );
-            filter: drop-shadow(0 0 4px rgba(30,150,255,.4));
-            animation: rainFall linear infinite;
+            animation: rain linear infinite;
+            opacity: .65;
         }
 
-        @keyframes rainFall {
+        @keyframes rain {
             from {
                 transform: translateY(-100px);
             }
@@ -197,238 +150,187 @@
         }
 
         /* =========================
-           SMALL CLOCK
+           ĐỒNG HỒ
            ========================= */
 
         .clock {
             position: fixed;
-            top: 16px;
-            left: 16px;
-            z-index: 1000;
+            top: 15px;
+            left: 15px;
+            z-index: 20;
 
-            min-width: 118px;
-            padding: 8px 11px;
+            min-width: 120px;
+            padding: 9px 13px;
 
-            border-radius: 12px;
+            border: 1px solid rgba(0,174,255,.35);
+            border-radius: 10px;
 
-            background: rgba(5, 16, 29, .78);
-            border: 1px solid rgba(82,177,255,.28);
-
-            backdrop-filter: blur(12px);
+            background: rgba(2,15,25,.72);
+            backdrop-filter: blur(10px);
 
             box-shadow:
-                0 8px 30px rgba(0,0,0,.3),
-                inset 0 0 20px rgba(40,150,255,.04);
+                0 0 20px rgba(0,150,255,.12);
         }
 
         .clock-time {
-            font-size: 15px;
-            font-weight: 700;
+            font-size: 18px;
+            font-weight: bold;
+            color: #eaf9ff;
             letter-spacing: 1px;
-            color: #dff5ff;
         }
 
         .clock-date {
-            margin-top: 2px;
-            font-size: 9px;
-            color: #7194b2;
+            margin-top: 3px;
+            font-size: 10px;
+            color: #75cfff;
         }
 
         /* =========================
-           MAIN
+           CONTAINER
            ========================= */
 
-        #main {
+        .page {
             position: relative;
             z-index: 5;
-            min-height: 100vh;
-            padding: 95px 20px 50px;
-        }
-
-        .container {
-            width: min(760px, 100%);
+            width: min(900px, 92%);
             margin: auto;
+            padding: 110px 0 60px;
         }
 
         /* =========================
-           HERO
+           HEADER
            ========================= */
 
-        .hero {
+        header {
             text-align: center;
-            padding: 25px 0 35px;
+            margin-bottom: 45px;
         }
 
-        .avatar-wrap {
-            width: 105px;
-            height: 105px;
-            margin: 0 auto 20px;
-            padding: 3px;
-
-            border-radius: 50%;
+        .logo {
+            font-size: clamp(34px, 7vw, 64px);
+            font-weight: 900;
+            letter-spacing: 4px;
 
             background: linear-gradient(
-                135deg,
-                #3eb9ff,
-                #0876d9,
-                #174d7a
+                90deg,
+                #ffffff,
+                #00b7ff,
+                #ffffff
             );
 
-            box-shadow:
-                0 0 30px rgba(30,150,255,.35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            text-shadow: 0 0 30px rgba(0,174,255,.2);
         }
 
-        .hero-avatar {
-            width: 100%;
-            height: 100%;
-            display: block;
-
-            object-fit: cover;
-            border-radius: 50%;
-
-            border: 3px solid #07111d;
-        }
-
-        .hero h1 {
-            font-size: clamp(30px, 7vw, 52px);
-            font-weight: 800;
-            letter-spacing: 2px;
-        }
-
-        .hero h1 span {
-            color: #42b8ff;
-        }
-
-        .typing {
-            min-height: 28px;
+        .subtitle {
             margin-top: 12px;
-            color: #9cb4ca;
-            font-size: 14px;
+            color: #9bdfff;
+            font-size: 15px;
         }
 
-        .cursor {
-            display: inline-block;
-            width: 2px;
-            height: 16px;
-            margin-left: 4px;
-            vertical-align: -3px;
-            background: #49baff;
-            animation: blink .8s infinite;
-        }
+        .line {
+            width: 90px;
+            height: 3px;
+            margin: 20px auto 0;
 
-        @keyframes blink {
-            50% {
-                opacity: 0;
-            }
+            background: #00aaff;
+            border-radius: 10px;
+
+            box-shadow: 0 0 15px #00aaff;
         }
 
         /* =========================
-           SECTION TITLE
+           MOD LIST
            ========================= */
 
-        .section-title {
-            text-align: center;
-            margin: 25px 0 15px;
-        }
-
-        .section-title h2 {
-            font-size: 18px;
-            font-weight: 700;
-        }
-
-        .section-title p {
-            margin-top: 5px;
-            color: #708ba5;
-            font-size: 12px;
-        }
-
-        /* =========================
-           MOD LIST - DỌC
-           ========================= */
-
-        .mod-list {
+        .mods {
             display: flex;
             flex-direction: column;
-            gap: 13px;
+            gap: 15px;
         }
 
         .mod-card {
-            position: relative;
             display: flex;
             align-items: center;
-            gap: 16px;
+            justify-content: space-between;
 
             width: 100%;
-            padding: 17px 19px;
+            min-height: 82px;
 
-            border-radius: 17px;
+            padding: 18px 22px;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(19,43,68,.86),
-                    rgba(5,17,29,.88)
-                );
+            color: white;
+            text-decoration: none;
 
-            border: 1px solid rgba(90,173,236,.18);
+            background: rgba(4,22,34,.78);
+
+            border: 1px solid rgba(0,174,255,.2);
+            border-radius: 15px;
+
+            backdrop-filter: blur(10px);
 
             transition:
                 transform .25s ease,
                 border-color .25s ease,
+                background .25s ease,
                 box-shadow .25s ease;
         }
 
         .mod-card:hover {
-            transform: translateY(-3px);
-            border-color: rgba(69,181,255,.55);
+            transform: translateX(7px);
+
+            border-color: rgba(0,174,255,.8);
+
+            background: rgba(5,35,54,.9);
 
             box-shadow:
-                0 12px 35px rgba(0,0,0,.35),
-                0 0 25px rgba(20,140,255,.08);
+                0 0 25px rgba(0,174,255,.15);
+        }
+
+        .mod-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
         }
 
         .mod-icon {
-            flex: 0 0 48px;
-            width: 48px;
-            height: 48px;
+            width: 46px;
+            height: 46px;
 
             display: flex;
             align-items: center;
             justify-content: center;
 
-            border-radius: 14px;
+            border-radius: 12px;
 
-            background: rgba(33,146,224,.12);
-            border: 1px solid rgba(75,175,239,.2);
+            background: rgba(0,174,255,.12);
+
+            border: 1px solid rgba(0,174,255,.25);
 
             font-size: 22px;
         }
 
-        .mod-info {
-            flex: 1;
-            min-width: 0;
+        .mod-name {
+            font-size: 17px;
+            font-weight: bold;
         }
 
-        .mod-info h3 {
-            font-size: 15px;
-            font-weight: 700;
-        }
-
-        .mod-info p {
+        .mod-description {
             margin-top: 4px;
-            color: #7893ac;
-            font-size: 11px;
-            line-height: 1.5;
+            color: #82b5ca;
+            font-size: 12px;
         }
 
         .arrow {
-            color: #51baff;
-            font-size: 20px;
-            transition: transform .25s ease;
+            color: #00aaff;
+            font-size: 25px;
+            transition: transform .2s ease;
         }
 
         .mod-card:hover .arrow {
-            transform: translateX(4px);
+            transform: translateX(5px);
         }
 
         /* =========================
@@ -436,98 +338,46 @@
            ========================= */
 
         .discord {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 15px;
+            margin-top: 35px;
 
-            margin-top: 25px;
-            padding: 18px 20px;
+            display: block;
 
-            border-radius: 17px;
+            padding: 18px;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(31,79,116,.65),
-                    rgba(7,23,39,.85)
-                );
+            text-align: center;
 
-            border: 1px solid rgba(82,177,255,.2);
-        }
-
-        .discord-left {
-            display: flex;
-            align-items: center;
-            gap: 13px;
-        }
-
-        .discord-icon {
-            width: 44px;
-            height: 44px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border-radius: 13px;
-
-            background: #5865f2;
-            font-size: 20px;
-        }
-
-        .discord h3 {
-            font-size: 14px;
-        }
-
-        .discord p {
-            margin-top: 3px;
-            color: #809ab3;
-            font-size: 10px;
-        }
-
-        .discord-button {
-            padding: 10px 15px;
-
-            border-radius: 10px;
-
-            background: #5865f2;
+            text-decoration: none;
             color: white;
 
+            background: linear-gradient(
+                135deg,
+                #5865f2,
+                #4752c4
+            );
+
+            border-radius: 14px;
+
+            font-weight: bold;
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,.25);
+
+            transition:
+                transform .2s ease,
+                filter .2s ease;
+        }
+
+        .discord:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.1);
+        }
+
+        .discord-small {
+            margin-top: 6px;
+            display: block;
             font-size: 11px;
-            font-weight: 700;
-
-            transition: .2s ease;
-        }
-
-        .discord-button:hover {
-            transform: translateY(-2px);
-            filter: brightness(1.12);
-        }
-
-        /* =========================
-           ABOUT
-           ========================= */
-
-        .about {
-            margin-top: 25px;
-            padding: 22px;
-
-            border-radius: 17px;
-
-            background: rgba(5,17,29,.72);
-            border: 1px solid rgba(90,173,236,.14);
-        }
-
-        .about h2 {
-            font-size: 17px;
-            margin-bottom: 9px;
-        }
-
-        .about p {
-            color: #829bb2;
-            font-size: 12px;
-            line-height: 1.8;
+            opacity: .8;
+            font-weight: normal;
         }
 
         /* =========================
@@ -535,58 +385,66 @@
            ========================= */
 
         footer {
-            padding: 30px 0 10px;
+            margin-top: 55px;
+
             text-align: center;
-            color: #526b82;
-            font-size: 10px;
+
+            color: #608292;
+
+            font-size: 12px;
+
+            line-height: 1.7;
         }
 
         /* =========================
-           RESPONSIVE
+           MOBILE
            ========================= */
 
         @media (max-width: 600px) {
 
-            #main {
-                padding-top: 85px;
+            .page {
+                width: 92%;
+                padding-top: 95px;
             }
 
             .clock {
                 top: 10px;
                 left: 10px;
                 min-width: 105px;
+                padding: 7px 9px;
             }
 
             .clock-time {
-                font-size: 13px;
+                font-size: 15px;
             }
 
-            .avatar-wrap {
-                width: 88px;
-                height: 88px;
+            .clock-date {
+                font-size: 9px;
             }
 
             .mod-card {
+                min-height: 74px;
                 padding: 14px;
             }
 
             .mod-icon {
-                width: 42px;
-                height: 42px;
-                flex-basis: 42px;
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
             }
 
-            .discord {
-                align-items: flex-start;
-                flex-direction: column;
+            .mod-name {
+                font-size: 15px;
             }
 
-            .discord-button {
-                width: 100%;
-                text-align: center;
+            .mod-description {
+                font-size: 11px;
+            }
+
+            .arrow {
+                font-size: 20px;
             }
         }
-
     </style>
 </head>
 
@@ -596,294 +454,231 @@
          LOADING
          ========================= -->
 
-    <div id="loading-screen">
-
-        <div class="loading-box">
-
-            <div class="loading-title">
-                XUÂN KHÁNH
-            </div>
-
-            <div class="loading-subtitle">
-                Welcome to XUÂN KHÁNH website
-            </div>
-
-            <div class="loading-bar">
-                <div
-                    class="loading-progress"
-                    id="loading-progress">
-                </div>
-            </div>
-
-            <div
-                class="loading-percent"
-                id="loading-percent">
-                0%
-            </div>
-
+    <div id="loading">
+        <div class="loading-title">
+            XUÂN KHÁNH MOD
         </div>
 
+        <div class="loading-box">
+            <div class="loading-bar"></div>
+        </div>
     </div>
 
-
     <!-- =========================
-         BLUE RAIN
+         MƯA
          ========================= -->
 
     <div id="rain"></div>
 
-
     <!-- =========================
-         SMALL CLOCK
+         ĐỒNG HỒ
          ========================= -->
 
     <div class="clock">
-
-        <div
-            class="clock-time"
-            id="clock-time">
+        <div class="clock-time" id="clockTime">
             00:00:00
         </div>
 
-        <div
-            class="clock-date"
-            id="clock-date">
-            00/00/0000
+        <div class="clock-date" id="clockDate">
+            Đang tải...
         </div>
-
     </div>
 
-
     <!-- =========================
-         MAIN WEBSITE
+         WEBSITE
          ========================= -->
 
-    <main id="main">
+    <main class="page">
 
-        <div class="container">
+        <header>
 
-
-            <!-- HERO -->
-
-            <section class="hero">
-
-                <div class="avatar-wrap">
-
-                    <img
-                        class="hero-avatar"
-                        src="https://raw.githubusercontent.com/xuankhanh/xuankhanh/main/_7da372b3b4c51b49db120dbbf0c06858.tplv-tiktokx-cropcenter100100.jpeg"
-                        alt="XUÂN KHÁNH">
-
-                </div>
-
-                <h1>
-                    XUÂN <span>KHÁNH</span>
-                </h1>
-
-                <div class="typing">
-                    <span id="typed-text"></span>
-                    <span class="cursor"></span>
-                </div>
-
-            </section>
-
-
-            <!-- MOD -->
-
-            <div class="section-title">
-
-                <h2>
-                    MOD ROBLOX
-                </h2>
-
-                <p>
-                    Chọn nội dung bên dưới
-                </p>
-
+            <div class="logo">
+                XUÂN KHÁNH
             </div>
 
+            <div class="subtitle">
+                MOD • TOOLS • DOWNLOAD
+            </div>
 
-            <section class="mod-list">
+            <div class="line"></div>
 
+        </header>
 
-                <!-- ROBLOX -->
+        <!-- =========================
+             DANH SÁCH MOD
+             ========================= -->
 
-                <a
-                    class="mod-card"
-                    href="https://ipas.cc/ly7yzv">
+        <section class="mods">
+
+            <!-- ROBLOX -->
+            <a
+                href="https://ipas.cc/q5bpq9"
+                class="mod-card"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <div class="mod-left">
 
                     <div class="mod-icon">
                         🎮
                     </div>
 
-                    <div class="mod-info">
-
-                        <h3>
-                            ROBLOX
-                        </h3>
-
-                        <p>
-                            Mở trang bạn đã cung cấp
-                        </p>
-
-                    </div>
-
-                    <div class="arrow">
-                        →
-                    </div>
-
-                </a>
-
-
-                <!-- AVO ESP -->
-
-                <a
-                    class="mod-card"
-                    href="#">
-
-                    <div class="mod-icon">
-                        👁️
-                    </div>
-
-                    <div class="mod-info">
-
-                        <h3>
-                            AVO ESP
-                        </h3>
-
-                        <p>
-                            Thông tin AVO ESP
-                        </p>
-
-                    </div>
-
-                    <div class="arrow">
-                        →
-                    </div>
-
-                </a>
-
-
-                <!-- AOV MAP MOD -->
-
-                <a
-                    class="mod-card"
-                    href="#">
-
-                    <div class="mod-icon">
-                        🗺️
-                    </div>
-
-                    <div class="mod-info">
-
-                        <h3>
-                            AOV MAP MOD
-                        </h3>
-
-                        <p>
-                            Trang thông tin và nội dung AOV
-                        </p>
-
-                    </div>
-
-                    <div class="arrow">
-                        →
-                    </div>
-
-                </a>
-
-
-                <!-- AOV ESP -->
-
-                <a
-                    class="mod-card"
-                    href="#">
-
-                    <div class="mod-icon">
-                        🔵
-                    </div>
-
-                    <div class="mod-info">
-
-                        <h3>
-                            AOV ESP
-                        </h3>
-
-                        <p>
-                            Trang thông tin AOV ESP
-                        </p>
-
-                    </div>
-
-                    <div class="arrow">
-                        →
-                    </div>
-
-                </a>
-
-
-            </section>
-
-
-            <!-- DISCORD -->
-
-            <section class="discord">
-
-                <div class="discord-left">
-
-                    <div class="discord-icon">
-                        💬
-                    </div>
-
                     <div>
 
-                        <h3>
-                            Discord XUÂN KHÁNH
-                        </h3>
+                        <div class="mod-name">
+                            Roblox
+                        </div>
 
-                        <p>
-                            Tham gia cộng đồng của mình
-                        </p>
+                        <div class="mod-description">
+                            Tải Roblox
+                        </div>
 
                     </div>
 
                 </div>
 
-                <a
-                    class="discord-button"
-                    href="https://discord.gg/cGgs4hTfN2"
-                    target="_blank"
-                    rel="noopener noreferrer">
+                <div class="arrow">
+                    →
+                </div>
 
-                    THAM GIA
-
-                </a>
-
-            </section>
+            </a>
 
 
-            <!-- ABOUT -->
+            <!-- AVO ESP -->
+            <a
+                href="#"
+                class="mod-card"
+            >
 
-            <section class="about">
+                <div class="mod-left">
 
-                <h2>
-                    GIỚI THIỆU
-                </h2>
+                    <div class="mod-icon">
+                        👁️
+                    </div>
 
-                <p>
-                    Chào mừng bạn đến với website XUÂN KHÁNH.
-                    Đây là nơi tổng hợp thông tin, nội dung và
-                    các liên kết của XUÂN KHÁNH.
-                </p>
+                    <div>
 
-            </section>
+                        <div class="mod-name">
+                            AVO Esp
+                        </div>
+
+                        <div class="mod-description">
+                            Công cụ AVO Esp
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="arrow">
+                    →
+                </div>
+
+            </a>
 
 
-            <footer>
-                © 2026 XUÂN KHÁNH MOD
-            </footer>
+            <!-- MOD 3 -->
+            <a
+                href="#"
+                class="mod-card"
+            >
 
-        </div>
+                <div class="mod-left">
+
+                    <div class="mod-icon">
+                        ⚡
+                    </div>
+
+                    <div>
+
+                        <div class="mod-name">
+                            MOD TOOL
+                        </div>
+
+                        <div class="mod-description">
+                            Công cụ và tiện ích
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="arrow">
+                    →
+                </div>
+
+            </a>
+
+
+            <!-- MOD 4 -->
+            <a
+                href="#"
+                class="mod-card"
+            >
+
+                <div class="mod-left">
+
+                    <div class="mod-icon">
+                        🔧
+                    </div>
+
+                    <div>
+
+                        <div class="mod-name">
+                            MOD MENU
+                        </div>
+
+                        <div class="mod-description">
+                            Các bản cập nhật mới
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="arrow">
+                    →
+                </div>
+
+            </a>
+
+        </section>
+
+
+        <!-- =========================
+             DISCORD
+             ========================= -->
+
+        <a
+            class="discord"
+            href="https://discord.gg/cGgs4hTfN2"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+
+            💬 THAM GIA DISCORD
+
+            <span class="discord-small">
+                Cộng đồng XUÂN KHÁNH
+            </span>
+
+        </a>
+
+
+        <!-- =========================
+             FOOTER
+             ========================= -->
+
+        <footer>
+
+            © 2026 XUÂN KHÁNH MOD
+
+            <br>
+
+            Website: xuankhanhmod.github.io
+
+        </footer>
 
     </main>
 
@@ -895,64 +690,61 @@
     <script>
 
         /* =========================
-           LOADING 0 → 100
+           LOADING
            ========================= */
 
-        const loadingScreen =
-            document.getElementById("loading-screen");
+        window.addEventListener("load", function () {
 
-        const loadingProgress =
-            document.getElementById("loading-progress");
+            setTimeout(function () {
 
-        const loadingPercent =
-            document.getElementById("loading-percent");
+                document
+                    .getElementById("loading")
+                    .classList
+                    .add("hide");
 
-        let progress = 0;
+            }, 2300);
 
-        const loadingTimer =
-            setInterval(() => {
-
-                progress++;
-
-                loadingProgress.style.width =
-                    progress + "%";
-
-                loadingPercent.textContent =
-                    progress + "%";
-
-                if (progress >= 100) {
-
-                    clearInterval(loadingTimer);
-
-                    setTimeout(() => {
-
-                        loadingScreen.classList.add("hide");
-
-                    }, 450);
-
-                }
-
-            }, 25);
+        });
 
 
         /* =========================
-           CLOCK
+           ĐỒNG HỒ
            ========================= */
 
         function updateClock() {
 
             const now = new Date();
 
-            const hours =
+            const h =
                 String(now.getHours()).padStart(2, "0");
 
-            const minutes =
+            const m =
                 String(now.getMinutes()).padStart(2, "0");
 
-            const seconds =
+            const s =
                 String(now.getSeconds()).padStart(2, "0");
 
+
+            document.getElementById("clockTime")
+                .textContent =
+                h + ":" + m + ":" + s;
+
+
+            const days = [
+                "Chủ nhật",
+                "Thứ hai",
+                "Thứ ba",
+                "Thứ tư",
+                "Thứ năm",
+                "Thứ sáu",
+                "Thứ bảy"
+            ];
+
+
             const day =
+                days[now.getDay()];
+
+            const date =
                 String(now.getDate()).padStart(2, "0");
 
             const month =
@@ -961,15 +753,16 @@
             const year =
                 now.getFullYear();
 
-            document.getElementById("clock-time")
-                .textContent =
-                `${hours}:${minutes}:${seconds}`;
 
-            document.getElementById("clock-date")
+            document.getElementById("clockDate")
                 .textContent =
-                `${day}/${month}/${year}`;
+                day + " • " +
+                date + "/" +
+                month + "/" +
+                year;
 
         }
+
 
         updateClock();
 
@@ -977,137 +770,38 @@
 
 
         /* =========================
-           BLUE RAIN
+           TẠO MƯA XANH
            ========================= */
 
         const rain =
             document.getElementById("rain");
 
-        function createRain() {
 
-            for (let i = 0; i < 90; i++) {
+        for (let i = 0; i < 110; i++) {
 
-                const drop =
-                    document.createElement("div");
+            const drop =
+                document.createElement("div");
 
-                drop.className =
-                    "rain-drop";
+            drop.className = "drop";
 
-                drop.style.left =
-                    Math.random() * 100 + "%";
+            drop.style.left =
+                Math.random() * 100 + "%";
 
-                drop.style.height =
-                    (35 + Math.random() * 65) + "px";
+            drop.style.height =
+                (35 + Math.random() * 55) + "px";
 
-                drop.style.opacity =
-                    (0.2 + Math.random() * 0.65);
+            drop.style.animationDuration =
+                (0.45 + Math.random() * 0.75) + "s";
 
-                drop.style.animationDuration =
-                    (0.5 + Math.random() * 0.9) + "s";
+            drop.style.animationDelay =
+                Math.random() * 2 + "s";
 
-                drop.style.animationDelay =
-                    (-Math.random() * 2) + "s";
+            drop.style.opacity =
+                (0.25 + Math.random() * 0.55);
 
-                rain.appendChild(drop);
-
-            }
+            rain.appendChild(drop);
 
         }
-
-        createRain();
-
-
-        /* =========================
-           TYPING EFFECT
-           ========================= */
-
-        const texts = [
-
-            "HELLO EVERYONE 👋",
-
-            "WELCOME TO XUÂN KHÁNH WEBSITE",
-
-            "CHÀO MỪNG BẠN ĐẾN VỚI WEBSITE",
-
-            "XUANKHANHMOD"
-
-        ];
-
-        const typedText =
-            document.getElementById("typed-text");
-
-        let textIndex = 0;
-        let charIndex = 0;
-        let deleting = false;
-
-        function typeEffect() {
-
-            const current =
-                texts[textIndex];
-
-            if (!deleting) {
-
-                typedText.textContent =
-                    current.substring(0, charIndex + 1);
-
-                charIndex++;
-
-                if (charIndex === current.length) {
-
-                    deleting = true;
-
-                    setTimeout(typeEffect, 1600);
-
-                    return;
-
-                }
-
-            } else {
-
-                typedText.textContent =
-                    current.substring(0, charIndex - 1);
-
-                charIndex--;
-
-                if (charIndex === 0) {
-
-                    deleting = false;
-
-                    textIndex =
-                        (textIndex + 1) % texts.length;
-
-                }
-
-            }
-
-            setTimeout(
-                typeEffect,
-                deleting ? 35 : 70
-            );
-
-        }
-
-        typeEffect();
-
-
-        /* =========================
-           PREVENT # JUMP
-           ========================= */
-
-        document.querySelectorAll(
-            '.mod-card[href="#"]'
-        ).forEach(card => {
-
-            card.addEventListener(
-                "click",
-                function(event) {
-
-                    event.preventDefault();
-
-                }
-            );
-
-        });
 
     </script>
 
