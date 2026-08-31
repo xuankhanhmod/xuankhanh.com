@@ -2,897 +2,1114 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
 
-<title>XUÂN KHÁNH WEBSITE</title>
+    <!-- =========================
+         SEO - XUÂN KHÁNH MOD
+         ========================= -->
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+    <title>XUÂN KHÁNH MOD | Xuankhanhmod</title>
 
-html,body{
-    width:100%;
-    min-height:100%;
-    font-family:Arial,Helvetica,sans-serif;
-    background:#020b18;
-    color:white;
-    overflow-x:hidden;
-}
+    <meta name="description"
+          content="XUÂN KHÁNH MOD - Xuankhanhmod. Website chính thức của XUÂN KHÁNH.">
 
-/* =========================
-   LOADING SCREEN
-========================= */
+    <meta name="keywords"
+          content="xuankhanhmod, XUÂN KHÁNH MOD, Xuân Khánh, Xuankhanh, Roblox">
 
-#loading{
-    position:fixed;
-    inset:0;
-    z-index:9999;
-    background:
-        radial-gradient(circle at center,#08345c 0%,#031322 45%,#01060d 100%);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex-direction:column;
-    transition:opacity .8s ease,visibility .8s ease;
-}
+    <meta name="author" content="XUÂN KHÁNH">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
 
-#loading.hide{
-    opacity:0;
-    visibility:hidden;
-}
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-.loading-title{
-    font-size:clamp(25px,5vw,55px);
-    font-weight:800;
-    letter-spacing:4px;
-    text-align:center;
-    text-shadow:
-        0 0 10px #008cff,
-        0 0 30px #006eff;
-}
+    <link rel="canonical"
+          href="https://xuankhanhmod.github.io/xuankhanh.com/">
 
-.loading-sub{
-    margin-top:12px;
-    color:#8fd8ff;
-    font-size:14px;
-    letter-spacing:2px;
-}
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="XUÂN KHÁNH MOD | Xuankhanhmod">
+    <meta property="og:description"
+          content="Website chính thức của XUÂN KHÁNH.">
+    <meta property="og:url"
+          content="https://xuankhanhmod.github.io/xuankhanh.com/">
+    <meta property="og:site_name" content="XUÂN KHÁNH MOD">
+    <meta property="og:locale" content="vi_VN">
 
-.loading-bar{
-    width:min(420px,80%);
-    height:8px;
-    margin-top:30px;
-    border-radius:20px;
-    background:rgba(255,255,255,.12);
-    overflow:hidden;
-    border:1px solid rgba(0,174,255,.35);
-}
+    <!-- Favicon -->
+    <link rel="icon"
+          href="https://raw.githubusercontent.com/xuankhanh/xuankhanh/main/_7da372b3b4c51b49db120dbbf0c06858.tplv-tiktokx-cropcenter100100.jpeg"
+          type="image/jpeg">
 
-.loading-progress{
-    width:0%;
-    height:100%;
-    background:linear-gradient(90deg,#008cff,#00d9ff);
-    box-shadow:0 0 15px #00aaff;
-    transition:width .15s linear;
-}
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-.loading-percent{
-    margin-top:12px;
-    color:#67cfff;
-    font-size:14px;
-}
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
 
-/* =========================
-   MAIN
-========================= */
-
-#main{
-    min-height:100vh;
-    position:relative;
-    overflow:hidden;
-    padding:90px 20px 60px;
-    background:
-        radial-gradient(circle at 50% 20%,rgba(0,132,255,.16),transparent 35%),
-        linear-gradient(180deg,#03182a,#010914 80%);
-}
-
-/* =========================
-   BLUE RAIN
-========================= */
-
-.rain{
-    position:fixed;
-    top:-100px;
-    width:2px;
-    height:70px;
-    background:linear-gradient(
-        to bottom,
-        transparent,
-        rgba(0,174,255,.9)
-    );
-    opacity:.65;
-    pointer-events:none;
-    z-index:2;
-    animation:rainFall linear infinite;
-}
-
-@keyframes rainFall{
-    from{
-        transform:translateY(-100px);
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "XUÂN KHÁNH MOD",
+        "alternateName": "xuankhanhmod",
+        "url": "https://xuankhanhmod.github.io/xuankhanh.com/",
+        "description": "Website chính thức của XUÂN KHÁNH.",
+        "inLanguage": "vi-VN"
     }
-    to{
-        transform:translateY(110vh);
-    }
-}
-
-/* =========================
-   SMALL CLOCK
-========================= */
-
-.clock-box{
-    position:fixed;
-    top:15px;
-    left:15px;
-    z-index:100;
-    width:125px;
-    padding:8px 10px;
-    border-radius:12px;
-
-    background:rgba(2,18,32,.72);
-    border:1px solid rgba(0,174,255,.45);
-
-    box-shadow:
-        0 0 15px rgba(0,136,255,.18),
-        inset 0 0 15px rgba(0,136,255,.05);
-
-    backdrop-filter:blur(8px);
-}
-
-.clock-time{
-    font-size:17px;
-    font-weight:700;
-    letter-spacing:1px;
-    text-align:center;
-    color:#e9f9ff;
-    text-shadow:0 0 8px rgba(0,174,255,.7);
-}
-
-.clock-date{
-    margin-top:3px;
-    text-align:center;
-    font-size:9px;
-    color:#72cfff;
-}
-
-/* =========================
-   CONTENT
-========================= */
-
-.content{
-    position:relative;
-    z-index:5;
-    width:min(720px,100%);
-    margin:auto;
-    text-align:center;
-}
-
-.avatar{
-    width:105px;
-    height:105px;
-    border-radius:50%;
-    object-fit:cover;
-    border:3px solid rgba(0,174,255,.8);
-
-    box-shadow:
-        0 0 15px rgba(0,153,255,.65),
-        0 0 45px rgba(0,102,255,.2);
-}
-
-.title{
-    margin-top:18px;
-    font-size:clamp(32px,7vw,62px);
-    font-weight:900;
-    letter-spacing:3px;
-
-    background:linear-gradient(
-        90deg,
-        #ffffff,
-        #66d7ff,
-        #ffffff
-    );
-
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-
-    text-shadow:0 0 25px rgba(0,174,255,.25);
-}
-
-.typing{
-    margin-top:10px;
-    min-height:26px;
-    color:#9bdcff;
-    font-size:15px;
-}
-
-/* =========================
-   MOD LIST - DỌC
-========================= */
-
-.mod-list{
-    width:min(480px,100%);
-    margin:35px auto 0;
-
-    display:flex;
-    flex-direction:column;
-    gap:14px;
-}
-
-.mod-card{
-    width:100%;
-    min-height:75px;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    padding:16px 20px;
-
-    text-decoration:none;
-    color:white;
-
-    border-radius:15px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(0,128,255,.15),
-            rgba(255,255,255,.035)
-        );
-
-    border:1px solid rgba(0,174,255,.28);
-
-    box-shadow:
-        0 8px 30px rgba(0,0,0,.25),
-        inset 0 0 20px rgba(0,120,255,.025);
-
-    backdrop-filter:blur(8px);
-
-    transition:
-        transform .25s ease,
-        border-color .25s ease,
-        box-shadow .25s ease,
-        background .25s ease;
-}
-
-.mod-card:hover{
-    transform:translateY(-3px);
-    border-color:rgba(0,196,255,.8);
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(0,145,255,.25),
-            rgba(255,255,255,.06)
-        );
-
-    box-shadow:
-        0 12px 35px rgba(0,112,255,.2),
-        0 0 20px rgba(0,174,255,.12);
-}
-
-.mod-left{
-    display:flex;
-    align-items:center;
-    gap:13px;
-    text-align:left;
-}
-
-.mod-number{
-    width:38px;
-    height:38px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:10px;
-
-    background:rgba(0,145,255,.15);
-    border:1px solid rgba(0,174,255,.3);
-
-    color:#70d6ff;
-    font-weight:800;
-    font-size:13px;
-}
-
-.mod-name{
-    font-weight:800;
-    font-size:16px;
-}
-
-.mod-desc{
-    margin-top:4px;
-    font-size:11px;
-    color:#7fb5cf;
-}
-
-.arrow{
-    color:#65d3ff;
-    font-size:20px;
-}
-
-/* =========================
-   DISCORD
-========================= */
-
-.discord{
-    display:block;
-    width:min(480px,100%);
-    margin:25px auto 0;
-
-    padding:14px 20px;
-
-    border-radius:14px;
-
-    color:white;
-    text-decoration:none;
-
-    background:linear-gradient(
-        135deg,
-        rgba(80,100,255,.25),
-        rgba(0,150,255,.13)
-    );
-
-    border:1px solid rgba(111,137,255,.4);
-
-    transition:.25s ease;
-}
-
-.discord:hover{
-    transform:translateY(-2px);
-    box-shadow:0 0 25px rgba(75,100,255,.25);
-}
-
-.discord strong{
-    display:block;
-    font-size:15px;
-}
-
-.discord span{
-    display:block;
-    margin-top:4px;
-    font-size:11px;
-    color:#a7c7ff;
-}
-
-/* =========================
-   FOOTER
-========================= */
-
-.footer{
-    position:relative;
-    z-index:5;
-
-    margin-top:50px;
-
-    text-align:center;
-
-    color:#52778d;
-    font-size:11px;
-}
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:600px){
-
-    #main{
-        padding-top:80px;
-        padding-left:15px;
-        padding-right:15px;
-    }
-
-    .clock-box{
-        width:110px;
-        top:10px;
-        left:10px;
-    }
-
-    .clock-time{
-        font-size:15px;
-    }
-
-    .avatar{
-        width:90px;
-        height:90px;
-    }
-
-    .title{
-        font-size:34px;
-        letter-spacing:2px;
-    }
-
-    .mod-card{
-        min-height:68px;
-        padding:13px 15px;
-    }
-
-    .mod-name{
-        font-size:14px;
-    }
-}
-</style>
+    </script>
+
+    <style>
+
+        /* =========================
+           RESET
+           ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: "Be Vietnam Pro", Arial, sans-serif;
+            background:
+                radial-gradient(circle at 50% 0%, #12345c 0%, #07111f 45%, #02060c 100%);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        /* =========================
+           LOADING SCREEN
+           ========================= */
+
+        #loading-screen {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            background:
+                radial-gradient(circle at center, #102c4b 0%, #050b13 55%, #02050a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity .7s ease, visibility .7s ease;
+        }
+
+        #loading-screen.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loading-box {
+            width: min(600px, 85%);
+            text-align: center;
+        }
+
+        .loading-title {
+            font-size: clamp(26px, 5vw, 46px);
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .loading-subtitle {
+            color: #91a9c2;
+            font-size: 14px;
+            margin-bottom: 28px;
+        }
+
+        .loading-bar {
+            width: 100%;
+            height: 10px;
+            border-radius: 20px;
+            background: rgba(255,255,255,.08);
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,.1);
+        }
+
+        .loading-progress {
+            width: 0%;
+            height: 100%;
+            border-radius: inherit;
+            background: linear-gradient(90deg, #168cff, #55c8ff);
+            box-shadow: 0 0 20px rgba(30,150,255,.7);
+            transition: width .08s linear;
+        }
+
+        .loading-percent {
+            margin-top: 15px;
+            font-size: 16px;
+            font-weight: 700;
+            color: #55c8ff;
+        }
+
+        /* =========================
+           BLUE RAIN
+           ========================= */
+
+        #rain {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .rain-drop {
+            position: absolute;
+            top: -120px;
+            width: 1px;
+            height: 70px;
+            background: linear-gradient(
+                to bottom,
+                transparent,
+                rgba(60,180,255,.25),
+                rgba(30,145,255,.85)
+            );
+            filter: drop-shadow(0 0 4px rgba(30,150,255,.4));
+            animation: rainFall linear infinite;
+        }
+
+        @keyframes rainFall {
+            from {
+                transform: translateY(-100px);
+            }
+
+            to {
+                transform: translateY(110vh);
+            }
+        }
+
+        /* =========================
+           SMALL CLOCK
+           ========================= */
+
+        .clock {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            z-index: 1000;
+
+            min-width: 118px;
+            padding: 8px 11px;
+
+            border-radius: 12px;
+
+            background: rgba(5, 16, 29, .78);
+            border: 1px solid rgba(82,177,255,.28);
+
+            backdrop-filter: blur(12px);
+
+            box-shadow:
+                0 8px 30px rgba(0,0,0,.3),
+                inset 0 0 20px rgba(40,150,255,.04);
+        }
+
+        .clock-time {
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #dff5ff;
+        }
+
+        .clock-date {
+            margin-top: 2px;
+            font-size: 9px;
+            color: #7194b2;
+        }
+
+        /* =========================
+           MAIN
+           ========================= */
+
+        #main {
+            position: relative;
+            z-index: 5;
+            min-height: 100vh;
+            padding: 95px 20px 50px;
+        }
+
+        .container {
+            width: min(760px, 100%);
+            margin: auto;
+        }
+
+        /* =========================
+           HERO
+           ========================= */
+
+        .hero {
+            text-align: center;
+            padding: 25px 0 35px;
+        }
+
+        .avatar-wrap {
+            width: 105px;
+            height: 105px;
+            margin: 0 auto 20px;
+            padding: 3px;
+
+            border-radius: 50%;
+
+            background: linear-gradient(
+                135deg,
+                #3eb9ff,
+                #0876d9,
+                #174d7a
+            );
+
+            box-shadow:
+                0 0 30px rgba(30,150,255,.35);
+        }
+
+        .hero-avatar {
+            width: 100%;
+            height: 100%;
+            display: block;
+
+            object-fit: cover;
+            border-radius: 50%;
+
+            border: 3px solid #07111d;
+        }
+
+        .hero h1 {
+            font-size: clamp(30px, 7vw, 52px);
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .hero h1 span {
+            color: #42b8ff;
+        }
+
+        .typing {
+            min-height: 28px;
+            margin-top: 12px;
+            color: #9cb4ca;
+            font-size: 14px;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 2px;
+            height: 16px;
+            margin-left: 4px;
+            vertical-align: -3px;
+            background: #49baff;
+            animation: blink .8s infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* =========================
+           SECTION TITLE
+           ========================= */
+
+        .section-title {
+            text-align: center;
+            margin: 25px 0 15px;
+        }
+
+        .section-title h2 {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .section-title p {
+            margin-top: 5px;
+            color: #708ba5;
+            font-size: 12px;
+        }
+
+        /* =========================
+           MOD LIST - DỌC
+           ========================= */
+
+        .mod-list {
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+        }
+
+        .mod-card {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+
+            width: 100%;
+            padding: 17px 19px;
+
+            border-radius: 17px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(19,43,68,.86),
+                    rgba(5,17,29,.88)
+                );
+
+            border: 1px solid rgba(90,173,236,.18);
+
+            transition:
+                transform .25s ease,
+                border-color .25s ease,
+                box-shadow .25s ease;
+        }
+
+        .mod-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(69,181,255,.55);
+
+            box-shadow:
+                0 12px 35px rgba(0,0,0,.35),
+                0 0 25px rgba(20,140,255,.08);
+        }
+
+        .mod-icon {
+            flex: 0 0 48px;
+            width: 48px;
+            height: 48px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 14px;
+
+            background: rgba(33,146,224,.12);
+            border: 1px solid rgba(75,175,239,.2);
+
+            font-size: 22px;
+        }
+
+        .mod-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .mod-info h3 {
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .mod-info p {
+            margin-top: 4px;
+            color: #7893ac;
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+        .arrow {
+            color: #51baff;
+            font-size: 20px;
+            transition: transform .25s ease;
+        }
+
+        .mod-card:hover .arrow {
+            transform: translateX(4px);
+        }
+
+        /* =========================
+           DISCORD
+           ========================= */
+
+        .discord {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+
+            margin-top: 25px;
+            padding: 18px 20px;
+
+            border-radius: 17px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(31,79,116,.65),
+                    rgba(7,23,39,.85)
+                );
+
+            border: 1px solid rgba(82,177,255,.2);
+        }
+
+        .discord-left {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+        }
+
+        .discord-icon {
+            width: 44px;
+            height: 44px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 13px;
+
+            background: #5865f2;
+            font-size: 20px;
+        }
+
+        .discord h3 {
+            font-size: 14px;
+        }
+
+        .discord p {
+            margin-top: 3px;
+            color: #809ab3;
+            font-size: 10px;
+        }
+
+        .discord-button {
+            padding: 10px 15px;
+
+            border-radius: 10px;
+
+            background: #5865f2;
+            color: white;
+
+            font-size: 11px;
+            font-weight: 700;
+
+            transition: .2s ease;
+        }
+
+        .discord-button:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.12);
+        }
+
+        /* =========================
+           ABOUT
+           ========================= */
+
+        .about {
+            margin-top: 25px;
+            padding: 22px;
+
+            border-radius: 17px;
+
+            background: rgba(5,17,29,.72);
+            border: 1px solid rgba(90,173,236,.14);
+        }
+
+        .about h2 {
+            font-size: 17px;
+            margin-bottom: 9px;
+        }
+
+        .about p {
+            color: #829bb2;
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        /* =========================
+           FOOTER
+           ========================= */
+
+        footer {
+            padding: 30px 0 10px;
+            text-align: center;
+            color: #526b82;
+            font-size: 10px;
+        }
+
+        /* =========================
+           RESPONSIVE
+           ========================= */
+
+        @media (max-width: 600px) {
+
+            #main {
+                padding-top: 85px;
+            }
+
+            .clock {
+                top: 10px;
+                left: 10px;
+                min-width: 105px;
+            }
+
+            .clock-time {
+                font-size: 13px;
+            }
+
+            .avatar-wrap {
+                width: 88px;
+                height: 88px;
+            }
+
+            .mod-card {
+                padding: 14px;
+            }
+
+            .mod-icon {
+                width: 42px;
+                height: 42px;
+                flex-basis: 42px;
+            }
+
+            .discord {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .discord-button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+    </style>
 </head>
 
 <body>
 
-<!-- =========================
-     LOADING
-========================= -->
+    <!-- =========================
+         LOADING
+         ========================= -->
 
-<section id="loading">
+    <div id="loading-screen">
 
-    <div class="loading-title">
-        XUÂN KHÁNH
-    </div>
+        <div class="loading-box">
 
-    <div class="loading-sub">
-        WELCOME TO MY WEBSITE
-    </div>
+            <div class="loading-title">
+                XUÂN KHÁNH
+            </div>
 
-    <div class="loading-bar">
-        <div
-            class="loading-progress"
-            id="loadingProgress">
+            <div class="loading-subtitle">
+                Welcome to XUÂN KHÁNH website
+            </div>
+
+            <div class="loading-bar">
+                <div
+                    class="loading-progress"
+                    id="loading-progress">
+                </div>
+            </div>
+
+            <div
+                class="loading-percent"
+                id="loading-percent">
+                0%
+            </div>
+
         </div>
+
     </div>
 
-    <div
-        class="loading-percent"
-        id="loadingPercent">
-        0%
-    </div>
 
-</section>
+    <!-- =========================
+         BLUE RAIN
+         ========================= -->
+
+    <div id="rain"></div>
 
 
-<!-- =========================
-     MAIN
-========================= -->
+    <!-- =========================
+         SMALL CLOCK
+         ========================= -->
 
-<main id="main">
-
-    <!-- CLOCK -->
-
-    <div class="clock-box">
+    <div class="clock">
 
         <div
             class="clock-time"
-            id="clock">
+            id="clock-time">
             00:00:00
         </div>
 
         <div
             class="clock-date"
-            id="date">
-            --
+            id="clock-date">
+            00/00/0000
         </div>
 
     </div>
 
 
-    <!-- CONTENT -->
+    <!-- =========================
+         MAIN WEBSITE
+         ========================= -->
 
-    <div class="content">
+    <main id="main">
 
-        <!-- AVATAR
-             Thay URL này bằng ảnh của bạn nếu cần.
-        -->
-
-        <img
-            class="avatar"
-            src="https://raw.githubusercontent.com/xuankhanh/xuankhanh/main/_7da372b3b4c51b49db120dbbf0c06858.tplv-tiktokx-cropcenter100100.jpeg"
-            alt="XUÂN KHÁNH"
-        >
+        <div class="container">
 
 
-        <h1 class="title">
-            XUÂN KHÁNH
-        </h1>
+            <!-- HERO -->
 
+            <section class="hero">
 
-        <!-- TEXT GÕ -->
+                <div class="avatar-wrap">
 
-        <div
-            class="typing"
-            id="typing">
-        </div>
-
-
-        <!-- MOD LIST -->
-
-        <div class="mod-list">
-
-            <a
-                class="mod-card"
-                href="#"
-                onclick="return false;"
-            >
-
-                <div class="mod-left">
-
-                    <div class="mod-number">
-                        01
-                    </div>
-
-                    <div>
-
-                        <div class="mod-name">
-                            AVO Esp
-                        </div>
-
-                        <div class="mod-desc">
-                            Game resource
-                        </div>
-
-                    </div>
+                    <img
+                        class="hero-avatar"
+                        src="https://raw.githubusercontent.com/xuankhanh/xuankhanh/main/_7da372b3b4c51b49db120dbbf0c06858.tplv-tiktokx-cropcenter100100.jpeg"
+                        alt="XUÂN KHÁNH">
 
                 </div>
 
-                <div class="arrow">
-                    ›
+                <h1>
+                    XUÂN <span>KHÁNH</span>
+                </h1>
+
+                <div class="typing">
+                    <span id="typed-text"></span>
+                    <span class="cursor"></span>
                 </div>
 
-            </a>
+            </section>
 
 
-            <a
-                class="mod-card"
-                href="#"
-                onclick="return false;"
-            >
+            <!-- MOD -->
 
-                <div class="mod-left">
+            <div class="section-title">
 
-                    <div class="mod-number">
-                        02
+                <h2>
+                    MOD ROBLOX
+                </h2>
+
+                <p>
+                    Chọn nội dung bên dưới
+                </p>
+
+            </div>
+
+
+            <section class="mod-list">
+
+
+                <!-- ROBLOX -->
+
+                <a
+                    class="mod-card"
+                    href="https://ipas.cc/ly7yzv">
+
+                    <div class="mod-icon">
+                        🎮
                     </div>
 
-                    <div>
+                    <div class="mod-info">
 
-                        <div class="mod-name">
-                            AOV Map + Mod
-                        </div>
+                        <h3>
+                            ROBLOX
+                        </h3>
 
-                        <div class="mod-desc">
-                            Game resource
-                        </div>
+                        <p>
+                            Mở trang bạn đã cung cấp
+                        </p>
 
                     </div>
 
-                </div>
-
-                <div class="arrow">
-                    ›
-                </div>
-
-            </a>
-
-
-            <a
-                class="mod-card"
-                href="#"
-                onclick="return false;"
-            >
-
-                <div class="mod-left">
-
-                    <div class="mod-number">
-                        03
+                    <div class="arrow">
+                        →
                     </div>
 
-                    <div>
+                </a>
 
-                        <div class="mod-name">
+
+                <!-- AVO ESP -->
+
+                <a
+                    class="mod-card"
+                    href="#">
+
+                    <div class="mod-icon">
+                        👁️
+                    </div>
+
+                    <div class="mod-info">
+
+                        <h3>
+                            AVO ESP
+                        </h3>
+
+                        <p>
+                            Thông tin AVO ESP
+                        </p>
+
+                    </div>
+
+                    <div class="arrow">
+                        →
+                    </div>
+
+                </a>
+
+
+                <!-- AOV MAP MOD -->
+
+                <a
+                    class="mod-card"
+                    href="#">
+
+                    <div class="mod-icon">
+                        🗺️
+                    </div>
+
+                    <div class="mod-info">
+
+                        <h3>
+                            AOV MAP MOD
+                        </h3>
+
+                        <p>
+                            Trang thông tin và nội dung AOV
+                        </p>
+
+                    </div>
+
+                    <div class="arrow">
+                        →
+                    </div>
+
+                </a>
+
+
+                <!-- AOV ESP -->
+
+                <a
+                    class="mod-card"
+                    href="#">
+
+                    <div class="mod-icon">
+                        🔵
+                    </div>
+
+                    <div class="mod-info">
+
+                        <h3>
                             AOV ESP
-                        </div>
+                        </h3>
 
-                        <div class="mod-desc">
-                            Game resource
-                        </div>
+                        <p>
+                            Trang thông tin AOV ESP
+                        </p>
 
                     </div>
 
-                </div>
+                    <div class="arrow">
+                        →
+                    </div>
 
-                <div class="arrow">
-                    ›
-                </div>
-
-            </a>
+                </a>
 
 
-            <!-- ROBLOX -->
+            </section>
 
-            <a
-                class="mod-card"
-                href="#"
-                onclick="return false;"
-            >
 
-                <div class="mod-left">
+            <!-- DISCORD -->
 
-                    <div class="mod-number">
-                        R
+            <section class="discord">
+
+                <div class="discord-left">
+
+                    <div class="discord-icon">
+                        💬
                     </div>
 
                     <div>
 
-                        <div class="mod-name">
-                            Roblox
-                        </div>
+                        <h3>
+                            Discord XUÂN KHÁNH
+                        </h3>
 
-                        <div class="mod-desc">
-                            Roblox resources
-                        </div>
+                        <p>
+                            Tham gia cộng đồng của mình
+                        </p>
 
                     </div>
 
                 </div>
 
-                <div class="arrow">
-                    ›
-                </div>
+                <a
+                    class="discord-button"
+                    href="https://discord.gg/cGgs4hTfN2"
+                    target="_blank"
+                    rel="noopener noreferrer">
 
-            </a>
+                    THAM GIA
+
+                </a>
+
+            </section>
+
+
+            <!-- ABOUT -->
+
+            <section class="about">
+
+                <h2>
+                    GIỚI THIỆU
+                </h2>
+
+                <p>
+                    Chào mừng bạn đến với website XUÂN KHÁNH.
+                    Đây là nơi tổng hợp thông tin, nội dung và
+                    các liên kết của XUÂN KHÁNH.
+                </p>
+
+            </section>
+
+
+            <footer>
+                © 2026 XUÂN KHÁNH MOD
+            </footer>
 
         </div>
 
-
-        <!-- DISCORD -->
-
-        <a
-            class="discord"
-            href="https://discord.gg/cGgs4hTfN2"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-
-            <strong>
-                💬 THAM GIA DISCORD
-            </strong>
-
-            <span>
-                Tham gia cộng đồng XUÂN KHÁNH
-            </span>
-
-        </a>
-
-    </div>
+    </main>
 
 
-    <div class="footer">
-        © 2026 XUÂN KHÁNH • All Rights Reserved
-    </div>
+    <!-- =========================
+         JAVASCRIPT
+         ========================= -->
 
-</main>
+    <script>
+
+        /* =========================
+           LOADING 0 → 100
+           ========================= */
+
+        const loadingScreen =
+            document.getElementById("loading-screen");
+
+        const loadingProgress =
+            document.getElementById("loading-progress");
+
+        const loadingPercent =
+            document.getElementById("loading-percent");
+
+        let progress = 0;
+
+        const loadingTimer =
+            setInterval(() => {
+
+                progress++;
+
+                loadingProgress.style.width =
+                    progress + "%";
+
+                loadingPercent.textContent =
+                    progress + "%";
+
+                if (progress >= 100) {
+
+                    clearInterval(loadingTimer);
+
+                    setTimeout(() => {
+
+                        loadingScreen.classList.add("hide");
+
+                    }, 450);
+
+                }
+
+            }, 25);
 
 
-<script>
+        /* =========================
+           CLOCK
+           ========================= */
 
-/* =========================
-   LOADING 0 → 100
-========================= */
+        function updateClock() {
 
-let progress = 0;
+            const now = new Date();
 
-const progressBar =
-    document.getElementById("loadingProgress");
+            const hours =
+                String(now.getHours()).padStart(2, "0");
 
-const progressText =
-    document.getElementById("loadingPercent");
+            const minutes =
+                String(now.getMinutes()).padStart(2, "0");
 
-const loading =
-    document.getElementById("loading");
+            const seconds =
+                String(now.getSeconds()).padStart(2, "0");
 
-const loadingTimer =
-    setInterval(() => {
+            const day =
+                String(now.getDate()).padStart(2, "0");
 
-        progress++;
+            const month =
+                String(now.getMonth() + 1).padStart(2, "0");
 
-        progressBar.style.width =
-            progress + "%";
+            const year =
+                now.getFullYear();
 
-        progressText.textContent =
-            progress + "%";
+            document.getElementById("clock-time")
+                .textContent =
+                `${hours}:${minutes}:${seconds}`;
 
-        if(progress >= 100){
-
-            clearInterval(loadingTimer);
-
-            setTimeout(() => {
-
-                loading.classList.add("hide");
-
-            },500);
+            document.getElementById("clock-date")
+                .textContent =
+                `${day}/${month}/${year}`;
 
         }
 
-    },25);
+        updateClock();
+
+        setInterval(updateClock, 1000);
 
 
-/* =========================
-   CLOCK
-========================= */
+        /* =========================
+           BLUE RAIN
+           ========================= */
 
-function updateClock(){
+        const rain =
+            document.getElementById("rain");
 
-    const now = new Date();
+        function createRain() {
 
-    const hours =
-        String(now.getHours()).padStart(2,"0");
+            for (let i = 0; i < 90; i++) {
 
-    const minutes =
-        String(now.getMinutes()).padStart(2,"0");
+                const drop =
+                    document.createElement("div");
 
-    const seconds =
-        String(now.getSeconds()).padStart(2,"0");
+                drop.className =
+                    "rain-drop";
 
-    document.getElementById("clock")
-        .textContent =
-        `${hours}:${minutes}:${seconds}`;
+                drop.style.left =
+                    Math.random() * 100 + "%";
 
+                drop.style.height =
+                    (35 + Math.random() * 65) + "px";
 
-    const days = [
-        "CN",
-        "T2",
-        "T3",
-        "T4",
-        "T5",
-        "T6",
-        "T7"
-    ];
+                drop.style.opacity =
+                    (0.2 + Math.random() * 0.65);
 
-    const day =
-        days[now.getDay()];
+                drop.style.animationDuration =
+                    (0.5 + Math.random() * 0.9) + "s";
 
-    const date =
-        String(now.getDate()).padStart(2,"0");
+                drop.style.animationDelay =
+                    (-Math.random() * 2) + "s";
 
-    const month =
-        String(now.getMonth()+1).padStart(2,"0");
+                rain.appendChild(drop);
 
-    const year =
-        now.getFullYear();
-
-    document.getElementById("date")
-        .textContent =
-        `${day} ${date}/${month}/${year}`;
-}
-
-updateClock();
-
-setInterval(updateClock,1000);
-
-
-/* =========================
-   TYPING EFFECT
-========================= */
-
-const messages = [
-    "HELLO EVERYONE 👋",
-    "WELCOME TO XUÂN KHÁNH WEBSITE",
-    "HAVE A NICE DAY ✨"
-];
-
-let messageIndex = 0;
-let charIndex = 0;
-let deleting = false;
-
-const typing =
-    document.getElementById("typing");
-
-function typeEffect(){
-
-    const text =
-        messages[messageIndex];
-
-    if(!deleting){
-
-        typing.textContent =
-            text.substring(0,charIndex + 1);
-
-        charIndex++;
-
-        if(charIndex === text.length){
-
-            deleting = true;
-
-            setTimeout(typeEffect,1800);
-
-            return;
-        }
-
-    }else{
-
-        typing.textContent =
-            text.substring(0,charIndex - 1);
-
-        charIndex--;
-
-        if(charIndex === 0){
-
-            deleting = false;
-
-            messageIndex++;
-
-            if(messageIndex >= messages.length){
-                messageIndex = 0;
             }
+
         }
-    }
 
-    setTimeout(
-        typeEffect,
-        deleting ? 35 : 70
-    );
-}
-
-typeEffect();
+        createRain();
 
 
-/* =========================
-   BLUE RAIN
-========================= */
+        /* =========================
+           TYPING EFFECT
+           ========================= */
 
-function createRain(){
+        const texts = [
 
-    const rain =
-        document.createElement("div");
+            "HELLO EVERYONE 👋",
 
-    rain.className = "rain";
+            "WELCOME TO XUÂN KHÁNH WEBSITE",
 
-    rain.style.left =
-        Math.random() * 100 + "vw";
+            "CHÀO MỪNG BẠN ĐẾN VỚI WEBSITE",
 
-    rain.style.height =
-        (40 + Math.random()*70) + "px";
+            "XUANKHANHMOD"
 
-    rain.style.opacity =
-        (0.25 + Math.random()*0.55);
+        ];
 
-    rain.style.animationDuration =
-        (0.7 + Math.random()*1.2) + "s";
+        const typedText =
+            document.getElementById("typed-text");
 
-    document.body.appendChild(rain);
+        let textIndex = 0;
+        let charIndex = 0;
+        let deleting = false;
 
-    setTimeout(() => {
-        rain.remove();
-    },2500);
-}
+        function typeEffect() {
+
+            const current =
+                texts[textIndex];
+
+            if (!deleting) {
+
+                typedText.textContent =
+                    current.substring(0, charIndex + 1);
+
+                charIndex++;
+
+                if (charIndex === current.length) {
+
+                    deleting = true;
+
+                    setTimeout(typeEffect, 1600);
+
+                    return;
+
+                }
+
+            } else {
+
+                typedText.textContent =
+                    current.substring(0, charIndex - 1);
+
+                charIndex--;
+
+                if (charIndex === 0) {
+
+                    deleting = false;
+
+                    textIndex =
+                        (textIndex + 1) % texts.length;
+
+                }
+
+            }
+
+            setTimeout(
+                typeEffect,
+                deleting ? 35 : 70
+            );
+
+        }
+
+        typeEffect();
 
 
-/* Tạo mưa liên tục */
+        /* =========================
+           PREVENT # JUMP
+           ========================= */
 
-setInterval(createRain,70);
+        document.querySelectorAll(
+            '.mod-card[href="#"]'
+        ).forEach(card => {
 
+            card.addEventListener(
+                "click",
+                function(event) {
 
-/* Tạo thêm một lượng mưa ban đầu */
+                    event.preventDefault();
 
-for(let i=0;i<70;i++){
+                }
+            );
 
-    setTimeout(
-        createRain,
-        Math.random()*1800
-    );
-}
+        });
 
-</script>
+    </script>
 
 </body>
 </html>
