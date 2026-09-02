@@ -1,11 +1,8 @@
-
+```html
 <!DOCTYPE html>
 <html lang="vi">
-<head>
 
-    <!-- =====================================================
-         BASIC
-    ====================================================== -->
+<head>
 
     <meta charset="UTF-8">
 
@@ -21,7 +18,7 @@
 
     <meta
         name="description"
-        content="Zunada"
+        content="Zunada - Official Website"
     >
 
     <meta
@@ -32,1661 +29,530 @@
     <title>Zunada</title>
 
 
-    <!-- =====================================================
-         CSS
-    ====================================================== -->
+<style>
 
-    <style>
+/* =========================================================
+   RESET
+========================================================= */
 
-        /* =================================================
-           RESET
-        ================================================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-        }
+html{
+    scroll-behavior:smooth;
+}
 
-        html{
-            scroll-behavior:smooth;
-        }
+body{
+    width:100%;
+    min-height:100vh;
 
-        body{
-            width:100%;
-            min-height:100vh;
+    background:#ffffff;
 
-            background:#ffffff;
+    color:#111111;
 
-            color:#111111;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
+    overflow-x:hidden;
+}
 
-            overflow-x:hidden;
-        }
 
+/* =========================================================
+   LOADING
+========================================================= */
 
-        /* =================================================
-           LOADING
-        ================================================= */
+#loading{
+    position:fixed;
 
-        #loading{
-            position:fixed;
+    top:0;
+    left:0;
 
-            top:0;
-            left:0;
+    width:100%;
+    height:100vh;
 
-            width:100%;
-            height:100vh;
+    display:flex;
 
-            display:flex;
+    justify-content:center;
+    align-items:center;
 
-            justify-content:center;
-            align-items:center;
+    flex-direction:column;
 
-            background:#ffffff;
+    background:#ffffff;
 
-            z-index:99999;
+    z-index:999999;
 
-            transition:
-                opacity .6s ease,
-                visibility .6s ease;
-        }
+    transition:
+        opacity .6s ease,
+        visibility .6s ease;
+}
 
-        #loading.hide{
-            opacity:0;
+#loading.hide{
+    opacity:0;
 
-            visibility:hidden;
+    visibility:hidden;
 
-            pointer-events:none;
-        }
+    pointer-events:none;
+}
 
 
-        .loading-container{
-            width:
-                min(
-                    88%,
-                    420px
-                );
-
-            text-align:center;
-        }
-
-
-        .loading-logo{
-            font-size:42px;
-
-            font-weight:900;
-
-            letter-spacing:3px;
-
-            color:#111111;
-
-            margin-bottom:8px;
-
-            user-select:none;
-        }
-
-
-        .loading-subtitle{
-            font-size:12px;
-
-            color:#888888;
-
-            margin-bottom:28px;
-
-            letter-spacing:.5px;
-        }
-
-
-        .loading-number{
-            font-size:46px;
-
-            font-weight:900;
-
-            color:#00aeea;
-
-            margin-bottom:17px;
-
-            text-shadow:
-                0 0 12px
-                rgba(
-                    0,
-                    174,
-                    234,
-                    .25
-                );
-        }
-
-
-        .loading-bar{
-            width:100%;
-
-            height:9px;
-
-            background:#eeeeee;
-
-            border-radius:20px;
-
-            overflow:hidden;
-
-            box-shadow:
-                inset
-                0
-                0
-                5px
-                rgba(
-                    0,
-                    0,
-                    0,
-                    .05
-                );
-        }
-
-
-        .loading-progress{
-            width:0%;
-
-            height:100%;
-
-            border-radius:20px;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    #00b7ff,
-                    #00d9ff
-                );
-
-            box-shadow:
-                0
-                0
-                12px
-                rgba(
-                    0,
-                    190,
-                    255,
-                    .45
-                );
-
-            transition:
-                width .04s linear;
-        }
-
-
-        .loading-status{
-            min-height:18px;
-
-            margin-top:14px;
-
-            font-size:11px;
-
-            color:#888888;
-        }
-
-
-        /* =================================================
-           MAIN
-        ================================================= */
-
-        #main{
-            display:none;
-
-            width:100%;
-
-            min-height:100vh;
-
-            background:#ffffff;
-
-            padding:
-                25px
-                15px
-                50px;
-        }
-
-
-        #main.show{
-            display:block;
-
-            animation:
-                mainShow
-                .7s
-                ease
-                both;
-        }
-
-
-        @keyframes mainShow{
-
-            from{
-                opacity:0;
-
-                transform:
-                    translateY(18px);
-            }
-
-            to{
-                opacity:1;
-
-                transform:
-                    translateY(0);
-            }
-        }
-
-
-        /* =================================================
-           CLOCK
-        ================================================= */
-
-        .clock{
-            position:fixed;
-
-            top:14px;
-            left:14px;
-
-            z-index:1000;
-
-            padding:
-                7px
-                10px;
-
-            background:
-                rgba(
-                    255,
-                    255,
-                    255,
-                    .95
-                );
-
-            border:
-                1px solid
-                #e8e8e8;
-
-            border-radius:10px;
-
-            color:#222222;
-
-            font-size:11px;
-
-            font-weight:700;
-
-            box-shadow:
-                0
-                4px
-                18px
-                rgba(
-                    0,
-                    0,
-                    0,
-                    .07
-                );
-
-            backdrop-filter:
-                blur(8px);
-        }
-
-
-        /* =================================================
-           CONTAINER
-        ================================================= */
-
-        .container{
-            width:100%;
-
-            max-width:850px;
-
-            margin:
-                0
-                auto;
-        }
-
-
-        /* =================================================
-           PROFILE
-        ================================================= */
-
-        .profile{
-            display:flex;
-
-            align-items:center;
-
-            flex-direction:column;
-
-            text-align:center;
-
-            padding-top:28px;
-        }
-
-
-        .avatar-wrapper{
-            position:relative;
-
-            width:126px;
-
-            height:126px;
-
-            display:flex;
-
-            justify-content:center;
-
-            align-items:center;
-
-            margin-bottom:16px;
-        }
-
-
-        .avatar-wrapper::before{
-            content:"";
-
-            position:absolute;
-
-            inset:-5px;
-
-            border-radius:50%;
-
-            border:
-                2px solid
-                #00bfff;
-
-            box-shadow:
-                0
-                0
-                14px
-                rgba(
-                    0,
-                    191,
-                    255,
-                    .3
-                );
-
-            animation:
-                rotateBorder
-                4s
-                linear
-                infinite;
-        }
-
-
-        @keyframes rotateBorder{
-
-            from{
-                transform:
-                    rotate(0deg);
-            }
-
-            to{
-                transform:
-                    rotate(360deg);
-            }
-        }
-
-
-        .avatar{
-            width:115px;
-
-            height:115px;
-
-            object-fit:cover;
-
-            border-radius:50%;
-
-            border:
-                3px solid
-                #ffffff;
-
-            background:#f3f3f3;
-
-            box-shadow:
-                0
-                7px
-                25px
-                rgba(
-                    0,
-                    0,
-                    0,
-                    .14
-                );
-        }
-
-
-        .profile h1{
-            font-size:30px;
-
-            font-weight:900;
-
-            letter-spacing:2px;
-
-            color:#111111;
-
-            margin-bottom:5px;
-        }
-
-
-        /* =================================================
-           SMALL BRAND LINE
-        ================================================= */
-
-        .brand-line{
-            font-size:11px;
-
-            color:#999999;
-
-            letter-spacing:1px;
-
-            margin-top:2px;
-        }
-
-
-        /* =================================================
-           INTRO
-        ================================================= */
-
-        .intro{
-            width:100%;
-
-            max-width:600px;
-
-            margin:
-                24px
-                auto
-                30px;
-
-            text-align:center;
-
-            color:#777777;
-
-            font-size:13px;
-
-            line-height:1.8;
-        }
-
-
-        /* =================================================
-           SECTION
-        ================================================= */
-
-        .section{
-            width:100%;
-
-            margin-top:30px;
-        }
-
-
-        .section-title{
-            display:flex;
-
-            align-items:center;
-
-            gap:10px;
-
-            margin-bottom:15px;
-        }
-
-
-        .section-title::before{
-            content:"";
-
-            width:4px;
-
-            height:23px;
-
-            background:#00bfff;
-
-            border-radius:10px;
-        }
-
-
-        .section-title h2{
-            font-size:18px;
-
-            font-weight:900;
-
-            color:#111111;
-        }
-
-
-        /* =================================================
-           CARDS
-        ================================================= */
-
-        .cards{
-            display:grid;
-
-            grid-template-columns:
-                repeat(
-                    2,
-                    minmax(
-                        0,
-                        1fr
-                    )
-                );
-
-            gap:15px;
-        }
-
-
-        .card{
-            position:relative;
-
-            padding:20px;
-
-            background:#ffffff;
-
-            border:
-                1px solid
-                #e9e9e9;
-
-            border-radius:18px;
-
-            box-shadow:
-                0
-                7px
-                25px
-                rgba(
-                    0,
-                    0,
-                    0,
-                    .055
-                );
-
-            overflow:hidden;
-
-            transition:
-                transform .25s ease,
-                box-shadow .25s ease,
-                border-color .25s ease;
-        }
-
-
-        .card::before{
-            content:"";
-
-            position:absolute;
-
-            top:0;
-            left:0;
-
-            width:100%;
-
-            height:3px;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    #00bfff,
-                    #00e1ff
-                );
-        }
-
-
-        .card:hover{
-            transform:
-                translateY(-5px);
-
-            border-color:#c5efff;
-
-            box-shadow:
-                0
-                14px
-                35px
-                rgba(
-                    0,
-                    174,
-                    234,
-                    .12
-                );
-        }
-
-
-        .card-icon{
-            width:50px;
-
-            height:50px;
-
-            display:flex;
-
-            justify-content:center;
-
-            align-items:center;
-
-            border-radius:14px;
-
-            background:#effbff;
-
-            font-size:23px;
-
-            margin-bottom:13px;
-        }
-
-
-        .card h3{
-            font-size:17px;
-
-            color:#111111;
-
-            margin-bottom:10px;
-        }
-
-
-        .card-text{
-            color:#777777;
-
-            font-size:12px;
-
-            line-height:1.8;
-        }
-
-
-        .card-text strong{
-            color:#00aeea;
-        }
-
-
-        /* =================================================
-           BUTTON
-        ================================================= */
-
-        .button{
-            width:100%;
-
-            display:flex;
-
-            justify-content:center;
-
-            align-items:center;
-
-            gap:7px;
-
-            margin-top:15px;
-
-            padding:11px 13px;
-
-            border:0;
-
-            border-radius:12px;
-
-            background:#111111;
-
-            color:#ffffff;
-
-            text-decoration:none;
-
-            font-size:12px;
-
-            font-weight:700;
-
-            transition:
-                .2s ease;
-        }
-
-
-        .button:hover{
-            background:#00aeea;
-
-            transform:
-                translateY(-2px);
-        }
-
-
-        .button:active{
-            transform:
-                scale(.97);
-        }
-
-
-        /* =================================================
-           INFO BOX
-        ================================================= */
-
-        .info-box{
-            margin-top:20px;
-
-            padding:18px;
-
-            border:
-                1px solid
-                #eeeeee;
-
-            border-radius:17px;
-
-            background:#ffffff;
-
-            box-shadow:
-                0
-                5px
-                20px
-                rgba(
-                    0,
-                    0,
-                    0,
-                    .04
-                );
-        }
-
-
-        .info-box h3{
-            font-size:15px;
-
-            margin-bottom:8px;
-
-            color:#111111;
-        }
-
-
-        .info-box p{
-            font-size:12px;
-
-            color:#777777;
-
-            line-height:1.8;
-        }
-
-
-        /* =================================================
-           DISCORD
-        ================================================= */
-
-        .discord{
-            margin-top:30px;
-
-            padding:25px 18px;
-
-            text-align:center;
-
-            border-radius:20px;
-
-            border:
-                1px solid
-                #e9e9e9;
-
-            background:#ffffff;
-
-            box-shadow:
-                0
-                7px
-                25px
-                rgba(
-                    0,
-                    0,
-                    0,
-                    .05
-                );
-        }
-
-
-        .discord h2{
-            font-size:19px;
-
-            color:#111111;
-
-            margin-bottom:8px;
-        }
-
-
-        .discord p{
-            font-size:12px;
-
-            color:#777777;
-
-            line-height:1.7;
-
-            margin-bottom:15px;
-        }
-
-
-        .discord-button{
-            display:inline-flex;
-
-            justify-content:center;
-
-            align-items:center;
-
-            gap:8px;
-
-            padding:
-                12px
-                23px;
-
-            border-radius:12px;
-
-            background:#5865f2;
-
-            color:#ffffff;
-
-            text-decoration:none;
-
-            font-size:13px;
-
-            font-weight:700;
-
-            transition:.2s ease;
-        }
-
-
-        .discord-button:hover{
-            transform:
-                translateY(-3px);
-
-            box-shadow:
-                0
-                8px
-                25px
-                rgba(
-                    88,
-                    101,
-                    242,
-                    .25
-                );
-        }
-
-
-        /* =================================================
-           FOOTER
-        ================================================= */
-
-        footer{
-            margin-top:35px;
-
-            padding-top:20px;
-
-            text-align:center;
-
-            border-top:
-                1px solid
-                #eeeeee;
-
-            color:#999999;
-
-            font-size:10px;
-
-            line-height:1.8;
-        }
-
-
-        footer strong{
-            color:#00aeea;
-        }
-
-
-        /* =================================================
-           TOP BUTTON
-        ================================================= */
-
-        .top-button{
-            position:fixed;
-
-            right:15px;
-
-            bottom:15px;
-
-            width:40px;
-
-            height:40px;
-
-            display:flex;
-
-            justify-content:center;
-
-            align-items:center;
-
-            border:
-                1px solid
-                #e5e5e5;
-
-            border-radius:50%;
-
-            background:#ffffff;
-
-            color:#111111;
-
-            cursor:pointer;
-
-            box-shadow:
-                0
-                5px
-                20px
-                rgba(
-                    0,
-                    0,
-                    0,
-                    .08
-                );
-
-            z-index:1000;
-
-            transition:.2s ease;
-        }
-
-
-        .top-button:hover{
-            background:#00aeea;
-
-            color:#ffffff;
-        }
-
-
-        /* =================================================
-           MOBILE
-        ================================================= */
-
-        @media(max-width:700px){
-
-            #main{
-                padding:
-                    20px
-                    12px
-                    40px;
-            }
-
-
-            .profile{
-                padding-top:30px;
-            }
-
-
-            .avatar-wrapper{
-                width:110px;
-
-                height:110px;
-            }
-
-
-            .avatar{
-                width:100px;
-
-                height:100px;
-            }
-
-
-            .profile h1{
-                font-size:24px;
-
-                letter-spacing:1.5px;
-            }
-
-
-            .cards{
-                grid-template-columns:1fr;
-
-                gap:12px;
-            }
-
-
-            .card{
-                padding:18px;
-            }
-
-
-            .loading-logo{
-                font-size:34px;
-            }
-
-
-            .loading-number{
-                font-size:42px;
-            }
-        }
-
-
-        /* =================================================
-           SMALL PHONE
-        ================================================= */
-
-        @media(max-width:380px){
-
-            .profile h1{
-                font-size:21px;
-            }
-
-
-            .brand-line{
-                font-size:10px;
-            }
-
-
-            .card h3{
-                font-size:16px;
-            }
-
-
-            .card-text{
-                font-size:11px;
-            }
-        }
-
-    </style>
-
-</head>
-
-
-<body>
-
-
-    <!-- =====================================================
-         LOADING SCREEN
-    ====================================================== -->
-
-    <div id="loading">
-
-        <div class="loading-container">
-
-            <div class="loading-logo">
-                Zunada
-            </div>
-
-            <div class="loading-subtitle">
-                Đang khởi động...
-            </div>
-
-            <div
-                class="loading-number"
-                id="loadingNumber"
-            >
-                0%
-            </div>
-
-            <div class="loading-bar">
-
-                <div
-                    class="loading-progress"
-                    id="loadingProgress"
-                ></div>
-
-            </div>
-
-            <div
-                class="loading-status"
-                id="loadingStatus"
-            >
-                Đang chuẩn bị...
-            </div>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- =====================================================
-         MAIN
-    ====================================================== -->
-
-    <main id="main">
-
-
-        <!-- CLOCK -->
-
-        <div
-            class="clock"
-            id="clock"
-        >
-            00:00:00
-        </div>
-
-
-
-        <div class="container">
-
-
-            <!-- =================================================
-                 PROFILE
-            ================================================== -->
-
-            <section class="profile">
-
-
-                <div class="avatar-wrapper">
-
-                    <!--
-                        ======================================
-                        THAY LINK AVATAR CỦA BẠN Ở ĐÂY
-                        ======================================
-                    -->
-
-                    <img
-                        class="avatar"
-                        src="YOUR_AVATAR_LINK_HERE"
-                        alt="Zunada"
-                    >
-
-                </div>
-
-
-                <h1>
-                    Zunada
-                </h1>
-
-
-                <div class="brand-line">
-                    Official Website
-                </div>
-
-
-            </section>
-
-
-
-            <!-- =================================================
-                 INTRO
-            ================================================== -->
-
-            <div class="intro">
-
-                Chào mừng bạn đến với website
-                <strong>Zunada</strong>.
-
-                <br>
-
-                Website chính thức của Zunada.
-
-            </div>
-
-
-
-            <!-- =================================================
-                 CONTENT
-            ================================================== -->
-
-            <section class="section">
-
-
-                <div class="section-title">
-
-                    <h2>
-                        Nội dung
-                    </h2>
-
-                </div>
-
-
-                <div class="cards">
-
-
-                    <!-- =========================================
-                         ROBLOX
-                    ========================================== -->
-
-                    <div class="card">
-
-                        <div class="card-icon">
-                            🎮
-                        </div>
-
-                        <h3>
-                            Roblox
-                        </h3>
-
-                        <div class="card-text">
-
-                            <strong>Nền tảng:</strong>
-                            iOS
-
-                            <br>
-
-                            <strong>Phiên bản:</strong>
-                            1.2.5
-
-                            <br>
-
-                            <strong>Lượt tải:</strong>
-                            12,458
-
-                        </div>
-
-
-                        <a
-                            class="button"
-                            href="YOUR_ROBLOX_LINK"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            ⬇ TẢI XUỐNG
-                        </a>
-
-                    </div>
-
-
-
-                    <!-- =========================================
-                         AVO ESP
-                    ========================================== -->
-
-                    <div class="card">
-
-                        <div class="card-icon">
-                            👁️
-                        </div>
-
-                        <h3>
-                            AVO Esp
-                        </h3>
-
-                        <div class="card-text">
-
-                            <strong>Nền tảng:</strong>
-                            iOS
-
-                            <br>
-
-                            <strong>Phiên bản:</strong>
-                            2.0.1
-
-                            <br>
-
-                            <strong>Lượt tải:</strong>
-                            8,921
-
-                        </div>
-
-
-                        <a
-                            class="button"
-                            href="YOUR_AVO_LINK"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            ⬇ TẢI XUỐNG
-                        </a>
-
-                    </div>
-
-
-                </div>
-
-            </section>
-
-
-
-            <!-- =================================================
-                 INFORMATION
-            ================================================== -->
-
-            <section class="info-box">
-
-                <h3>
-                    ℹ️ Thông tin
-                </h3>
-
-                <p>
-
-                    Các thông tin trên website có thể
-                    được cập nhật theo từng phiên bản.
-
-                    Hãy kiểm tra trang thường xuyên để
-                    nhận thông tin mới nhất.
-
-                </p>
-
-            </section>
-
-
-
-            <!-- =================================================
-                 DISCORD
-            ================================================== -->
-
-            <section class="discord">
-
-                <h2>
-                    💬 Discord
-                </h2>
-
-                <p>
-                    Tham gia cộng đồng Zunada.
-                </p>
-
-
-                <!--
-                    THAY LINK DISCORD CỦA BẠN
-                -->
-
-                <a
-                    class="discord-button"
-                    href="YOUR_DISCORD_LINK"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    💬 THAM GIA DISCORD
-                </a>
-
-            </section>
-
-
-
-            <!-- =================================================
-                 FOOTER
-            ================================================== -->
-
-            <footer>
-
-                © 2026
-                <strong>Zunada</strong>
-
-                <br>
-
-                All rights reserved.
-
-            </footer>
-
-
-        </div>
-
-
-
-        <!-- =================================================
-             BACK TO TOP
-        ================================================== -->
-
-        <button
-            class="top-button"
-            onclick="
-                window.scrollTo({
-                    top:0,
-                    behavior:'smooth'
-                });
-            "
-            aria-label="Lên đầu trang"
-        >
-            ↑
-        </button>
-
-
-    </main>
-
-
-
-    <!-- =====================================================
-         JAVASCRIPT
-    ====================================================== -->
-
-    <script>
-
-
-        /* =================================================
-           LOADING SYSTEM
-        ================================================= */
-
-        const loading =
-            document.getElementById(
-                "loading"
-            );
-
-        const main =
-            document.getElementById(
-                "main"
-            );
-
-        const loadingNumber =
-            document.getElementById(
-                "loadingNumber"
-            );
-
-        const loadingProgress =
-            document.getElementById(
-                "loadingProgress"
-            );
-
-        const loadingStatus =
-            document.getElementById(
-                "loadingStatus"
-            );
-
-
-        let progress = 0;
-
-
-        const loadingMessages = [
-
-            {
-                max:20,
-                text:"Đang kết nối..."
-            },
-
-            {
-                max:40,
-                text:"Đang kiểm tra hệ thống..."
-            },
-
-            {
-                max:60,
-                text:"Đang tải dữ liệu..."
-            },
-
-            {
-                max:80,
-                text:"Đang chuẩn bị giao diện..."
-            },
-
-            {
-                max:99,
-                text:"Gần hoàn tất..."
-            },
-
-            {
-                max:100,
-                text:"Hoàn tất!"
-            }
-
-        ];
-
-
-        const loadingTimer =
-            setInterval(
-                function(){
-
-                    progress++;
-
-                    loadingNumber.textContent =
-                        progress + "%";
-
-
-                    loadingProgress.style.width =
-                        progress + "%";
-
-
-                    for(
-                        let i = 0;
-                        i < loadingMessages.length;
-                        i++
-                    ){
-
-                        if(
-                            progress <=
-                            loadingMessages[i].max
-                        ){
-
-                            loadingStatus.textContent =
-                                loadingMessages[i].text;
-
-                            break;
-                        }
-
-                    }
-
-
-                    /*
-                     * QUAN TRỌNG:
-                     * MAIN CHỈ ĐƯỢC HIỆN
-                     * SAU KHI ĐẠT 100%.
-                     */
-
-                    if(
-                        progress >= 100
-                    ){
-
-                        clearInterval(
-                            loadingTimer
-                        );
-
-
-                        loadingNumber.textContent =
-                            "100%";
-
-
-                        loadingProgress.style.width =
-                            "100%";
-
-
-                        loadingStatus.textContent =
-                            "Hoàn tất!";
-
-
-                        setTimeout(
-                            function(){
-
-                                loading.classList.add(
-                                    "hide"
-                                );
-
-
-                                main.classList.add(
-                                    "show"
-                                );
-
-                            },
-                            500
-                        );
-
-                    }
-
-                },
-                35
-            );
-
-
-
-        /* =================================================
-           CLOCK
-        ================================================= */
-
-        function updateClock(){
-
-            const now =
-                new Date();
-
-
-            const hours =
-                String(
-                    now.getHours()
-                ).padStart(
-                    2,
-                    "0"
-                );
-
-
-            const minutes =
-                String(
-                    now.getMinutes()
-                ).padStart(
-                    2,
-                    "0"
-                );
-
-
-            const seconds =
-                String(
-                    now.getSeconds()
-                ).padStart(
-                    2,
-                    "0"
-                );
-
-
-            document.getElementById(
-                "clock"
-            ).textContent =
-                hours +
-                ":" +
-                minutes +
-                ":" +
-                seconds;
-
-        }
-
-
-        updateClock();
-
-
-        setInterval(
-            updateClock,
-            1000
+.loading-box{
+    width:
+        min(
+            90%,
+            430px
         );
 
+    text-align:center;
+}
 
 
-        /* =================================================
-           BUTTON EFFECT
-        ================================================= */
+.loading-title{
+    font-size:42px;
 
-        const buttons =
-            document.querySelectorAll(
-                ".button"
-            );
+    font-weight:900;
 
+    letter-spacing:3px;
 
-        buttons.forEach(
-            function(button){
+    color:#111111;
 
-                button.addEventListener(
-                    "click",
-                    function(){
-
-                        button.style.transform =
-                            "scale(.96)";
+    margin-bottom:8px;
+}
 
 
-                        setTimeout(
-                            function(){
+.loading-subtitle{
+    font-size:12px;
 
-                                button.style.transform =
-                                    "";
+    color:#888888;
 
-                            },
-                            120
-                        );
+    margin-bottom:25px;
+}
 
-                    }
-                );
 
-            }
+.loading-percent{
+    font-size:48px;
+
+    font-weight:900;
+
+    color:#00aeea;
+
+    margin-bottom:17px;
+
+    text-shadow:
+        0 0 12px
+        rgba(
+            0,
+            174,
+            234,
+            .25
+        );
+}
+
+
+.loading-bar{
+    width:100%;
+
+    height:9px;
+
+    background:#eeeeee;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    box-shadow:
+        inset
+        0
+        0
+        5px
+        rgba(
+            0,
+            0,
+            0,
+            .06
+        );
+}
+
+
+.loading-progress{
+    width:0%;
+
+    height:100%;
+
+    border-radius:30px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00aeea,
+            #00d9ff
         );
 
+    box-shadow:
+        0
+        0
+        15px
+        rgba(
+            0,
+            190,
+            255,
+            .45
+        );
+
+    transition:
+        width .035s linear;
+}
 
 
-        /* =================================================
-           EMPTY LINK CHECK
-        ================================================= */
+.loading-status{
+    min-height:18px;
 
-        document
-            .querySelectorAll(
-                'a[href^="YOUR_"]'
+    margin-top:13px;
+
+    color:#888888;
+
+    font-size:11px;
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+#main{
+    display:none;
+
+    width:100%;
+
+    min-height:100vh;
+
+    background:#ffffff;
+
+    padding:
+        25px
+        15px
+        50px;
+}
+
+
+#main.show{
+    display:block;
+
+    animation:
+        mainAppear
+        .7s
+        ease
+        both;
+}
+
+
+@keyframes mainAppear{
+
+    from{
+        opacity:0;
+
+        transform:
+            translateY(20px);
+    }
+
+    to{
+        opacity:1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================================================
+   CLOCK
+========================================================= */
+
+.clock{
+    position:fixed;
+
+    top:14px;
+    left:14px;
+
+    z-index:5000;
+
+    padding:
+        7px
+        10px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .96
+        );
+
+    border:
+        1px solid
+        #e5e5e5;
+
+    border-radius:10px;
+
+    color:#222222;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    box-shadow:
+        0
+        4px
+        18px
+        rgba(
+            0,
+            0,
+            0,
+            .07
+        );
+
+    backdrop-filter:
+        blur(8px);
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.container{
+    width:100%;
+
+    max-width:850px;
+
+    margin:
+        0
+        auto;
+}
+
+
+/* =========================================================
+   PROFILE
+========================================================= */
+
+.profile{
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding-top:30px;
+}
+
+
+.avatar-wrapper{
+    position:relative;
+
+    width:130px;
+
+    height:130px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    margin-bottom:17px;
+}
+
+
+.avatar-wrapper::before{
+    content:"";
+
+    position:absolute;
+
+    inset:-5px;
+
+    border-radius:50%;
+
+    border:
+        2px solid
+        #00bfff;
+
+    box-shadow:
+        0
+        0
+        15px
+        rgba(
+            0,
+            191,
+            255,
+            .3
+        );
+
+    animation:
+        avatarRotate
+        4s
+        linear
+        infinite;
+}
+
+
+@keyframes avatarRotate{
+
+    from{
+        transform:
+            rotate(0deg);
+    }
+
+    to{
+        transform:
+            rotate(360deg);
+    }
+}
+
+
+.avatar{
+    width:115px;
+
+    height:115px;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    border:
+        3px solid
+        #ffffff;
+
+    background:#eeeeee;
+
+    box-shadow:
+        0
+        7px
+        25px
+        rgba(
+            0,
+            0,
+            0,
+            .14
+        );
+}
+
+
+.profile h1{
+    font-size:30px;
+
+    font-weight:900;
+
+    letter-spacing:2px;
+
+    color:#111111;
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.intro{
+    width:100%;
+
+    max-width:620px;
+
+    margin:
+        23px
+        auto
+        30px;
+
+    text-align:center;
+
+    color:#777777;
+
+    font-size:13px;
+
+    line-height:1.8;
+}
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.section{
+    width:100%;
+
+    margin-top:30px;
+}
+
+
+.section-title{
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-bottom:15px;
+}
+
+
+.section-title::before{
+    content:"";
+
+    width:4px;
+
+    height:24px;
+
+    background:#00bfff;
+
+    border-radius:10px;
+}
+
+
+.section-title h2{
+    font-size:18px;
+
+    font-weight:900;
+
+    color:#111111;
+}
+
+
+/* =========================================================
+   MOD GRID
+========================================================= */
+
+.mod-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(
+                0,
+                1fr
             )
-            .forEach(
-                function(link){
+        );
 
-                    link.addEventListener(
-                        "click",
-                        function(event){
-
-                            event.preventDefault();
-
-                            alert(
-                                "Bạn chưa thêm liên kết!"
-                            );
-
-                        }
-                    );
-
-                }
-            );
+    gap:15px;
+}
 
 
-    </script>
+/* =========================================================
+   MOD CARD
+========================================================= */
 
+.mod-card{
+    position:relative;
 
-</body>
-</html>
+    padding:21px;
+
+    background:#ffffff;
+
+    border:
+        1px solid
 ```
