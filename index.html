@@ -1,4 +1,4 @@
-```html
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -7,8 +7,8 @@
 
 <title>XUÂN KHÁNH MOD</title>
 
-<meta name="description" content="XUÂN KHÁNH MOD - Roblox, AVO Esp và các MOD dành cho iOS">
-<meta name="theme-color" content="#00cfff">
+<meta name="description" content="XUÂN KHÁNH MOD - iOS • Roblox • MOD • ESP">
+<meta name="theme-color" content="#ffffff">
 
 <style>
 
@@ -29,22 +29,13 @@ html{
 body{
     width:100%;
     min-height:100vh;
-    overflow-x:hidden;
-
+    background:#ffffff;
+    color:#111111;
     font-family:
         Arial,
         Helvetica,
         sans-serif;
-
-    background:
-        radial-gradient(
-            circle at top,
-            #06202c 0%,
-            #020b12 45%,
-            #010609 100%
-        );
-
-    color:#ffffff;
+    overflow-x:hidden;
 }
 
 
@@ -53,180 +44,106 @@ body{
 ========================================================= */
 
 #loading{
-
     position:fixed;
-
-    top:0;
-    left:0;
-
+    inset:0;
     width:100%;
     height:100vh;
 
-    z-index:999999;
-
     display:flex;
-
     justify-content:center;
     align-items:center;
-
     flex-direction:column;
 
-    background:
-        radial-gradient(
-            circle,
-            #06202c,
-            #020b12 65%,
-            #010609
-        );
+    background:#ffffff;
+
+    z-index:99999;
+
+    transition:
+        opacity .6s ease,
+        visibility .6s ease;
 }
 
-
-/* Logo loading */
-
-.loading-logo{
-
-    width:100px;
-    height:100px;
-
-    border-radius:50%;
-
-    object-fit:cover;
-
-    border:3px solid #00cfff;
-
-    box-shadow:
-        0 0 10px #00cfff,
-        0 0 25px #00cfff,
-        0 0 50px rgba(0,207,255,.4);
-
-    animation:
-        loadingPulse 1.5s infinite;
+#loading.hide{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
 }
-
-
-@keyframes loadingPulse{
-
-    0%{
-        transform:scale(1);
-    }
-
-    50%{
-        transform:scale(1.06);
-    }
-
-    100%{
-        transform:scale(1);
-    }
-
-}
-
-
-/* Loading title */
-
-.loading-title{
-
-    margin-top:22px;
-
-    font-size:28px;
-
-    font-weight:bold;
-
-    letter-spacing:2px;
-
-    color:#00cfff;
-
-    text-shadow:
-        0 0 10px #00cfff,
-        0 0 25px rgba(0,207,255,.7);
-}
-
-
-/* Loading box */
 
 .loading-box{
-
-    width:min(430px,85%);
-
-    margin-top:25px;
+    width:min(90%,420px);
+    text-align:center;
 }
 
+.loading-title{
+    font-size:30px;
+    font-weight:900;
+    letter-spacing:2px;
 
-/* Loading bar */
+    color:#111;
+
+    margin-bottom:8px;
+}
+
+.loading-subtitle{
+    font-size:13px;
+    color:#777;
+
+    margin-bottom:25px;
+}
+
+.loading-percent{
+    font-size:45px;
+    font-weight:900;
+
+    color:#00aeea;
+
+    margin-bottom:15px;
+
+    text-shadow:
+        0 0 10px rgba(0,174,234,.25);
+}
 
 .loading-bar{
-
     width:100%;
-
     height:8px;
+
+    background:#e9e9e9;
+
+    border-radius:20px;
 
     overflow:hidden;
 
-    border-radius:20px;
-
-    background:#10242e;
-
-    border:1px solid rgba(0,207,255,.2);
-
     box-shadow:
-        inset 0 0 8px rgba(0,0,0,.5);
+        inset 0 0 5px rgba(0,0,0,.08);
 }
 
-
-/* Loading progress */
-
 .loading-progress{
-
     width:0%;
-
     height:100%;
-
-    border-radius:20px;
 
     background:
         linear-gradient(
             90deg,
-            #007c99,
-            #00cfff,
-            #65e7ff
+            #00b7ff,
+            #00d9ff
         );
 
-    box-shadow:
-        0 0 12px #00cfff,
-        0 0 25px rgba(0,207,255,.7);
+    border-radius:20px;
 
     transition:
         width .05s linear;
+
+    box-shadow:
+        0 0 12px rgba(0,190,255,.5);
 }
-
-
-/* Percent */
-
-.loading-percent{
-
-    text-align:center;
-
-    margin-top:12px;
-
-    font-size:18px;
-
-    font-weight:bold;
-
-    color:#00cfff;
-}
-
-
-/* Loading status */
 
 .loading-status{
+    margin-top:14px;
 
-    text-align:center;
+    font-size:12px;
+    color:#888;
 
-    margin-top:8px;
-
-    color:#7999a5;
-
-    font-size:13px;
-
+    min-height:18px;
 }
 
 
@@ -235,78 +152,36 @@ body{
 ========================================================= */
 
 #main{
-
     display:none;
 
-    position:relative;
-
+    width:100%;
     min-height:100vh;
 
-    padding:
+    background:#ffffff;
 
-        70px
-        20px
+    padding:
+        25px
+        15px
         50px;
 }
 
-
-/* =========================================================
-   RAIN
-========================================================= */
-
-.rain{
-
-    position:fixed;
-
-    top:0;
-    left:0;
-
-    width:100%;
-    height:100vh;
-
-    overflow:hidden;
-
-    pointer-events:none;
-
-    z-index:0;
-}
-
-
-.drop{
-
-    position:absolute;
-
-    top:-120px;
-
-    width:1px;
-
-    height:70px;
-
-    background:
-        linear-gradient(
-            transparent,
-            rgba(0,207,255,.7)
-        );
+#main.show{
+    display:block;
 
     animation:
-        rainFall linear infinite;
+        mainAppear .7s ease;
 }
 
-
-@keyframes rainFall{
-
+@keyframes mainAppear{
     from{
-        transform:
-            translateY(-100px)
-            rotate(8deg);
+        opacity:0;
+        transform:translateY(15px);
     }
 
     to{
-        transform:
-            translateY(115vh)
-            rotate(8deg);
+        opacity:1;
+        transform:translateY(0);
     }
-
 }
 
 
@@ -315,284 +190,32 @@ body{
 ========================================================= */
 
 .clock{
-
     position:fixed;
 
-    top:12px;
-    left:14px;
+    top:15px;
+    left:15px;
 
-    z-index:100;
+    z-index:1000;
 
     padding:
-        6px
+        7px
         10px;
 
-    border-radius:8px;
+    border-radius:10px;
 
-    border:
-        1px solid
-        rgba(0,207,255,.35);
+    background:rgba(255,255,255,.9);
 
-    background:
-        rgba(0,15,25,.7);
+    border:1px solid #e5e5e5;
 
-    backdrop-filter:
-        blur(8px);
+    color:#111;
 
-    color:#00cfff;
-
-    font-size:12px;
-
+    font-size:11px;
     font-weight:bold;
 
     box-shadow:
-        0 0 10px
-        rgba(0,207,255,.1);
-}
+        0 3px 15px rgba(0,0,0,.08);
 
-
-/* =========================================================
-   PROFILE
-========================================================= */
-
-.profile{
-
-    position:relative;
-
-    z-index:5;
-
-    width:100%;
-
-    text-align:center;
-
-    margin:auto;
-
-    max-width:800px;
-}
-
-
-/* =========================================================
-   AVATAR AREA
-========================================================= */
-
-.avatar-wrapper{
-
-    position:relative;
-
-    width:125px;
-    height:125px;
-
-    margin:
-        0 auto
-        18px;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-}
-
-
-/* Vòng sáng ngoài */
-
-.avatar-wrapper::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:-7px;
-
-    border-radius:50%;
-
-    border:
-        2px solid
-        rgba(0,207,255,.55);
-
-    box-shadow:
-        0 0 15px #00cfff,
-        0 0 35px rgba(0,207,255,.35);
-
-    animation:
-        avatarRotate 5s linear infinite;
-}
-
-
-@keyframes avatarRotate{
-
-    from{
-        transform:rotate(0deg);
-    }
-
-    to{
-        transform:rotate(360deg);
-    }
-
-}
-
-
-/* Avatar chính */
-
-.avatar{
-
-    width:115px;
-    height:115px;
-
-    border-radius:50%;
-
-    object-fit:cover;
-
-    border:
-        3px solid
-        #00cfff;
-
-    background:#03131b;
-
-    box-shadow:
-        0 0 12px #00cfff,
-        0 0 30px rgba(0,207,255,.45);
-
-    position:relative;
-
-    z-index:2;
-}
-
-
-/* =========================================================
-   ẢNH BẠN GỬI Ở GIỮA AVATAR
-========================================================= */
-
-.avatar-center{
-
-    position:absolute;
-
-    z-index:5;
-
-    width:43px;
-    height:43px;
-
-    border-radius:50%;
-
-    object-fit:cover;
-
-    border:
-        2px solid
-        #ffffff;
-
-    background:#00131c;
-
-    box-shadow:
-        0 0 8px #00cfff,
-        0 0 18px #00cfff,
-        0 0 30px rgba(0,207,255,.6);
-
-    transition:.25s;
-}
-
-
-.avatar-center:hover{
-
-    transform:
-        scale(1.12);
-
-    box-shadow:
-        0 0 15px #00cfff,
-        0 0 30px #00cfff;
-}
-
-
-/* Tên */
-
-.profile h1{
-
-    font-size:30px;
-
-    letter-spacing:1px;
-
-    color:#00cfff;
-
-    text-shadow:
-        0 0 10px #00cfff,
-        0 0 25px rgba(0,207,255,.7);
-}
-
-
-.profile p{
-
-    margin-top:7px;
-
-    color:#8ba6b0;
-
-    font-size:14px;
-}
-
-
-/* =========================================================
-   MARQUEE
-========================================================= */
-
-.marquee{
-
-    position:relative;
-
-    z-index:5;
-
-    width:100%;
-
-    overflow:hidden;
-
-    margin:
-        25px
-        auto
-        20px;
-
-    padding:
-        10px
-        0;
-
-    border-top:
-        1px solid
-        rgba(0,207,255,.25);
-
-    border-bottom:
-        1px solid
-        rgba(0,207,255,.25);
-
-    background:
-        rgba(0,20,30,.3);
-}
-
-
-.marquee-text{
-
-    display:inline-block;
-
-    white-space:nowrap;
-
-    color:#00cfff;
-
-    font-size:14px;
-
-    animation:
-        marquee 16s
-        linear
-        infinite;
-}
-
-
-@keyframes marquee{
-
-    from{
-        transform:
-            translateX(100%);
-    }
-
-    to{
-        transform:
-            translateX(-100%);
-    }
-
+    backdrop-filter:blur(10px);
 }
 
 
@@ -601,38 +224,241 @@ body{
 ========================================================= */
 
 .container{
+    width:100%;
+    max-width:850px;
 
-    position:relative;
-
-    z-index:5;
-
-    width:
-        min(850px,100%);
-
-    margin:auto;
+    margin:0 auto;
 }
 
 
-/* Section */
+/* =========================================================
+   PROFILE
+========================================================= */
 
-.section-title{
+.profile{
+    display:flex;
+
+    align-items:center;
+    flex-direction:column;
 
     text-align:center;
 
-    margin:
-        28px
-        0
-        16px;
+    padding-top:25px;
+}
 
-    font-size:20px;
+.avatar-wrapper{
+    position:relative;
+
+    width:125px;
+    height:125px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    margin-bottom:15px;
+}
+
+.avatar-wrapper::before{
+    content:"";
+
+    position:absolute;
+
+    inset:-5px;
+
+    border-radius:50%;
+
+    border:
+        2px solid #00bfff;
+
+    animation:
+        avatarRotate 4s linear infinite;
+
+    box-shadow:
+        0 0 12px rgba(0,190,255,.35);
+}
+
+@keyframes avatarRotate{
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+.avatar{
+    width:115px;
+    height:115px;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    border:3px solid #ffffff;
+
+    background:#f3f3f3;
+
+    box-shadow:
+        0 5px 25px rgba(0,0,0,.15);
+}
+
+.profile h1{
+    font-size:28px;
+
+    font-weight:900;
+
+    letter-spacing:1px;
+
+    color:#111;
+
+    margin-bottom:7px;
+}
+
+
+/* =========================================================
+   PROFILE ANIMATION
+   iOS • Roblox • MOD • ESP
+========================================================= */
+
+.profile-animation{
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    gap:8px;
+
+    margin-top:5px;
+
+    overflow:hidden;
+
+    white-space:nowrap;
+
+    color:#00aeea;
+
+    font-size:13px;
 
     font-weight:bold;
 
-    color:#ffffff;
+    letter-spacing:.5px;
 
     text-shadow:
-        0 0 8px
-        rgba(255,255,255,.2);
+        0 0 8px rgba(0,174,234,.35);
+
+    animation:
+        profileMove 2.8s ease-in-out infinite;
+}
+
+.profile-animation span{
+    display:inline-block;
+
+    transition:.3s;
+}
+
+.profile-animation b{
+    color:#8a9aa0;
+
+    font-size:12px;
+}
+
+@keyframes profileMove{
+
+    0%{
+        transform:translateX(-12px);
+
+        opacity:.65;
+    }
+
+    50%{
+        transform:translateX(12px);
+
+        opacity:1;
+
+        text-shadow:
+            0 0 12px #00cfff,
+            0 0 25px rgba(0,207,255,.35);
+    }
+
+    100%{
+        transform:translateX(-12px);
+
+        opacity:.65;
+    }
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.intro{
+    text-align:center;
+
+    max-width:600px;
+
+    margin:
+        20px
+        auto
+        30px;
+
+    color:#666;
+
+    font-size:13px;
+
+    line-height:1.7;
+}
+
+
+/* =========================================================
+   SECTION TITLE
+========================================================= */
+
+.section-title{
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin:
+        30px
+        0
+        15px;
+}
+
+.section-title::before{
+    content:"";
+
+    width:4px;
+    height:25px;
+
+    background:#00bfff;
+
+    border-radius:10px;
+}
+
+.section-title h2{
+    font-size:18px;
+
+    color:#111;
+
+    font-weight:900;
+}
+
+
+/* =========================================================
+   MOD GRID
+========================================================= */
+
+.mod-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:15px;
 }
 
 
@@ -641,54 +467,29 @@ body{
 ========================================================= */
 
 .mod-card{
-
     position:relative;
 
-    display:flex;
+    padding:20px 16px;
 
-    align-items:center;
-
-    width:100%;
-
-    min-height:82px;
-
-    padding:16px 18px;
-
-    margin:
-        12px
-        0;
-
-    gap:15px;
+    background:#ffffff;
 
     border:
-        1px solid
-        rgba(0,207,255,.25);
+        1px solid #e7e7e7;
 
-    border-radius:15px;
+    border-radius:18px;
 
-    background:
-        linear-gradient(
-            135deg,
-            rgba(5,27,38,.9),
-            rgba(2,15,23,.8)
-        );
-
-    backdrop-filter:
-        blur(10px);
-
-    overflow:hidden;
+    box-shadow:
+        0 7px 25px rgba(0,0,0,.06);
 
     transition:
-        transform .25s,
-        border-color .25s,
-        box-shadow .25s;
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
+
+    overflow:hidden;
 }
 
-
-/* Thanh bên trái */
-
 .mod-card::before{
-
     content:"";
 
     position:absolute;
@@ -696,154 +497,222 @@ body{
     top:0;
     left:0;
 
-    width:3px;
-    height:100%;
-
-    background:#00cfff;
-
-    box-shadow:
-        0 0 12px #00cfff;
-}
-
-
-/* Shine */
-
-.mod-card::after{
-
-    content:"";
-
-    position:absolute;
-
-    top:0;
-    left:-120%;
-
-    width:70%;
-
-    height:100%;
+    width:100%;
+    height:3px;
 
     background:
         linear-gradient(
             90deg,
-            transparent,
-            rgba(255,255,255,.04),
-            transparent
+            #00bfff,
+            #00e1ff
         );
-
-    transform:
-        skewX(-20deg);
-
-    transition:.6s;
 }
-
-
-.mod-card:hover::after{
-
-    left:140%;
-}
-
 
 .mod-card:hover{
-
     transform:
-        translateY(-3px);
+        translateY(-5px);
 
-    border-color:
-        rgba(0,207,255,.7);
+    border-color:#bfefff;
 
     box-shadow:
-        0 0 25px
-        rgba(0,207,255,.12);
+        0 12px 35px rgba(0,170,230,.12);
 }
 
-
-/* Icon */
-
 .mod-icon{
-
-    width:52px;
-    height:52px;
-
-    flex-shrink:0;
+    width:48px;
+    height:48px;
 
     display:flex;
 
     align-items:center;
     justify-content:center;
 
-    border-radius:13px;
+    border-radius:14px;
 
-    background:
-        #061923;
+    background:#eefaff;
 
-    border:
-        1px solid
-        rgba(0,207,255,.3);
+    font-size:23px;
 
-    font-size:26px;
-
-    box-shadow:
-        inset 0 0 12px
-        rgba(0,207,255,.05);
+    margin-bottom:12px;
 }
 
+.mod-card h3{
+    font-size:16px;
 
-/* Info */
+    color:#111;
+
+    margin-bottom:8px;
+}
 
 .mod-info{
+    font-size:12px;
 
-    flex:1;
+    color:#777;
 
-    min-width:0;
+    line-height:1.7;
+}
+
+.mod-info strong{
+    color:#00aeea;
 }
 
 
-.mod-name{
+/* =========================================================
+   DOWNLOAD BUTTON
+========================================================= */
 
-    font-size:17px;
+.download-btn{
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    gap:7px;
+
+    margin-top:15px;
+
+    padding:11px 12px;
+
+    border:0;
+
+    border-radius:12px;
+
+    background:#111;
+
+    color:#fff;
+
+    font-size:12px;
 
     font-weight:bold;
 
-    color:#ffffff;
+    text-decoration:none;
+
+    cursor:pointer;
+
+    transition:
+        transform .2s ease,
+        background .2s ease;
 }
 
-
-.mod-meta{
-
-    margin-top:5px;
-
-    color:#91aab4;
-
-    font-size:13px;
-}
-
-
-.mod-download{
-
-    margin-top:6px;
-
-    color:#00cfff;
-
-    font-size:13px;
-}
-
-
-/* Arrow */
-
-.mod-arrow{
-
-    color:#00cfff;
-
-    font-size:26px;
-
-    transition:.25s;
-}
-
-
-.mod-card:hover
-.mod-arrow{
+.download-btn:hover{
+    background:#00aeea;
 
     transform:
-        translateX(5px);
+        translateY(-2px);
+}
+
+.download-btn:active{
+    transform:
+        scale(.97);
+}
+
+
+/* =========================================================
+   UPDATE BADGE
+========================================================= */
+
+.update-badge{
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:5px;
+
+    margin-top:10px;
+
+    padding:
+        4px
+        8px;
+
+    border-radius:20px;
+
+    background:#effcff;
+
+    color:#00aeea;
+
+    font-size:10px;
+
+    font-weight:bold;
+}
+
+.update-dot{
+    width:6px;
+    height:6px;
+
+    border-radius:50%;
+
+    background:#00cfff;
+
+    animation:
+        updatePulse 1.4s infinite;
+}
+
+@keyframes updatePulse{
+
+    0%{
+        opacity:.4;
+        transform:scale(.8);
+    }
+
+    50%{
+        opacity:1;
+        transform:scale(1.1);
+    }
+
+    100%{
+        opacity:.4;
+        transform:scale(.8);
+    }
+}
+
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.stats{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:12px;
+
+    margin-top:30px;
+}
+
+.stat{
+    text-align:center;
+
+    padding:16px 10px;
+
+    border:
+        1px solid #eeeeee;
+
+    border-radius:15px;
+
+    background:#fff;
+
+    box-shadow:
+        0 5px 18px rgba(0,0,0,.04);
+}
+
+.stat-number{
+    font-size:20px;
+
+    font-weight:900;
+
+    color:#00aeea;
+}
+
+.stat-label{
+    margin-top:5px;
+
+    font-size:10px;
+
+    color:#888;
 }
 
 
@@ -851,63 +720,75 @@ body{
    DISCORD
 ========================================================= */
 
-.discord{
-
-    position:relative;
-
-    z-index:5;
-
-    display:block;
-
-    width:
-        min(500px,100%);
-
-    margin:
-        30px
-        auto
-        0;
-
-    padding:14px;
+.discord-section{
+    margin-top:30px;
 
     text-align:center;
 
-    text-decoration:none;
+    padding:25px 18px;
 
-    color:#ffffff;
-
-    font-size:15px;
-
-    font-weight:bold;
-
-    border-radius:13px;
-
-    border:
-        1px solid
-        #00cfff;
+    border-radius:20px;
 
     background:
         linear-gradient(
             135deg,
-            #07536a,
-            #063342
+            #f8fdff,
+            #ffffff
         );
 
-    box-shadow:
-        0 0 15px
-        rgba(0,207,255,.12);
-
-    transition:.25s;
+    border:
+        1px solid #e5f8ff;
 }
 
+.discord-section h2{
+    font-size:18px;
 
-.discord:hover{
+    margin-bottom:8px;
+}
 
+.discord-section p{
+    font-size:12px;
+
+    color:#777;
+
+    margin-bottom:15px;
+}
+
+.discord-btn{
+    display:inline-flex;
+
+    justify-content:center;
+    align-items:center;
+
+    gap:8px;
+
+    padding:
+        12px
+        22px;
+
+    border-radius:12px;
+
+    background:#5865f2;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    font-size:13px;
+
+    font-weight:bold;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+.discord-btn:hover{
     transform:
         translateY(-3px);
 
     box-shadow:
-        0 0 25px
-        rgba(0,207,255,.3);
+        0 8px 25px rgba(88,101,242,.25);
 }
 
 
@@ -915,19 +796,69 @@ body{
    FOOTER
 ========================================================= */
 
-.footer{
-
-    position:relative;
-
-    z-index:5;
-
+footer{
     text-align:center;
 
     margin-top:35px;
 
-    color:#5f7b86;
+    padding-top:20px;
 
-    font-size:12px;
+    border-top:
+        1px solid #eeeeee;
+
+    color:#999;
+
+    font-size:10px;
+
+    line-height:1.7;
+}
+
+footer strong{
+    color:#00aeea;
+}
+
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+.back-top{
+    position:fixed;
+
+    right:15px;
+    bottom:15px;
+
+    width:40px;
+    height:40px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    border:
+        1px solid #e5e5e5;
+
+    background:#fff;
+
+    color:#111;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,.08);
+
+    transition:.2s;
+
+    z-index:1000;
+}
+
+.back-top:hover{
+    background:#00aeea;
+
+    color:#fff;
 }
 
 
@@ -935,143 +866,107 @@ body{
    MOBILE
 ========================================================= */
 
-@media(max-width:600px){
+@media(max-width:700px){
 
     #main{
-
         padding:
-            65px
+            20px
             12px
-            35px;
+            40px;
     }
 
-
-    .loading-title{
-
-        font-size:22px;
+    .profile{
+        padding-top:25px;
     }
-
-
-    .loading-logo{
-
-        width:80px;
-        height:80px;
-    }
-
 
     .avatar-wrapper{
-
         width:110px;
         height:110px;
     }
 
-
     .avatar{
-
         width:100px;
         height:100px;
     }
 
-
-    .avatar-center{
-
-        width:38px;
-        height:38px;
-    }
-
-
     .profile h1{
-
         font-size:23px;
     }
 
-
-    .profile p{
-
+    .profile-animation{
         font-size:12px;
+
+        gap:7px;
+
+        margin-top:7px;
     }
 
+    .mod-grid{
+        grid-template-columns:1fr;
+
+        gap:12px;
+    }
 
     .mod-card{
-
-        padding:
-            13px;
-
-        gap:10px;
-
-        min-height:72px;
+        padding:18px 15px;
     }
 
+    .stats{
+        grid-template-columns:
+            repeat(3,1fr);
 
-    .mod-icon{
-
-        width:44px;
-        height:44px;
-
-        font-size:21px;
-
-        border-radius:11px;
+        gap:7px;
     }
 
-
-    .mod-name{
-
-        font-size:15px;
+    .stat{
+        padding:13px 5px;
     }
 
-
-    .mod-meta{
-
-        font-size:11px;
+    .stat-number{
+        font-size:16px;
     }
 
-
-    .mod-download{
-
-        font-size:11px;
+    .stat-label{
+        font-size:9px;
     }
 
-
-    .mod-arrow{
-
-        font-size:21px;
+    .loading-title{
+        font-size:25px;
     }
 
-
-    .marquee-text{
-
-        font-size:12px;
+    .loading-percent{
+        font-size:40px;
     }
-
 }
 
 
 /* =========================================================
-   SMALL PHONE
+   VERY SMALL SCREEN
 ========================================================= */
 
 @media(max-width:380px){
 
-    .mod-card{
-
-        padding:11px;
-
-        gap:8px;
+    .profile h1{
+        font-size:21px;
     }
 
+    .profile-animation{
+        font-size:11px;
 
-    .mod-icon{
-
-        width:40px;
-        height:40px;
+        gap:5px;
     }
 
-
-    .mod-arrow{
-
-        font-size:18px;
+    .stats{
+        gap:5px;
     }
 
+    .stat-number{
+        font-size:14px;
+    }
+
+    .stat-label{
+        font-size:8px;
+    }
 }
 
 </style>
@@ -1087,49 +982,38 @@ body{
 
 <div id="loading">
 
-
-    <!-- Có thể dùng cùng ảnh avatar -->
-
-    <img
-        class="loading-logo"
-        src="https://i.ibb.co/62T1SCf/7da372b3b4c51b49db120dbbf0c06858-tplv-tiktokx-cropcenter100100.jpg"
-        alt="XUÂN KHÁNH"
-    >
-
-
-    <div class="loading-title">
-        XUÂN KHÁNH MOD
-    </div>
-
-
     <div class="loading-box">
 
+        <div class="loading-title">
+            XUÂN KHÁNH
+        </div>
+
+        <div class="loading-subtitle">
+            Đang khởi động hệ thống...
+        </div>
+
+        <div
+            class="loading-percent"
+            id="loadingPercent"
+        >
+            0%
+        </div>
 
         <div class="loading-bar">
 
             <div
                 class="loading-progress"
-                id="progress"
+                id="loadingProgress"
             ></div>
 
         </div>
 
-
-        <div
-            class="loading-percent"
-            id="percent"
-        >
-            0%
-        </div>
-
-
         <div
             class="loading-status"
-            id="status"
+            id="loadingStatus"
         >
-            Đang khởi động...
+            Đang chuẩn bị...
         </div>
-
 
     </div>
 
@@ -1144,20 +1028,7 @@ body{
 <div id="main">
 
 
-    <!-- ===================================================
-         RAIN
-    ==================================================== -->
-
-    <div
-        class="rain"
-        id="rain"
-    ></div>
-
-
-
-    <!-- ===================================================
-         CLOCK
-    ==================================================== -->
+    <!-- CLOCK -->
 
     <div
         class="clock"
@@ -1168,192 +1039,248 @@ body{
 
 
 
-    <!-- ===================================================
-         PROFILE
-    ==================================================== -->
-
-    <div class="profile">
-
-
-        <div class="avatar-wrapper">
-
-
-            <!-- AVATAR CỦA BẠN -->
-
-            <img
-                class="avatar"
-                src="https://i.imgur.com/8Km9tLL.png"
-                alt="Avatar XUÂN KHÁNH"
-            >
-
-
-            <!-- ẢNH BẠN GỬI
-                 NẰM CHÍNH GIỮA AVATAR -->
-
-            <img
-                class="avatar-center"
-                src="https://i.ibb.co/62T1SCf/7da372b3b4c51b49db120dbbf0c06858-tplv-tiktokx-cropcenter100100.jpg"
-                alt="Avatar Center"
-            >
-
-
-        </div>
-
-
-        <h1>
-            XUÂN KHÁNH MOD
-        </h1>
-
-
-        <p>
-            iOS • Roblox • MOD • ESP
-        </p>
-
-
-    </div>
-
-
-
-    <!-- ===================================================
-         MARQUEE
-    ==================================================== -->
-
-    <div class="marquee">
-
-
-        <div class="marquee-text">
-
-            🔵 XUÂN KHÁNH MOD
-            •
-            CẬP NHẬT MOD MỚI
-            •
-            HỖ TRỢ iOS
-            •
-            ROBLOX
-            •
-            AVO ESP
-            •
-            THAM GIA DISCORD
-            🔵
-
-        </div>
-
-
-    </div>
-
-
-
-    <!-- ===================================================
-         MOD CONTAINER
-    ==================================================== -->
-
     <div class="container">
 
 
+        <!-- =================================================
+             PROFILE
+        ================================================== -->
+
+        <section class="profile">
+
+            <div class="avatar-wrapper">
+
+                <!-- THAY LINK AVATAR CỦA BẠN Ở ĐÂY -->
+
+                <img
+                    class="avatar"
+                    src="YOUR_AVATAR_LINK_HERE"
+                    alt="Avatar XUÂN KHÁNH"
+                >
+
+            </div>
+
+
+            <h1>
+                XUÂN KHÁNH MOD
+            </h1>
+
+
+            <!-- HIỆU ỨNG CHUYỂN ĐỘNG -->
+
+            <div class="profile-animation">
+
+                <span>iOS</span>
+
+                <b>•</b>
+
+                <span>Roblox</span>
+
+                <b>•</b>
+
+                <span>MOD</span>
+
+                <b>•</b>
+
+                <span>ESP</span>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             INTRO
+        ================================================== -->
+
+        <div class="intro">
+
+            Chào mừng bạn đến với website
+            <strong>XUÂN KHÁNH MOD</strong>.
+
+            <br>
+
+            Tại đây bạn có thể xem các bản phát hành,
+            phiên bản cập nhật và thông tin tải xuống.
+
+        </div>
+
+
+
+        <!-- =================================================
+             MOD LIST
+        ================================================== -->
+
         <div class="section-title">
 
-            🎮 MOD / TOOL
+            <h2>
+                🎮 DANH SÁCH MOD
+            </h2>
 
         </div>
 
 
-
-        <!-- =================================================
-             ROBLOX
-        ================================================== -->
-
-        <div class="mod-card">
+        <div class="mod-grid">
 
 
-            <div class="mod-icon">
+            <!-- =============================================
+                 ROBLOX
+            ============================================== -->
 
-                🎮
+            <div class="mod-card">
 
-            </div>
+                <div class="mod-icon">
+                    🎮
+                </div>
 
-
-            <div class="mod-info">
-
-
-                <div class="mod-name">
-
+                <h3>
                     Roblox
+                </h3>
+
+                <div class="mod-info">
+
+                    <div>
+                        <strong>Hệ điều hành:</strong>
+                        iOS
+                    </div>
+
+                    <div>
+                        <strong>Phiên bản:</strong>
+                        1.2.5
+                    </div>
+
+                    <div>
+                        <strong>Lượt tải:</strong>
+                        12,458
+                    </div>
 
                 </div>
 
+                <div class="update-badge">
 
-                <div class="mod-meta">
+                    <span class="update-dot"></span>
 
-                    iOS • Phiên bản 1.2.5
-
-                </div>
-
-
-                <div class="mod-download">
-
-                    ⬇ 12,458 lượt tải • Cập nhật
+                    Đã cập nhật
 
                 </div>
 
+                <a
+                    class="download-btn"
+                    href="YOUR_ROBLOX_LINK"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    ⬇ TẢI XUỐNG
+                </a>
 
             </div>
 
 
-            <div class="mod-arrow">
 
-                →
+            <!-- =============================================
+                 AVO ESP
+            ============================================== -->
 
-            </div>
+            <div class="mod-card">
 
+                <div class="mod-icon">
+                    👁️
+                </div>
 
-        </div>
-
-
-
-        <!-- =================================================
-             AVO ESP
-        ================================================== -->
-
-        <div class="mod-card">
-
-
-            <div class="mod-icon">
-
-                👁️
-
-            </div>
-
-
-            <div class="mod-info">
-
-
-                <div class="mod-name">
-
+                <h3>
                     AVO Esp
+                </h3>
+
+                <div class="mod-info">
+
+                    <div>
+                        <strong>Hệ điều hành:</strong>
+                        iOS
+                    </div>
+
+                    <div>
+                        <strong>Phiên bản:</strong>
+                        2.0.1
+                    </div>
+
+                    <div>
+                        <strong>Lượt tải:</strong>
+                        8,921
+                    </div>
 
                 </div>
 
+                <div class="update-badge">
 
-                <div class="mod-meta">
+                    <span class="update-dot"></span>
 
-                    iOS • Phiên bản 2.0.1
-
-                </div>
-
-
-                <div class="mod-download">
-
-                    ⬇ 8,921 lượt tải • Cập nhật
+                    Đã cập nhật
 
                 </div>
 
+                <a
+                    class="download-btn"
+                    href="YOUR_AVO_LINK"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    ⬇ TẢI XUỐNG
+                </a>
 
             </div>
 
 
-            <div class="mod-arrow">
 
-                →
+            <!-- =============================================
+                 OTHER MODS
+            ============================================== -->
+
+            <div class="mod-card">
+
+                <div class="mod-icon">
+                    🔧
+                </div>
+
+                <h3>
+                    Các MOD khác
+                </h3>
+
+                <div class="mod-info">
+
+                    <div>
+                        <strong>Hệ điều hành:</strong>
+                        iOS
+                    </div>
+
+                    <div>
+                        <strong>Phiên bản:</strong>
+                        Nhiều phiên bản
+                    </div>
+
+                    <div>
+                        <strong>Lượt tải:</strong>
+                        5,634
+                    </div>
+
+                </div>
+
+                <div class="update-badge">
+
+                    <span class="update-dot"></span>
+
+                    Đã cập nhật
+
+                </div>
+
+                <a
+                    class="download-btn"
+                    href="YOUR_OTHER_MOD_LINK"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    ⬇ XEM MOD
+                </a>
 
             </div>
 
@@ -1363,52 +1290,60 @@ body{
 
 
         <!-- =================================================
-             MOD KHÁC
+             STATISTICS
         ================================================== -->
 
-        <div class="mod-card">
+        <div class="section-title">
+
+            <h2>
+                📊 THỐNG KÊ
+            </h2>
+
+        </div>
 
 
-            <div class="mod-icon">
+        <div class="stats">
 
-                🔧
+            <div class="stat">
+
+                <div
+                    class="stat-number"
+                    id="totalDownloads"
+                >
+                    27K+
+                </div>
+
+                <div class="stat-label">
+                    Lượt tải
+                </div>
 
             </div>
 
 
-            <div class="mod-info">
+            <div class="stat">
 
-
-                <div class="mod-name">
-
-                    Các MOD khác
-
+                <div class="stat-number">
+                    3+
                 </div>
 
-
-                <div class="mod-meta">
-
-                    iOS • Nhiều phiên bản
-
+                <div class="stat-label">
+                    MOD
                 </div>
-
-
-                <div class="mod-download">
-
-                    ⬇ 5,634 lượt tải • Cập nhật
-
-                </div>
-
 
             </div>
 
 
-            <div class="mod-arrow">
+            <div class="stat">
 
-                →
+                <div class="stat-number">
+                    iOS
+                </div>
+
+                <div class="stat-label">
+                    Nền tảng
+                </div>
 
             </div>
-
 
         </div>
 
@@ -1418,16 +1353,27 @@ body{
              DISCORD
         ================================================== -->
 
-        <a
-            class="discord"
-            href="https://discord.com/"
-            target="_blank"
-            rel="noopener"
-        >
+        <section class="discord-section">
 
-            💬 Tham gia Discord
+            <h2>
+                💬 Tham gia Discord
+            </h2>
 
-        </a>
+            <p>
+                Tham gia server để nhận thông báo
+                khi website có bản cập nhật mới.
+            </p>
+
+            <a
+                class="discord-btn"
+                href="https://discord.com/"
+                target="_blank"
+                rel="noopener"
+            >
+                💬 THAM GIA DISCORD
+            </a>
+
+        </section>
 
 
 
@@ -1435,142 +1381,127 @@ body{
              FOOTER
         ================================================== -->
 
-        <div class="footer">
+        <footer>
 
-            © 2026 XUÂN KHÁNH MOD
-            •
-            All Rights Reserved
+            © 2026
+            <strong>XUÂN KHÁNH MOD</strong>
 
-        </div>
+            <br>
+
+            iOS • Roblox • MOD • ESP
+
+            <br>
+
+            Website được xây dựng cho mục đích
+            giới thiệu và quản lý nội dung.
+
+        </footer>
 
 
     </div>
+
+
+    <!-- BACK TO TOP -->
+
+    <button
+        class="back-top"
+        onclick="window.scrollTo({
+            top:0,
+            behavior:'smooth'
+        })"
+        aria-label="Lên đầu trang"
+    >
+        ↑
+    </button>
 
 
 </div>
 
 
 
+<!-- =======================================================
+     JAVASCRIPT
+======================================================= -->
+
 <script>
 
+
 /* =========================================================
-   LOADING 0 → 100
+   LOADING 0% → 100%
 ========================================================= */
+
+const loading =
+    document.getElementById("loading");
+
+const main =
+    document.getElementById("main");
+
+const loadingPercent =
+    document.getElementById("loadingPercent");
+
+const loadingProgress =
+    document.getElementById("loadingProgress");
+
+const loadingStatus =
+    document.getElementById("loadingStatus");
+
 
 let progress = 0;
 
-const progressBar =
-    document.getElementById("progress");
 
-const percent =
-    document.getElementById("percent");
-
-const status =
-    document.getElementById("status");
-
-
-const loadingTexts = [
-
-    "Đang khởi động...",
-
-    "Đang tải dữ liệu...",
-
-    "Đang kiểm tra phiên bản...",
-
-    "Đang tải MOD...",
-
-    "Đang hoàn tất..."
-
-];
-
-
-const loadingInterval =
+const loadingTimer =
     setInterval(function(){
-
 
         progress++;
 
+        loadingPercent.textContent =
+            progress + "%";
 
-        progressBar.style.width =
+        loadingProgress.style.width =
             progress + "%";
 
 
-        percent.textContent =
-            progress + "%";
+        if(progress < 25){
 
-
-        if(progress < 20){
-
-            status.textContent =
-                loadingTexts[0];
+            loadingStatus.textContent =
+                "Đang kết nối...";
 
         }
+        else if(progress < 50){
 
-        else if(progress < 45){
-
-            status.textContent =
-                loadingTexts[1];
-
-        }
-
-        else if(progress < 70){
-
-            status.textContent =
-                loadingTexts[2];
+            loadingStatus.textContent =
+                "Đang tải dữ liệu...";
 
         }
+        else if(progress < 75){
 
-        else if(progress < 95){
-
-            status.textContent =
-                loadingTexts[3];
+            loadingStatus.textContent =
+                "Đang chuẩn bị giao diện...";
 
         }
+        else if(progress < 100){
 
+            loadingStatus.textContent =
+                "Gần hoàn tất...";
+
+        }
         else{
 
-            status.textContent =
-                loadingTexts[4];
-
-        }
-
-
-        if(progress >= 100){
-
-
-            clearInterval(
-                loadingInterval
-            );
-
-
-            status.textContent =
+            loadingStatus.textContent =
                 "Hoàn tất!";
+
+            clearInterval(loadingTimer);
 
 
             setTimeout(function(){
 
+                loading.classList.add("hide");
 
-                /*
-                 * QUAN TRỌNG:
-                 *
-                 * MAIN chỉ xuất hiện
-                 * SAU KHI loading đạt 100%.
-                 */
-
-                document
-                    .getElementById("loading")
-                    .style.display = "none";
-
-
-                document
-                    .getElementById("main")
-                    .style.display = "block";
-
+                main.classList.add("show");
 
             },500);
 
         }
-
 
     },35);
 
@@ -1582,33 +1513,30 @@ const loadingInterval =
 
 function updateClock(){
 
-
     const now =
         new Date();
 
 
-    let hours =
+    const hours =
         String(
             now.getHours()
         ).padStart(2,"0");
 
 
-    let minutes =
+    const minutes =
         String(
             now.getMinutes()
         ).padStart(2,"0");
 
 
-    let seconds =
+    const seconds =
         String(
             now.getSeconds()
         ).padStart(2,"0");
 
 
-    document
-        .getElementById("clock")
+    document.getElementById("clock")
         .textContent =
-
         hours +
         ":" +
         minutes +
@@ -1620,7 +1548,6 @@ function updateClock(){
 
 updateClock();
 
-
 setInterval(
     updateClock,
     1000
@@ -1629,61 +1556,61 @@ setInterval(
 
 
 /* =========================================================
-   CREATE RAIN
+   DOWNLOAD CLICK EFFECT
 ========================================================= */
 
-const rain =
-    document.getElementById("rain");
+document
+    .querySelectorAll(".download-btn")
+    .forEach(function(button){
+
+        button.addEventListener(
+            "click",
+            function(){
+
+                button.style.transform =
+                    "scale(.96)";
+
+                setTimeout(function(){
+
+                    button.style.transform =
+                        "";
+
+                },120);
+
+            }
+        );
+
+    });
 
 
-for(
-    let i = 0;
-    i < 100;
-    i++
-){
 
+/* =========================================================
+   PREVENT EMPTY LINKS
+========================================================= */
 
-    const drop =
-        document.createElement("div");
+document
+    .querySelectorAll(
+        'a[href^="YOUR_"]'
+    )
+    .forEach(function(link){
 
+        link.addEventListener(
+            "click",
+            function(event){
 
-    drop.className =
-        "drop";
+                event.preventDefault();
 
+                alert(
+                    "Bạn chưa thêm link tải!"
+                );
 
-    drop.style.left =
-        Math.random() * 100 + "%";
+            }
+        );
 
-
-    drop.style.height =
-        (
-            35 +
-            Math.random() * 80
-        ) + "px";
-
-
-    drop.style.animationDuration =
-        (
-            .5 +
-            Math.random() * 1.2
-        ) + "s";
-
-
-    drop.style.animationDelay =
-        (
-            Math.random() * 2
-        ) + "s";
-
-
-    rain.appendChild(
-        drop
-    );
-
-}
+    });
 
 
 </script>
-
 
 </body>
 </html>
