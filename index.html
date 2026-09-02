@@ -2,1615 +2,1690 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>XUÂN KHÁNH MOD</title>
+    <!-- =====================================================
+         BASIC
+    ====================================================== -->
 
-<meta name="description" content="XUÂN KHÁNH MOD - iOS • Roblox • MOD • ESP">
-<meta name="theme-color" content="#ffffff">
+    <meta charset="UTF-8">
 
-<style>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-/* =========================================================
-   RESET
-========================================================= */
+    <meta
+        name="theme-color"
+        content="#ffffff"
+    >
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+    <meta
+        name="description"
+        content="Zunada"
+    >
 
-html{
-    scroll-behavior:smooth;
-}
+    <meta
+        name="author"
+        content="Zunada"
+    >
 
-body{
-    width:100%;
-    min-height:100vh;
-    background:#ffffff;
-    color:#111111;
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-    overflow-x:hidden;
-}
+    <title>Zunada</title>
 
 
-/* =========================================================
-   LOADING SCREEN
-========================================================= */
+    <!-- =====================================================
+         CSS
+    ====================================================== -->
 
-#loading{
-    position:fixed;
-    inset:0;
-    width:100%;
-    height:100vh;
+    <style>
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
+        /* =================================================
+           RESET
+        ================================================= */
 
-    background:#ffffff;
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
 
-    z-index:99999;
+        html{
+            scroll-behavior:smooth;
+        }
 
-    transition:
-        opacity .6s ease,
-        visibility .6s ease;
-}
+        body{
+            width:100%;
+            min-height:100vh;
 
-#loading.hide{
-    opacity:0;
-    visibility:hidden;
-    pointer-events:none;
-}
+            background:#ffffff;
 
-.loading-box{
-    width:min(90%,420px);
-    text-align:center;
-}
+            color:#111111;
 
-.loading-title{
-    font-size:30px;
-    font-weight:900;
-    letter-spacing:2px;
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
 
-    color:#111;
+            overflow-x:hidden;
+        }
 
-    margin-bottom:8px;
-}
 
-.loading-subtitle{
-    font-size:13px;
-    color:#777;
+        /* =================================================
+           LOADING
+        ================================================= */
 
-    margin-bottom:25px;
-}
+        #loading{
+            position:fixed;
 
-.loading-percent{
-    font-size:45px;
-    font-weight:900;
+            top:0;
+            left:0;
 
-    color:#00aeea;
+            width:100%;
+            height:100vh;
 
-    margin-bottom:15px;
+            display:flex;
 
-    text-shadow:
-        0 0 10px rgba(0,174,234,.25);
-}
+            justify-content:center;
+            align-items:center;
 
-.loading-bar{
-    width:100%;
-    height:8px;
+            background:#ffffff;
 
-    background:#e9e9e9;
+            z-index:99999;
 
-    border-radius:20px;
+            transition:
+                opacity .6s ease,
+                visibility .6s ease;
+        }
 
-    overflow:hidden;
+        #loading.hide{
+            opacity:0;
 
-    box-shadow:
-        inset 0 0 5px rgba(0,0,0,.08);
-}
+            visibility:hidden;
 
-.loading-progress{
-    width:0%;
-    height:100%;
+            pointer-events:none;
+        }
 
-    background:
-        linear-gradient(
-            90deg,
-            #00b7ff,
-            #00d9ff
-        );
 
-    border-radius:20px;
+        .loading-container{
+            width:
+                min(
+                    88%,
+                    420px
+                );
 
-    transition:
-        width .05s linear;
+            text-align:center;
+        }
 
-    box-shadow:
-        0 0 12px rgba(0,190,255,.5);
-}
 
-.loading-status{
-    margin-top:14px;
+        .loading-logo{
+            font-size:42px;
 
-    font-size:12px;
-    color:#888;
+            font-weight:900;
 
-    min-height:18px;
-}
+            letter-spacing:3px;
 
+            color:#111111;
 
-/* =========================================================
-   MAIN
-========================================================= */
+            margin-bottom:8px;
 
-#main{
-    display:none;
+            user-select:none;
+        }
 
-    width:100%;
-    min-height:100vh;
 
-    background:#ffffff;
+        .loading-subtitle{
+            font-size:12px;
 
-    padding:
-        25px
-        15px
-        50px;
-}
+            color:#888888;
 
-#main.show{
-    display:block;
+            margin-bottom:28px;
 
-    animation:
-        mainAppear .7s ease;
-}
+            letter-spacing:.5px;
+        }
 
-@keyframes mainAppear{
-    from{
-        opacity:0;
-        transform:translateY(15px);
-    }
 
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
+        .loading-number{
+            font-size:46px;
 
+            font-weight:900;
 
-/* =========================================================
-   CLOCK
-========================================================= */
+            color:#00aeea;
 
-.clock{
-    position:fixed;
+            margin-bottom:17px;
 
-    top:15px;
-    left:15px;
+            text-shadow:
+                0 0 12px
+                rgba(
+                    0,
+                    174,
+                    234,
+                    .25
+                );
+        }
 
-    z-index:1000;
 
-    padding:
-        7px
-        10px;
+        .loading-bar{
+            width:100%;
 
-    border-radius:10px;
+            height:9px;
 
-    background:rgba(255,255,255,.9);
+            background:#eeeeee;
 
-    border:1px solid #e5e5e5;
+            border-radius:20px;
 
-    color:#111;
+            overflow:hidden;
 
-    font-size:11px;
-    font-weight:bold;
+            box-shadow:
+                inset
+                0
+                0
+                5px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .05
+                );
+        }
 
-    box-shadow:
-        0 3px 15px rgba(0,0,0,.08);
 
-    backdrop-filter:blur(10px);
-}
+        .loading-progress{
+            width:0%;
 
+            height:100%;
 
-/* =========================================================
-   CONTAINER
-========================================================= */
+            border-radius:20px;
 
-.container{
-    width:100%;
-    max-width:850px;
+            background:
+                linear-gradient(
+                    90deg,
+                    #00b7ff,
+                    #00d9ff
+                );
 
-    margin:0 auto;
-}
+            box-shadow:
+                0
+                0
+                12px
+                rgba(
+                    0,
+                    190,
+                    255,
+                    .45
+                );
 
+            transition:
+                width .04s linear;
+        }
 
-/* =========================================================
-   PROFILE
-========================================================= */
 
-.profile{
-    display:flex;
+        .loading-status{
+            min-height:18px;
 
-    align-items:center;
-    flex-direction:column;
+            margin-top:14px;
 
-    text-align:center;
+            font-size:11px;
 
-    padding-top:25px;
-}
+            color:#888888;
+        }
 
-.avatar-wrapper{
-    position:relative;
 
-    width:125px;
-    height:125px;
+        /* =================================================
+           MAIN
+        ================================================= */
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+        #main{
+            display:none;
 
-    margin-bottom:15px;
-}
+            width:100%;
 
-.avatar-wrapper::before{
-    content:"";
+            min-height:100vh;
 
-    position:absolute;
+            background:#ffffff;
 
-    inset:-5px;
+            padding:
+                25px
+                15px
+                50px;
+        }
 
-    border-radius:50%;
 
-    border:
-        2px solid #00bfff;
+        #main.show{
+            display:block;
 
-    animation:
-        avatarRotate 4s linear infinite;
+            animation:
+                mainShow
+                .7s
+                ease
+                both;
+        }
 
-    box-shadow:
-        0 0 12px rgba(0,190,255,.35);
-}
 
-@keyframes avatarRotate{
-    from{
-        transform:rotate(0deg);
-    }
+        @keyframes mainShow{
 
-    to{
-        transform:rotate(360deg);
-    }
-}
+            from{
+                opacity:0;
 
-.avatar{
-    width:115px;
-    height:115px;
+                transform:
+                    translateY(18px);
+            }
 
-    object-fit:cover;
+            to{
+                opacity:1;
 
-    border-radius:50%;
+                transform:
+                    translateY(0);
+            }
+        }
 
-    border:3px solid #ffffff;
 
-    background:#f3f3f3;
+        /* =================================================
+           CLOCK
+        ================================================= */
 
-    box-shadow:
-        0 5px 25px rgba(0,0,0,.15);
-}
+        .clock{
+            position:fixed;
 
-.profile h1{
-    font-size:28px;
+            top:14px;
+            left:14px;
 
-    font-weight:900;
+            z-index:1000;
 
-    letter-spacing:1px;
+            padding:
+                7px
+                10px;
 
-    color:#111;
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .95
+                );
 
-    margin-bottom:7px;
-}
+            border:
+                1px solid
+                #e8e8e8;
 
+            border-radius:10px;
 
-/* =========================================================
-   PROFILE ANIMATION
-   iOS • Roblox • MOD • ESP
-========================================================= */
+            color:#222222;
 
-.profile-animation{
-    display:flex;
+            font-size:11px;
 
-    justify-content:center;
-    align-items:center;
+            font-weight:700;
 
-    gap:8px;
+            box-shadow:
+                0
+                4px
+                18px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .07
+                );
 
-    margin-top:5px;
+            backdrop-filter:
+                blur(8px);
+        }
 
-    overflow:hidden;
 
-    white-space:nowrap;
+        /* =================================================
+           CONTAINER
+        ================================================= */
 
-    color:#00aeea;
+        .container{
+            width:100%;
 
-    font-size:13px;
+            max-width:850px;
 
-    font-weight:bold;
+            margin:
+                0
+                auto;
+        }
 
-    letter-spacing:.5px;
 
-    text-shadow:
-        0 0 8px rgba(0,174,234,.35);
+        /* =================================================
+           PROFILE
+        ================================================= */
 
-    animation:
-        profileMove 2.8s ease-in-out infinite;
-}
+        .profile{
+            display:flex;
 
-.profile-animation span{
-    display:inline-block;
+            align-items:center;
 
-    transition:.3s;
-}
+            flex-direction:column;
 
-.profile-animation b{
-    color:#8a9aa0;
+            text-align:center;
 
-    font-size:12px;
-}
+            padding-top:28px;
+        }
 
-@keyframes profileMove{
 
-    0%{
-        transform:translateX(-12px);
+        .avatar-wrapper{
+            position:relative;
 
-        opacity:.65;
-    }
+            width:126px;
 
-    50%{
-        transform:translateX(12px);
+            height:126px;
 
-        opacity:1;
+            display:flex;
 
-        text-shadow:
-            0 0 12px #00cfff,
-            0 0 25px rgba(0,207,255,.35);
-    }
+            justify-content:center;
 
-    100%{
-        transform:translateX(-12px);
+            align-items:center;
 
-        opacity:.65;
-    }
-}
+            margin-bottom:16px;
+        }
 
 
-/* =========================================================
-   INTRO
-========================================================= */
+        .avatar-wrapper::before{
+            content:"";
 
-.intro{
-    text-align:center;
+            position:absolute;
 
-    max-width:600px;
+            inset:-5px;
 
-    margin:
-        20px
-        auto
-        30px;
+            border-radius:50%;
 
-    color:#666;
+            border:
+                2px solid
+                #00bfff;
 
-    font-size:13px;
+            box-shadow:
+                0
+                0
+                14px
+                rgba(
+                    0,
+                    191,
+                    255,
+                    .3
+                );
 
-    line-height:1.7;
-}
+            animation:
+                rotateBorder
+                4s
+                linear
+                infinite;
+        }
 
 
-/* =========================================================
-   SECTION TITLE
-========================================================= */
+        @keyframes rotateBorder{
 
-.section-title{
-    display:flex;
+            from{
+                transform:
+                    rotate(0deg);
+            }
 
-    align-items:center;
+            to{
+                transform:
+                    rotate(360deg);
+            }
+        }
 
-    gap:10px;
 
-    margin:
-        30px
-        0
-        15px;
-}
+        .avatar{
+            width:115px;
 
-.section-title::before{
-    content:"";
+            height:115px;
 
-    width:4px;
-    height:25px;
+            object-fit:cover;
 
-    background:#00bfff;
+            border-radius:50%;
 
-    border-radius:10px;
-}
+            border:
+                3px solid
+                #ffffff;
 
-.section-title h2{
-    font-size:18px;
+            background:#f3f3f3;
 
-    color:#111;
+            box-shadow:
+                0
+                7px
+                25px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .14
+                );
+        }
 
-    font-weight:900;
-}
 
+        .profile h1{
+            font-size:30px;
 
-/* =========================================================
-   MOD GRID
-========================================================= */
+            font-weight:900;
 
-.mod-grid{
-    display:grid;
+            letter-spacing:2px;
 
-    grid-template-columns:
-        repeat(3,1fr);
+            color:#111111;
 
-    gap:15px;
-}
+            margin-bottom:5px;
+        }
 
 
-/* =========================================================
-   MOD CARD
-========================================================= */
+        /* =================================================
+           SMALL BRAND LINE
+        ================================================= */
 
-.mod-card{
-    position:relative;
+        .brand-line{
+            font-size:11px;
 
-    padding:20px 16px;
+            color:#999999;
 
-    background:#ffffff;
+            letter-spacing:1px;
 
-    border:
-        1px solid #e7e7e7;
+            margin-top:2px;
+        }
 
-    border-radius:18px;
 
-    box-shadow:
-        0 7px 25px rgba(0,0,0,.06);
+        /* =================================================
+           INTRO
+        ================================================= */
 
-    transition:
-        transform .25s ease,
-        box-shadow .25s ease,
-        border-color .25s ease;
+        .intro{
+            width:100%;
 
-    overflow:hidden;
-}
+            max-width:600px;
 
-.mod-card::before{
-    content:"";
+            margin:
+                24px
+                auto
+                30px;
 
-    position:absolute;
+            text-align:center;
 
-    top:0;
-    left:0;
+            color:#777777;
 
-    width:100%;
-    height:3px;
+            font-size:13px;
 
-    background:
-        linear-gradient(
-            90deg,
-            #00bfff,
-            #00e1ff
-        );
-}
+            line-height:1.8;
+        }
 
-.mod-card:hover{
-    transform:
-        translateY(-5px);
 
-    border-color:#bfefff;
+        /* =================================================
+           SECTION
+        ================================================= */
 
-    box-shadow:
-        0 12px 35px rgba(0,170,230,.12);
-}
+        .section{
+            width:100%;
 
-.mod-icon{
-    width:48px;
-    height:48px;
+            margin-top:30px;
+        }
 
-    display:flex;
 
-    align-items:center;
-    justify-content:center;
+        .section-title{
+            display:flex;
 
-    border-radius:14px;
+            align-items:center;
 
-    background:#eefaff;
+            gap:10px;
 
-    font-size:23px;
+            margin-bottom:15px;
+        }
 
-    margin-bottom:12px;
-}
 
-.mod-card h3{
-    font-size:16px;
+        .section-title::before{
+            content:"";
 
-    color:#111;
+            width:4px;
 
-    margin-bottom:8px;
-}
+            height:23px;
 
-.mod-info{
-    font-size:12px;
+            background:#00bfff;
 
-    color:#777;
+            border-radius:10px;
+        }
 
-    line-height:1.7;
-}
 
-.mod-info strong{
-    color:#00aeea;
-}
+        .section-title h2{
+            font-size:18px;
 
+            font-weight:900;
 
-/* =========================================================
-   DOWNLOAD BUTTON
-========================================================= */
+            color:#111111;
+        }
 
-.download-btn{
-    width:100%;
 
-    display:flex;
+        /* =================================================
+           CARDS
+        ================================================= */
 
-    justify-content:center;
-    align-items:center;
+        .cards{
+            display:grid;
 
-    gap:7px;
+            grid-template-columns:
+                repeat(
+                    2,
+                    minmax(
+                        0,
+                        1fr
+                    )
+                );
 
-    margin-top:15px;
+            gap:15px;
+        }
 
-    padding:11px 12px;
 
-    border:0;
+        .card{
+            position:relative;
 
-    border-radius:12px;
+            padding:20px;
 
-    background:#111;
+            background:#ffffff;
 
-    color:#fff;
+            border:
+                1px solid
+                #e9e9e9;
 
-    font-size:12px;
+            border-radius:18px;
 
-    font-weight:bold;
+            box-shadow:
+                0
+                7px
+                25px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .055
+                );
 
-    text-decoration:none;
+            overflow:hidden;
 
-    cursor:pointer;
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease,
+                border-color .25s ease;
+        }
 
-    transition:
-        transform .2s ease,
-        background .2s ease;
-}
 
-.download-btn:hover{
-    background:#00aeea;
+        .card::before{
+            content:"";
 
-    transform:
-        translateY(-2px);
-}
+            position:absolute;
 
-.download-btn:active{
-    transform:
-        scale(.97);
-}
+            top:0;
+            left:0;
 
+            width:100%;
 
-/* =========================================================
-   UPDATE BADGE
-========================================================= */
+            height:3px;
 
-.update-badge{
-    display:inline-flex;
+            background:
+                linear-gradient(
+                    90deg,
+                    #00bfff,
+                    #00e1ff
+                );
+        }
 
-    align-items:center;
 
-    gap:5px;
+        .card:hover{
+            transform:
+                translateY(-5px);
 
-    margin-top:10px;
+            border-color:#c5efff;
 
-    padding:
-        4px
-        8px;
+            box-shadow:
+                0
+                14px
+                35px
+                rgba(
+                    0,
+                    174,
+                    234,
+                    .12
+                );
+        }
 
-    border-radius:20px;
 
-    background:#effcff;
+        .card-icon{
+            width:50px;
 
-    color:#00aeea;
+            height:50px;
 
-    font-size:10px;
+            display:flex;
 
-    font-weight:bold;
-}
+            justify-content:center;
 
-.update-dot{
-    width:6px;
-    height:6px;
+            align-items:center;
 
-    border-radius:50%;
+            border-radius:14px;
 
-    background:#00cfff;
+            background:#effbff;
 
-    animation:
-        updatePulse 1.4s infinite;
-}
+            font-size:23px;
 
-@keyframes updatePulse{
+            margin-bottom:13px;
+        }
 
-    0%{
-        opacity:.4;
-        transform:scale(.8);
-    }
 
-    50%{
-        opacity:1;
-        transform:scale(1.1);
-    }
+        .card h3{
+            font-size:17px;
 
-    100%{
-        opacity:.4;
-        transform:scale(.8);
-    }
-}
+            color:#111111;
 
+            margin-bottom:10px;
+        }
 
-/* =========================================================
-   STATS
-========================================================= */
 
-.stats{
-    display:grid;
+        .card-text{
+            color:#777777;
 
-    grid-template-columns:
-        repeat(3,1fr);
+            font-size:12px;
 
-    gap:12px;
+            line-height:1.8;
+        }
 
-    margin-top:30px;
-}
 
-.stat{
-    text-align:center;
+        .card-text strong{
+            color:#00aeea;
+        }
 
-    padding:16px 10px;
 
-    border:
-        1px solid #eeeeee;
+        /* =================================================
+           BUTTON
+        ================================================= */
 
-    border-radius:15px;
+        .button{
+            width:100%;
 
-    background:#fff;
+            display:flex;
 
-    box-shadow:
-        0 5px 18px rgba(0,0,0,.04);
-}
+            justify-content:center;
 
-.stat-number{
-    font-size:20px;
+            align-items:center;
 
-    font-weight:900;
+            gap:7px;
 
-    color:#00aeea;
-}
+            margin-top:15px;
 
-.stat-label{
-    margin-top:5px;
+            padding:11px 13px;
 
-    font-size:10px;
+            border:0;
 
-    color:#888;
-}
+            border-radius:12px;
 
+            background:#111111;
 
-/* =========================================================
-   DISCORD
-========================================================= */
+            color:#ffffff;
 
-.discord-section{
-    margin-top:30px;
+            text-decoration:none;
 
-    text-align:center;
+            font-size:12px;
 
-    padding:25px 18px;
+            font-weight:700;
 
-    border-radius:20px;
+            transition:
+                .2s ease;
+        }
 
-    background:
-        linear-gradient(
-            135deg,
-            #f8fdff,
-            #ffffff
-        );
 
-    border:
-        1px solid #e5f8ff;
-}
+        .button:hover{
+            background:#00aeea;
 
-.discord-section h2{
-    font-size:18px;
+            transform:
+                translateY(-2px);
+        }
 
-    margin-bottom:8px;
-}
 
-.discord-section p{
-    font-size:12px;
+        .button:active{
+            transform:
+                scale(.97);
+        }
 
-    color:#777;
 
-    margin-bottom:15px;
-}
+        /* =================================================
+           INFO BOX
+        ================================================= */
 
-.discord-btn{
-    display:inline-flex;
+        .info-box{
+            margin-top:20px;
 
-    justify-content:center;
-    align-items:center;
+            padding:18px;
 
-    gap:8px;
+            border:
+                1px solid
+                #eeeeee;
 
-    padding:
-        12px
-        22px;
+            border-radius:17px;
 
-    border-radius:12px;
+            background:#ffffff;
 
-    background:#5865f2;
+            box-shadow:
+                0
+                5px
+                20px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .04
+                );
+        }
 
-    color:#fff;
 
-    text-decoration:none;
+        .info-box h3{
+            font-size:15px;
 
-    font-size:13px;
+            margin-bottom:8px;
 
-    font-weight:bold;
+            color:#111111;
+        }
 
-    transition:
-        transform .2s ease,
-        box-shadow .2s ease;
-}
 
-.discord-btn:hover{
-    transform:
-        translateY(-3px);
+        .info-box p{
+            font-size:12px;
 
-    box-shadow:
-        0 8px 25px rgba(88,101,242,.25);
-}
+            color:#777777;
 
+            line-height:1.8;
+        }
 
-/* =========================================================
-   FOOTER
-========================================================= */
 
-footer{
-    text-align:center;
+        /* =================================================
+           DISCORD
+        ================================================= */
 
-    margin-top:35px;
+        .discord{
+            margin-top:30px;
 
-    padding-top:20px;
+            padding:25px 18px;
 
-    border-top:
-        1px solid #eeeeee;
+            text-align:center;
 
-    color:#999;
+            border-radius:20px;
 
-    font-size:10px;
+            border:
+                1px solid
+                #e9e9e9;
 
-    line-height:1.7;
-}
+            background:#ffffff;
 
-footer strong{
-    color:#00aeea;
-}
+            box-shadow:
+                0
+                7px
+                25px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .05
+                );
+        }
 
 
-/* =========================================================
-   BACK TO TOP
-========================================================= */
+        .discord h2{
+            font-size:19px;
 
-.back-top{
-    position:fixed;
+            color:#111111;
 
-    right:15px;
-    bottom:15px;
+            margin-bottom:8px;
+        }
 
-    width:40px;
-    height:40px;
 
-    display:flex;
+        .discord p{
+            font-size:12px;
 
-    align-items:center;
-    justify-content:center;
+            color:#777777;
 
-    border-radius:50%;
+            line-height:1.7;
 
-    border:
-        1px solid #e5e5e5;
+            margin-bottom:15px;
+        }
 
-    background:#fff;
 
-    color:#111;
+        .discord-button{
+            display:inline-flex;
 
-    cursor:pointer;
+            justify-content:center;
 
-    box-shadow:
-        0 5px 20px rgba(0,0,0,.08);
+            align-items:center;
 
-    transition:.2s;
+            gap:8px;
 
-    z-index:1000;
-}
+            padding:
+                12px
+                23px;
 
-.back-top:hover{
-    background:#00aeea;
+            border-radius:12px;
 
-    color:#fff;
-}
+            background:#5865f2;
 
+            color:#ffffff;
 
-/* =========================================================
-   MOBILE
-========================================================= */
+            text-decoration:none;
 
-@media(max-width:700px){
+            font-size:13px;
 
-    #main{
-        padding:
-            20px
-            12px
-            40px;
-    }
+            font-weight:700;
 
-    .profile{
-        padding-top:25px;
-    }
+            transition:.2s ease;
+        }
 
-    .avatar-wrapper{
-        width:110px;
-        height:110px;
-    }
 
-    .avatar{
-        width:100px;
-        height:100px;
-    }
+        .discord-button:hover{
+            transform:
+                translateY(-3px);
 
-    .profile h1{
-        font-size:23px;
-    }
+            box-shadow:
+                0
+                8px
+                25px
+                rgba(
+                    88,
+                    101,
+                    242,
+                    .25
+                );
+        }
 
-    .profile-animation{
-        font-size:12px;
 
-        gap:7px;
+        /* =================================================
+           FOOTER
+        ================================================= */
 
-        margin-top:7px;
-    }
+        footer{
+            margin-top:35px;
 
-    .mod-grid{
-        grid-template-columns:1fr;
+            padding-top:20px;
 
-        gap:12px;
-    }
+            text-align:center;
 
-    .mod-card{
-        padding:18px 15px;
-    }
+            border-top:
+                1px solid
+                #eeeeee;
 
-    .stats{
-        grid-template-columns:
-            repeat(3,1fr);
+            color:#999999;
 
-        gap:7px;
-    }
+            font-size:10px;
 
-    .stat{
-        padding:13px 5px;
-    }
+            line-height:1.8;
+        }
 
-    .stat-number{
-        font-size:16px;
-    }
 
-    .stat-label{
-        font-size:9px;
-    }
+        footer strong{
+            color:#00aeea;
+        }
 
-    .loading-title{
-        font-size:25px;
-    }
 
-    .loading-percent{
-        font-size:40px;
-    }
-}
+        /* =================================================
+           TOP BUTTON
+        ================================================= */
 
+        .top-button{
+            position:fixed;
 
-/* =========================================================
-   VERY SMALL SCREEN
-========================================================= */
+            right:15px;
 
-@media(max-width:380px){
+            bottom:15px;
 
-    .profile h1{
-        font-size:21px;
-    }
+            width:40px;
 
-    .profile-animation{
-        font-size:11px;
+            height:40px;
 
-        gap:5px;
-    }
+            display:flex;
 
-    .stats{
-        gap:5px;
-    }
+            justify-content:center;
 
-    .stat-number{
-        font-size:14px;
-    }
+            align-items:center;
 
-    .stat-label{
-        font-size:8px;
-    }
-}
+            border:
+                1px solid
+                #e5e5e5;
 
-</style>
+            border-radius:50%;
+
+            background:#ffffff;
+
+            color:#111111;
+
+            cursor:pointer;
+
+            box-shadow:
+                0
+                5px
+                20px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .08
+                );
+
+            z-index:1000;
+
+            transition:.2s ease;
+        }
+
+
+        .top-button:hover{
+            background:#00aeea;
+
+            color:#ffffff;
+        }
+
+
+        /* =================================================
+           MOBILE
+        ================================================= */
+
+        @media(max-width:700px){
+
+            #main{
+                padding:
+                    20px
+                    12px
+                    40px;
+            }
+
+
+            .profile{
+                padding-top:30px;
+            }
+
+
+            .avatar-wrapper{
+                width:110px;
+
+                height:110px;
+            }
+
+
+            .avatar{
+                width:100px;
+
+                height:100px;
+            }
+
+
+            .profile h1{
+                font-size:24px;
+
+                letter-spacing:1.5px;
+            }
+
+
+            .cards{
+                grid-template-columns:1fr;
+
+                gap:12px;
+            }
+
+
+            .card{
+                padding:18px;
+            }
+
+
+            .loading-logo{
+                font-size:34px;
+            }
+
+
+            .loading-number{
+                font-size:42px;
+            }
+        }
+
+
+        /* =================================================
+           SMALL PHONE
+        ================================================= */
+
+        @media(max-width:380px){
+
+            .profile h1{
+                font-size:21px;
+            }
+
+
+            .brand-line{
+                font-size:10px;
+            }
+
+
+            .card h3{
+                font-size:16px;
+            }
+
+
+            .card-text{
+                font-size:11px;
+            }
+        }
+
+    </style>
+
 </head>
 
 
 <body>
 
 
-<!-- =======================================================
-     LOADING
-======================================================= -->
+    <!-- =====================================================
+         LOADING SCREEN
+    ====================================================== -->
 
-<div id="loading">
+    <div id="loading">
 
-    <div class="loading-box">
+        <div class="loading-container">
 
-        <div class="loading-title">
-            XUÂN KHÁNH
-        </div>
+            <div class="loading-logo">
+                Zunada
+            </div>
 
-        <div class="loading-subtitle">
-            Đang khởi động hệ thống...
-        </div>
-
-        <div
-            class="loading-percent"
-            id="loadingPercent"
-        >
-            0%
-        </div>
-
-        <div class="loading-bar">
+            <div class="loading-subtitle">
+                Đang khởi động...
+            </div>
 
             <div
-                class="loading-progress"
-                id="loadingProgress"
-            ></div>
-
-        </div>
-
-        <div
-            class="loading-status"
-            id="loadingStatus"
-        >
-            Đang chuẩn bị...
-        </div>
-
-    </div>
-
-</div>
-
-
-
-<!-- =======================================================
-     MAIN
-======================================================= -->
-
-<div id="main">
-
-
-    <!-- CLOCK -->
-
-    <div
-        class="clock"
-        id="clock"
-    >
-        00:00:00
-    </div>
-
-
-
-    <div class="container">
-
-
-        <!-- =================================================
-             PROFILE
-        ================================================== -->
-
-        <section class="profile">
-
-            <div class="avatar-wrapper">
-
-                <!-- THAY LINK AVATAR CỦA BẠN Ở ĐÂY -->
-
-                <img
-                    class="avatar"
-                    src="YOUR_AVATAR_LINK_HERE"
-                    alt="Avatar XUÂN KHÁNH"
-                >
-
+                class="loading-number"
+                id="loadingNumber"
+            >
+                0%
             </div>
 
-
-            <h1>
-                XUÂN KHÁNH MOD
-            </h1>
-
-
-            <!-- HIỆU ỨNG CHUYỂN ĐỘNG -->
-
-            <div class="profile-animation">
-
-                <span>iOS</span>
-
-                <b>•</b>
-
-                <span>Roblox</span>
-
-                <b>•</b>
-
-                <span>MOD</span>
-
-                <b>•</b>
-
-                <span>ESP</span>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             INTRO
-        ================================================== -->
-
-        <div class="intro">
-
-            Chào mừng bạn đến với website
-            <strong>XUÂN KHÁNH MOD</strong>.
-
-            <br>
-
-            Tại đây bạn có thể xem các bản phát hành,
-            phiên bản cập nhật và thông tin tải xuống.
-
-        </div>
-
-
-
-        <!-- =================================================
-             MOD LIST
-        ================================================== -->
-
-        <div class="section-title">
-
-            <h2>
-                🎮 DANH SÁCH MOD
-            </h2>
-
-        </div>
-
-
-        <div class="mod-grid">
-
-
-            <!-- =============================================
-                 ROBLOX
-            ============================================== -->
-
-            <div class="mod-card">
-
-                <div class="mod-icon">
-                    🎮
-                </div>
-
-                <h3>
-                    Roblox
-                </h3>
-
-                <div class="mod-info">
-
-                    <div>
-                        <strong>Hệ điều hành:</strong>
-                        iOS
-                    </div>
-
-                    <div>
-                        <strong>Phiên bản:</strong>
-                        1.2.5
-                    </div>
-
-                    <div>
-                        <strong>Lượt tải:</strong>
-                        12,458
-                    </div>
-
-                </div>
-
-                <div class="update-badge">
-
-                    <span class="update-dot"></span>
-
-                    Đã cập nhật
-
-                </div>
-
-                <a
-                    class="download-btn"
-                    href="YOUR_ROBLOX_LINK"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    ⬇ TẢI XUỐNG
-                </a>
-
-            </div>
-
-
-
-            <!-- =============================================
-                 AVO ESP
-            ============================================== -->
-
-            <div class="mod-card">
-
-                <div class="mod-icon">
-                    👁️
-                </div>
-
-                <h3>
-                    AVO Esp
-                </h3>
-
-                <div class="mod-info">
-
-                    <div>
-                        <strong>Hệ điều hành:</strong>
-                        iOS
-                    </div>
-
-                    <div>
-                        <strong>Phiên bản:</strong>
-                        2.0.1
-                    </div>
-
-                    <div>
-                        <strong>Lượt tải:</strong>
-                        8,921
-                    </div>
-
-                </div>
-
-                <div class="update-badge">
-
-                    <span class="update-dot"></span>
-
-                    Đã cập nhật
-
-                </div>
-
-                <a
-                    class="download-btn"
-                    href="YOUR_AVO_LINK"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    ⬇ TẢI XUỐNG
-                </a>
-
-            </div>
-
-
-
-            <!-- =============================================
-                 OTHER MODS
-            ============================================== -->
-
-            <div class="mod-card">
-
-                <div class="mod-icon">
-                    🔧
-                </div>
-
-                <h3>
-                    Các MOD khác
-                </h3>
-
-                <div class="mod-info">
-
-                    <div>
-                        <strong>Hệ điều hành:</strong>
-                        iOS
-                    </div>
-
-                    <div>
-                        <strong>Phiên bản:</strong>
-                        Nhiều phiên bản
-                    </div>
-
-                    <div>
-                        <strong>Lượt tải:</strong>
-                        5,634
-                    </div>
-
-                </div>
-
-                <div class="update-badge">
-
-                    <span class="update-dot"></span>
-
-                    Đã cập nhật
-
-                </div>
-
-                <a
-                    class="download-btn"
-                    href="YOUR_OTHER_MOD_LINK"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    ⬇ XEM MOD
-                </a>
-
-            </div>
-
-
-        </div>
-
-
-
-        <!-- =================================================
-             STATISTICS
-        ================================================== -->
-
-        <div class="section-title">
-
-            <h2>
-                📊 THỐNG KÊ
-            </h2>
-
-        </div>
-
-
-        <div class="stats">
-
-            <div class="stat">
+            <div class="loading-bar">
 
                 <div
-                    class="stat-number"
-                    id="totalDownloads"
+                    class="loading-progress"
+                    id="loadingProgress"
+                ></div>
+
+            </div>
+
+            <div
+                class="loading-status"
+                id="loadingStatus"
+            >
+                Đang chuẩn bị...
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main id="main">
+
+
+        <!-- CLOCK -->
+
+        <div
+            class="clock"
+            id="clock"
+        >
+            00:00:00
+        </div>
+
+
+
+        <div class="container">
+
+
+            <!-- =================================================
+                 PROFILE
+            ================================================== -->
+
+            <section class="profile">
+
+
+                <div class="avatar-wrapper">
+
+                    <!--
+                        ======================================
+                        THAY LINK AVATAR CỦA BẠN Ở ĐÂY
+                        ======================================
+                    -->
+
+                    <img
+                        class="avatar"
+                        src="YOUR_AVATAR_LINK_HERE"
+                        alt="Zunada"
+                    >
+
+                </div>
+
+
+                <h1>
+                    Zunada
+                </h1>
+
+
+                <div class="brand-line">
+                    Official Website
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 INTRO
+            ================================================== -->
+
+            <div class="intro">
+
+                Chào mừng bạn đến với website
+                <strong>Zunada</strong>.
+
+                <br>
+
+                Website chính thức của Zunada.
+
+            </div>
+
+
+
+            <!-- =================================================
+                 CONTENT
+            ================================================== -->
+
+            <section class="section">
+
+
+                <div class="section-title">
+
+                    <h2>
+                        Nội dung
+                    </h2>
+
+                </div>
+
+
+                <div class="cards">
+
+
+                    <!-- =========================================
+                         ROBLOX
+                    ========================================== -->
+
+                    <div class="card">
+
+                        <div class="card-icon">
+                            🎮
+                        </div>
+
+                        <h3>
+                            Roblox
+                        </h3>
+
+                        <div class="card-text">
+
+                            <strong>Nền tảng:</strong>
+                            iOS
+
+                            <br>
+
+                            <strong>Phiên bản:</strong>
+                            1.2.5
+
+                            <br>
+
+                            <strong>Lượt tải:</strong>
+                            12,458
+
+                        </div>
+
+
+                        <a
+                            class="button"
+                            href="YOUR_ROBLOX_LINK"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            ⬇ TẢI XUỐNG
+                        </a>
+
+                    </div>
+
+
+
+                    <!-- =========================================
+                         AVO ESP
+                    ========================================== -->
+
+                    <div class="card">
+
+                        <div class="card-icon">
+                            👁️
+                        </div>
+
+                        <h3>
+                            AVO Esp
+                        </h3>
+
+                        <div class="card-text">
+
+                            <strong>Nền tảng:</strong>
+                            iOS
+
+                            <br>
+
+                            <strong>Phiên bản:</strong>
+                            2.0.1
+
+                            <br>
+
+                            <strong>Lượt tải:</strong>
+                            8,921
+
+                        </div>
+
+
+                        <a
+                            class="button"
+                            href="YOUR_AVO_LINK"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            ⬇ TẢI XUỐNG
+                        </a>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 INFORMATION
+            ================================================== -->
+
+            <section class="info-box">
+
+                <h3>
+                    ℹ️ Thông tin
+                </h3>
+
+                <p>
+
+                    Các thông tin trên website có thể
+                    được cập nhật theo từng phiên bản.
+
+                    Hãy kiểm tra trang thường xuyên để
+                    nhận thông tin mới nhất.
+
+                </p>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 DISCORD
+            ================================================== -->
+
+            <section class="discord">
+
+                <h2>
+                    💬 Discord
+                </h2>
+
+                <p>
+                    Tham gia cộng đồng Zunada.
+                </p>
+
+
+                <!--
+                    THAY LINK DISCORD CỦA BẠN
+                -->
+
+                <a
+                    class="discord-button"
+                    href="YOUR_DISCORD_LINK"
+                    target="_blank"
+                    rel="noopener noreferrer"
                 >
-                    27K+
-                </div>
+                    💬 THAM GIA DISCORD
+                </a>
 
-                <div class="stat-label">
-                    Lượt tải
-                </div>
-
-            </div>
+            </section>
 
 
-            <div class="stat">
 
-                <div class="stat-number">
-                    3+
-                </div>
+            <!-- =================================================
+                 FOOTER
+            ================================================== -->
 
-                <div class="stat-label">
-                    MOD
-                </div>
+            <footer>
 
-            </div>
+                © 2026
+                <strong>Zunada</strong>
 
+                <br>
 
-            <div class="stat">
+                All rights reserved.
 
-                <div class="stat-number">
-                    iOS
-                </div>
+            </footer>
 
-                <div class="stat-label">
-                    Nền tảng
-                </div>
-
-            </div>
 
         </div>
 
 
 
         <!-- =================================================
-             DISCORD
+             BACK TO TOP
         ================================================== -->
 
-        <section class="discord-section">
+        <button
+            class="top-button"
+            onclick="
+                window.scrollTo({
+                    top:0,
+                    behavior:'smooth'
+                });
+            "
+            aria-label="Lên đầu trang"
+        >
+            ↑
+        </button>
 
-            <h2>
-                💬 Tham gia Discord
-            </h2>
 
-            <p>
-                Tham gia server để nhận thông báo
-                khi website có bản cập nhật mới.
-            </p>
+    </main>
 
-            <a
-                class="discord-btn"
-                href="https://discord.com/"
-                target="_blank"
-                rel="noopener"
-            >
-                💬 THAM GIA DISCORD
-            </a>
 
-        </section>
 
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
 
+    <script>
 
-        <!-- =================================================
-             FOOTER
-        ================================================== -->
 
-        <footer>
+        /* =================================================
+           LOADING SYSTEM
+        ================================================= */
 
-            © 2026
-            <strong>XUÂN KHÁNH MOD</strong>
+        const loading =
+            document.getElementById(
+                "loading"
+            );
 
-            <br>
+        const main =
+            document.getElementById(
+                "main"
+            );
 
-            iOS • Roblox • MOD • ESP
+        const loadingNumber =
+            document.getElementById(
+                "loadingNumber"
+            );
 
-            <br>
+        const loadingProgress =
+            document.getElementById(
+                "loadingProgress"
+            );
 
-            Website được xây dựng cho mục đích
-            giới thiệu và quản lý nội dung.
+        const loadingStatus =
+            document.getElementById(
+                "loadingStatus"
+            );
 
-        </footer>
 
+        let progress = 0;
 
-    </div>
 
+        const loadingMessages = [
 
-    <!-- BACK TO TOP -->
+            {
+                max:20,
+                text:"Đang kết nối..."
+            },
 
-    <button
-        class="back-top"
-        onclick="window.scrollTo({
-            top:0,
-            behavior:'smooth'
-        })"
-        aria-label="Lên đầu trang"
-    >
-        ↑
-    </button>
+            {
+                max:40,
+                text:"Đang kiểm tra hệ thống..."
+            },
 
+            {
+                max:60,
+                text:"Đang tải dữ liệu..."
+            },
 
-</div>
+            {
+                max:80,
+                text:"Đang chuẩn bị giao diện..."
+            },
 
+            {
+                max:99,
+                text:"Gần hoàn tất..."
+            },
 
-
-<!-- =======================================================
-     JAVASCRIPT
-======================================================= -->
-
-<script>
-
-
-/* =========================================================
-   LOADING 0% → 100%
-========================================================= */
-
-const loading =
-    document.getElementById("loading");
-
-const main =
-    document.getElementById("main");
-
-const loadingPercent =
-    document.getElementById("loadingPercent");
-
-const loadingProgress =
-    document.getElementById("loadingProgress");
-
-const loadingStatus =
-    document.getElementById("loadingStatus");
-
-
-let progress = 0;
-
-
-const loadingTimer =
-    setInterval(function(){
-
-        progress++;
-
-        loadingPercent.textContent =
-            progress + "%";
-
-        loadingProgress.style.width =
-            progress + "%";
-
-
-        if(progress < 25){
-
-            loadingStatus.textContent =
-                "Đang kết nối...";
-
-        }
-        else if(progress < 50){
-
-            loadingStatus.textContent =
-                "Đang tải dữ liệu...";
-
-        }
-        else if(progress < 75){
-
-            loadingStatus.textContent =
-                "Đang chuẩn bị giao diện...";
-
-        }
-        else if(progress < 100){
-
-            loadingStatus.textContent =
-                "Gần hoàn tất...";
-
-        }
-        else{
-
-            loadingStatus.textContent =
-                "Hoàn tất!";
-
-            clearInterval(loadingTimer);
-
-
-            setTimeout(function(){
-
-                loading.classList.add("hide");
-
-                main.classList.add("show");
-
-            },500);
-
-        }
-
-    },35);
-
-
-
-/* =========================================================
-   CLOCK
-========================================================= */
-
-function updateClock(){
-
-    const now =
-        new Date();
-
-
-    const hours =
-        String(
-            now.getHours()
-        ).padStart(2,"0");
-
-
-    const minutes =
-        String(
-            now.getMinutes()
-        ).padStart(2,"0");
-
-
-    const seconds =
-        String(
-            now.getSeconds()
-        ).padStart(2,"0");
-
-
-    document.getElementById("clock")
-        .textContent =
-        hours +
-        ":" +
-        minutes +
-        ":" +
-        seconds;
-
-}
-
-
-updateClock();
-
-setInterval(
-    updateClock,
-    1000
-);
-
-
-
-/* =========================================================
-   DOWNLOAD CLICK EFFECT
-========================================================= */
-
-document
-    .querySelectorAll(".download-btn")
-    .forEach(function(button){
-
-        button.addEventListener(
-            "click",
-            function(){
-
-                button.style.transform =
-                    "scale(.96)";
-
-                setTimeout(function(){
-
-                    button.style.transform =
-                        "";
-
-                },120);
-
+            {
+                max:100,
+                text:"Hoàn tất!"
             }
+
+        ];
+
+
+        const loadingTimer =
+            setInterval(
+                function(){
+
+                    progress++;
+
+                    loadingNumber.textContent =
+                        progress + "%";
+
+
+                    loadingProgress.style.width =
+                        progress + "%";
+
+
+                    for(
+                        let i = 0;
+                        i < loadingMessages.length;
+                        i++
+                    ){
+
+                        if(
+                            progress <=
+                            loadingMessages[i].max
+                        ){
+
+                            loadingStatus.textContent =
+                                loadingMessages[i].text;
+
+                            break;
+                        }
+
+                    }
+
+
+                    /*
+                     * QUAN TRỌNG:
+                     * MAIN CHỈ ĐƯỢC HIỆN
+                     * SAU KHI ĐẠT 100%.
+                     */
+
+                    if(
+                        progress >= 100
+                    ){
+
+                        clearInterval(
+                            loadingTimer
+                        );
+
+
+                        loadingNumber.textContent =
+                            "100%";
+
+
+                        loadingProgress.style.width =
+                            "100%";
+
+
+                        loadingStatus.textContent =
+                            "Hoàn tất!";
+
+
+                        setTimeout(
+                            function(){
+
+                                loading.classList.add(
+                                    "hide"
+                                );
+
+
+                                main.classList.add(
+                                    "show"
+                                );
+
+                            },
+                            500
+                        );
+
+                    }
+
+                },
+                35
+            );
+
+
+
+        /* =================================================
+           CLOCK
+        ================================================= */
+
+        function updateClock(){
+
+            const now =
+                new Date();
+
+
+            const hours =
+                String(
+                    now.getHours()
+                ).padStart(
+                    2,
+                    "0"
+                );
+
+
+            const minutes =
+                String(
+                    now.getMinutes()
+                ).padStart(
+                    2,
+                    "0"
+                );
+
+
+            const seconds =
+                String(
+                    now.getSeconds()
+                ).padStart(
+                    2,
+                    "0"
+                );
+
+
+            document.getElementById(
+                "clock"
+            ).textContent =
+                hours +
+                ":" +
+                minutes +
+                ":" +
+                seconds;
+
+        }
+
+
+        updateClock();
+
+
+        setInterval(
+            updateClock,
+            1000
         );
 
-    });
 
 
+        /* =================================================
+           BUTTON EFFECT
+        ================================================= */
 
-/* =========================================================
-   PREVENT EMPTY LINKS
-========================================================= */
+        const buttons =
+            document.querySelectorAll(
+                ".button"
+            );
 
-document
-    .querySelectorAll(
-        'a[href^="YOUR_"]'
-    )
-    .forEach(function(link){
 
-        link.addEventListener(
-            "click",
-            function(event){
+        buttons.forEach(
+            function(button){
 
-                event.preventDefault();
+                button.addEventListener(
+                    "click",
+                    function(){
 
-                alert(
-                    "Bạn chưa thêm link tải!"
+                        button.style.transform =
+                            "scale(.96)";
+
+
+                        setTimeout(
+                            function(){
+
+                                button.style.transform =
+                                    "";
+
+                            },
+                            120
+                        );
+
+                    }
                 );
 
             }
         );
 
-    });
 
 
-</script>
+        /* =================================================
+           EMPTY LINK CHECK
+        ================================================= */
+
+        document
+            .querySelectorAll(
+                'a[href^="YOUR_"]'
+            )
+            .forEach(
+                function(link){
+
+                    link.addEventListener(
+                        "click",
+                        function(event){
+
+                            event.preventDefault();
+
+                            alert(
+                                "Bạn chưa thêm liên kết!"
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+
+    </script>
+
 
 </body>
 </html>
