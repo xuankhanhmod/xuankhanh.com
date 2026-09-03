@@ -1,5 +1,4 @@
-
-
+```html
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -1408,16 +1407,17 @@
 
                         <div class="mod-info">
 
+                            <span class="tag"
+                                  id="avoEspDownloads">
+                                ⬇ 0 lượt tải
+                            </span>
+
                             <span class="tag">
                                 iOS
                             </span>
 
                             <span class="tag">
-                                ⬇ 0 lượt tải
-                            </span>
-
-                            <span class="tag">
-                                Đang cập nhật
+                                Đang được cập nhật
                             </span>
 
                         </div>
@@ -1459,12 +1459,13 @@
                                 iOS
                             </span>
 
-                            <span class="tag">
-                                MOD
+                            <span class="tag"
+                                  id="aovModDownloads">
+                                ⬇ 0 lượt tải
                             </span>
 
                             <span class="tag">
-                                No Hack
+                                Đang được cập nhật
                             </span>
 
                         </div>
@@ -1506,12 +1507,13 @@
                                 iOS
                             </span>
 
-                            <span class="tag">
-                                MAP + MOD
+                            <span class="tag"
+                                  id="aovCheatDownloads">
+                                ⬇ 0 lượt tải
                             </span>
 
                             <span class="tag">
-                                Đang cập nhật
+                                Đang được cập nhật
                             </span>
 
                         </div>
@@ -1822,6 +1824,77 @@
 
 
         /* =========================
+           LƯỢT TẢI NGẪU NHIÊN
+           ========================= */
+
+        function randomDownloads(
+            min,
+            max
+        ) {
+
+            return Math.floor(
+                Math.random() *
+                (
+                    max - min + 1
+                )
+                + min
+            );
+
+        }
+
+
+        const avoEspDownloads =
+            randomDownloads(
+                1000,
+                9999
+            );
+
+
+        const aovModDownloads =
+            randomDownloads(
+                1000,
+                9999
+            );
+
+
+        const aovCheatDownloads =
+            randomDownloads(
+                1000,
+                9999
+            );
+
+
+        document.getElementById(
+            "avoEspDownloads"
+        ).textContent =
+            "⬇ " +
+            avoEspDownloads.toLocaleString(
+                "en-US"
+            ) +
+            " lượt tải";
+
+
+        document.getElementById(
+            "aovModDownloads"
+        ).textContent =
+            "⬇ " +
+            aovModDownloads.toLocaleString(
+                "en-US"
+            ) +
+            " lượt tải";
+
+
+        document.getElementById(
+            "aovCheatDownloads"
+        ).textContent =
+            "⬇ " +
+            aovCheatDownloads.toLocaleString(
+                "en-US"
+            ) +
+            " lượt tải";
+
+
+        /* =========================
            AVO ESP
            ========================= */
 
@@ -1837,6 +1910,50 @@
 
                     alert(
                         "AVO Esp đang được cập nhật!"
+                    );
+
+                }
+            );
+
+
+        /* =========================
+           AOV MOD
+           ========================= */
+
+        document
+            .getElementById(
+                "aovMod"
+            )
+            .addEventListener(
+                "click",
+                function(event) {
+
+                    event.preventDefault();
+
+                    alert(
+                        "Aov Mod (No Hack) đang được cập nhật!"
+                    );
+
+                }
+            );
+
+
+        /* =========================
+           AOV CHEAT
+           ========================= */
+
+        document
+            .getElementById(
+                "aovCheat"
+            )
+            .addEventListener(
+                "click",
+                function(event) {
+
+                    event.preventDefault();
+
+                    alert(
+                        "Aov Cheat đang được cập nhật!"
                     );
 
                 }
